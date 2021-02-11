@@ -109,12 +109,13 @@ function eval_loginUser(){
 /**
  * 
  */
-function execute_loginUser(){    
+function execute_loginUser(){   
+    sweetModalMin('INICIANDO...!','top-start',900,'success') 
     if(eval_loginUser()){
         let dataHTML = dataHTML_loginUser();
         let {txt_userv, txt_passwordv} = dataHTML.value;
         //let {txt_user, txt_password} = dataHTML.element;
-
+        console.log(txt_userv, txt_passwordv);
         fetchKev('POST',{
             id:'SESSION-USER',
             txt_userv,
