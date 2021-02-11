@@ -2,28 +2,19 @@
 
     $conAjax = is_null($conAjax)?false:$conAjax;
     if($conAjax){
-        require_once "../models/webItecModel.php";
+        require_once "../models/webSutepModel.php";
     }else{
-        require_once "./models/webItecModel.php";
+        require_once "./models/webSutepModel.php";
     }
 
-    class webItecController extends webItecModel{
+    class webSutepController extends webSutepModel{
 
         /**
-         * Obtiene un string la fecha de inicio de clases 
+         * Test controller
          */
-        public function obtener_fecha_slider_Controller(){
-            $resModal = self::obtener_fecha_slider_Modal();
+        public function test_Controller(){
+            $resModal = self::test_Modal();
             return $resModal;
-        }
-
-        /**
-         * 
-         */
-        public function obtener_dataCurso_Controller(){
-            $resModal = self::obtener_dataCurso_Model();
-            return $resModal;
-            //return [['nombre'=>'contabilidad'],['nombre'=>'admi'],['nombre'=>'sistemas']];
         }
 
         //------------------------------------------------------------------------------

@@ -1,21 +1,6 @@
-/*
-$(".redes-link.whatsapp").on("click", function () {
-    var text = $(this).attr("data-mensaje");
-    var phone = $(this).attr("data-numero");
-    var message = encodeURIComponent(text);
-    if (isMobile.any()) {
-        //mobile device
-        var whatsapp_API_url = "whatsapp://send";
-        window.open(whatsapp_API_url + '?phone=' + phone + '&text=' + message, '_blank');            //$(this).attr('href', whatsapp_API_url + '?phone=' + phone + '&text=' + message);
-    } else {
-        //desktop
-        var whatsapp_API_url = "https://web.whatsapp.com/send";
-        window.open (whatsapp_API_url + '?phone=' + phone + '&text=' + message, '_blank');
-        //$(this).attr('href', whatsapp_API_url + '?phone=' + phone + '&text=' + message);
-    }
-    return false;
-});
-*/
+alert("JS script sutep");
+
+
 var isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);

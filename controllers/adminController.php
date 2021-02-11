@@ -1,4 +1,4 @@
-<?php
+<?php    
 
     $conAjax = is_null($conAjax)?false:$conAjax;
     if($conAjax){
@@ -28,7 +28,7 @@
             //Cuando la sessión sea VERDADERA
             if($session){
                 
-                $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_itec";
+                $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));   
 
                 //por si es 'login'. cambiamos a 'inicio'
@@ -36,9 +36,10 @@
 
                 //Validando niveles de seguridad. [1]:NIVEL ADMINISTRADOR
                 if($_SESSION['data']['tipo_usuario']==1){
-                    $arrayPaginas = ["salir_sistema","inicio","page_itec","info","adm_slider","adm_curso"];
+                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
                 }else{
-                    $arrayPaginas = ["salir_sistema","inicio","page_itec","info"];
+                    //Nivel invitado pro defecto
+                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
                 }              
                 
                 /**
@@ -55,14 +56,14 @@
                 //CUANDO LA SESSIÓN NO EXISTA
                 //Presentación de la página principal
 
-                $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_itec";
+                $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));                          
-                $arrayPaginas = ['login',"usuario_registro"];
+                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento"];
 
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
                 }else {
-                    $pagina = "page_itec.php";
+                    $pagina = "page_sutep.php";
                 }                
             
             }  
@@ -71,6 +72,16 @@
 
         }
 
+        /***
+         * 
+         * 
+         * SUTEP 2021 
+         */
+
+
+
+
+        // ----------------- ejem metodos controller
         /**
          * 
          */
@@ -167,6 +178,8 @@
             $res_model = self::delete_curso_Model($id_curso);
             return $res_model;
         }
+
+        // fin ejemplo metodos controller
 
 
 

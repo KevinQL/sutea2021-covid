@@ -1,0 +1,10 @@
+:root{
+    --color-header:tomato;
+}
+
+body{
+    background:var(--color-header);
+}
+
+
+
