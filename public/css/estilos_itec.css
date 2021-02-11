@@ -1,0 +1,320 @@
+:root{
+    --color-header:tomato;
+}
+
+body{
+    background:rgb(255, 254, 254);
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+/*---img*/
+.img-logo{
+    position: absolute;
+    z-index: 1;
+}
+
+/*----nav---*/
+.contenido-header{    
+    height: 100%;
+    position: relative;
+    background-color: #435ea2;
+    padding-bottom: 100px;
+    /*
+    background-color: var( --color-header );
+    */
+}
+.img-svg-header{
+    position: absolute;
+    bottom: -2px;      
+
+    left: 0px;
+    right: 0px;
+    background-size: cover;
+    z-index: 0;    
+    /*
+    background-color:teal;
+    height: 100%;
+    width: 100%;
+    
+    */
+}
+.mt-slider{
+    
+}
+
+/*-*/
+.nav-head{
+    display: block;
+}
+
+.nav-head__ul{
+    background: transparent;
+}
+
+.nav-head__li{
+    list-style: none;
+    display: inline-block;
+    margin: 0px;       
+    font-size: 1em; 
+
+}
+.nav-head__a{
+    text-decoration: none;    
+    color: aliceblue;
+    display: inline-block;
+
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0px 0px;
+}
+.nav-head__a:hover{
+    color:black;
+    background: whitesmoke;
+}
+
+/*submenu*/
+.submenu-head{
+    position: absolute;
+    display: none;
+    background:black;
+    color:white;
+    width: 100%;
+    right: 0px;
+    z-index: 100;
+}
+.nav-head__li:hover .submenu-head{
+    display: block;
+}
+
+/*sin submenu*/
+.nav-head__a-sinmenu{
+    background-color:transparent;
+    border-radius: 10px;
+    margin-left: 0px;
+}
+.nav-head__a-sinmenu:hover{
+    color:white;
+    background: #3b5999;
+}
+.nav-head__a-badge{
+    background:#f7cc40 ;
+    border-radius: 100px;
+    padding: 2px 25px;
+}
+.nav-head__a-badge:hover{
+    background:#bb9b30;
+    color:whitesmoke;
+}
+
+/*vacio header---- Eliminr*/
+.vacio-header{
+    width: 100%;
+    height: 100px;
+    background-color:var( --color-header );
+}
+
+/*--- texto presentacion ----*/
+.txt-presentacion{
+    
+    color:white;
+    padding: 60px 0 100px 0;
+}
+.txt-presentacion__titulo{
+    font-weight: bold;
+    font-size: 3.2em;
+}
+.txt-presentacion__titulo-decorado{
+    background-color: yellowgreen;
+    /*hacer decorado rombo*/
+}
+
+/*--- texto presentacion licenciado ----*/
+.txt-licencia{
+       
+    padding-left: 70px;
+    color:white;
+}
+.txt-licencia__titulo{
+    color: whitesmoke;
+    font-size: 1em;    
+
+}
+
+/*--------- section carreras --- */
+.txt-detalles-curso{
+    font-weight: bold;    
+    color: #bcbdc0;
+}
+
+.img-carreras:hover{
+    border-radius: 100px;
+    background-color: tomato;    
+}
+.img-carreras:hover + p{    
+    color: tomato!important;    
+}
+
+
+
+/*----- section cambias mundo*/
+.section-cambias{
+    background: linear-gradient(90deg,#435ea2 15%,#435ea2 30%,#435ea2 60%,#435ea2);
+    
+}
+
+.div-img-student{
+    background-image: url(../img/nf.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.texto-cambias{
+    padding: 100px;
+}
+
+
+/*-------- seccion blog------*/
+.contenedor-blog{
+    background: #487aba;
+}
+
+.seccion-blog{
+    background: transparent;
+}
+.seccion-blog__img{
+    width: 100%;
+    height: 150px;
+    border: 4px solid white;
+}
+.seccion-blog__texto{
+    width: 90%;
+    padding: 10px;
+    color:white;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    position: relative;
+    top:-35px;
+}
+
+
+
+/*-------- seccion novedades ----- */
+.novedades{
+    margin-bottom: 50px;
+}
+
+.novedades__btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 27px 75px;
+    margin-right: 20px;
+    background: red;
+    border-radius: 7px;
+    
+    color: aliceblue;
+    font-weight: bold;    
+}
+
+.novedades__btn:hover{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.novedades__btn-f{
+    background: #3b5999;
+}
+.novedades__btn-i{
+    background: #e4405f;
+}
+.novedades__btn-y{
+    background: #cd201f;
+}
+
+
+
+
+/**---------- footer ---------------*/
+.footer-content{
+    
+    position: relative;
+    background-color: rgba(0, 88, 139, 0.712);
+    overflow: hidden;
+    
+}
+.footer-content__fondo-svg{
+    transform: rotate(180deg);
+    position: absolute;
+    overflow: hidden;    
+    top:-2px;
+    left:0;
+    z-index: 0;
+}
+.footer-content__info{
+    padding-top: 220px;
+    padding-bottom: 100px;
+}
+
+/*--*/
+.footer-nav{
+       
+}
+.footer-nav__conten{
+    padding: 0px;
+}
+.footer-nav__a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 4px 5px;
+    font-weight:bold;
+    font-size: 1.1em;
+}
+.footer-nav__a:hover{
+    background: #435ea254;
+    color:white;
+    text-decoration: none;
+}
+
+
+/*--------wsp--------*/
+.whatsapp{
+    background-color: #25d365;    
+    position: fixed;
+    z-index: 15;
+    right: 30px;
+    top: 80vh;
+    right: 20px;
+    padding: 4px 7px;    
+    border-radius: 100px;
+}
+.redes-link{
+    color: white;
+    text-decoration: none;    
+    background-color: rgba(255, 255, 0, 0.013);        
+    display: inline-block;
+    padding: 7px;
+    border-radius: 100px;
+    height: 90%;
+    text-align: center;
+}
+
+
+/*---------------adicionales ----------*/
+
+
+/*--- eliminar ---- */
+
+.img-svg-2{
+    position: absolute;
+    top: -500px;
+    background-color: transparent;
+    z-index: 1;
+}
+
+
