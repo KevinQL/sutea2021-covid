@@ -6,7 +6,7 @@
         include_once('views/modules/cdnsheader.html');
     ?>
 
-    <title>Info</title>
+    <title>INFO</title>
 </head>
 <body>
     
@@ -14,22 +14,33 @@
         include_once("views/modules/navegacion__.php");        
     ?>
 
-    <h1>PÁGIANA DE INFORMACIÓN</h1>
+    <div class="container">
+        <h1>PÁGINA DE INFORMACIÓN</h1>
+    </div>
     
+    
+
+
+
+
+
     <?php
 
-    $arr = [['nombre'=>'apple'],['nombre'=>'orange'],['nombre'=>'home']];
+    // $arr = [['nombre'=>'apple'],['nombre'=>'orange'],['nombre'=>'home']];
 
-    //var_dump($arr);
-    foreach ($arr as $value) {
-        # code...
-        //var_dump($value);
-        echo "-> {$value['nombre']}";
+    // //var_dump($arr);
+    // foreach ($arr as $value) {
+    //     # code...
+    //     //var_dump($value);
+    //     echo "-> {$value['nombre']}";
 
-        echo "<br>";
-    }
+    //     echo "<br>";
+    // }
 
     ?>
+
+
+
 
     <?php
         include_once('views/modules/cdnsfooter.html');

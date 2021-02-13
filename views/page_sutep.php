@@ -18,7 +18,7 @@
 
     <title>Sutea</title>
 
-  </head>
+  </head> 
   <body>
   <header>
     <div class="d-flex justify-content-between align-items-center mx-4 my-2">

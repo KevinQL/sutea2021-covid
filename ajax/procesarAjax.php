@@ -20,8 +20,10 @@
         }
         elseif ($data->id === "SESSION-USER") {
             # code...
-            $result_operation = $obj->session_user_Controller($data);
-            echo json_encode($result_operation);
+            //$result_operation = $obj->session_user_Controller($data);
+            //echo json_encode($result_operation);
+            $res = ["eval"=>true, "data"=>$data];
+            echo json_encode($res);
         }
         elseif ($data->id === "INSERT-SLIDER") {
             # code...

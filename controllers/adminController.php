@@ -58,7 +58,7 @@
 
                 $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));                          
-                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento"];
+                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info"];
 
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
@@ -77,7 +77,24 @@
          * 
          * SUTEP 2021 
          */
+        public function guardar_img_sutep($data, $file){
+            $dataModel = new stdClass;
 
+            $dataModel->nombre = $this->txtres($data->txt_carrerav);
+            $dataModel->dni = $this->txtres($data->txt_fechav);
+            $dataModel->url_img = $this->txtres($data->nameIMG); //tratar nombre imagen
+
+            $res_model = self::insert_curso_Model($dataModel);
+            
+            $res_img = $this->guardar_img($file, './../public/curso_files/iduser-', $dataModel->url_img);
+            
+            if( $res_model['eval'] && $res_img ){
+                return $res_model;
+            }else{
+                return ['eval'=>false, 'data'=>null];
+            }
+
+        }
 
 
 
