@@ -78,6 +78,7 @@
   </div>
   <?php
         include_once('views/modules/footer.html');
+        include_once('views/modules/cdnsfooter.html');
     ?>
     <script src="./public/js/script_sutep.js"></script>
 </body>
