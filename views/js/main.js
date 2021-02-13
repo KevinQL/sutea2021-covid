@@ -110,7 +110,6 @@ function eval_loginUser(){
  * 
  */
 function execute_loginUser(){   
-    sweetModalMin('INICIANDO...!','top-start',900,'success') 
     if(eval_loginUser()){
         let dataHTML = dataHTML_loginUser();
         let {txt_userv, txt_passwordv} = dataHTML.value;
@@ -123,19 +122,19 @@ function execute_loginUser(){
         },data=>{    
             console.log(data)                 
             if(data.eval){
-                sweetModalMin('INICIANDO...!','top-start',900,'success')     
+                sweetModalMin('INICIANDO...!','bottom-start',900,'success')     
                 let cargando = document.querySelector('.cargando')
                 intercambiaClases(cargando,'d-none','d-block',true);
                 setTimeout(() => {
                     location.reload(); // carga la página con la misma URL. de modo que es:: index.php?pg=login /                                  
                 },1000);   
             }else{
-                sweetModalMin('No registrado!','top-start',1200,'warning')
+                sweetModalMin('No registrado!','center',1200,'warning')
             }
         },URL_AJAX_PROCESAR)
 
     }else{
-        
+        sweetModalMin('Datos invalidos!','center',1200,'warning')
     }
 }
 

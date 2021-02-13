@@ -73,6 +73,7 @@ function sweetModalMin(mensaje,position,timer,icon,){
  * @param {Object} element Etiqueta HTML. Podría  ser un 'input', o cualquier etiqueta, pero como objeto, osea un (documen.querySelector(id);)
  * @param {String} removeClass Nombre de la clase que se quiere eliminar, quitar de la Etiqueta.
  * @param {String} addClass Nombre de la clase que se quiere agregar, o concatenar al conjunto de clases existentes en la Etiqueta.
+ * @param {Boolean} existe Refuerza el significado de que la clase removeClass existe. Seria algo asi: La clase de removeClass existe y por lo tanto se tiene que intercambiar por el addClass. En el caso de que no se sepa, colocar false, porlo que el algoritmo intentara arreglar el asunto
  * 
  * Intercambia una clase una por otra
  * en el intento de que no exista las calses que se quiere eliminar y agregar, se intará agregar una clase
@@ -171,6 +172,7 @@ function fetchKev(meth, jsonData, fnRquest, urlProcess){
  * @param {Object} jsonData Datos que se enviarán al servidor para que sena procesados
  * @param {Object} jsonFile Datos de los archivos de cualquier tipo: png, .sql, .pdf... Etc
  * @param {Function} fnRquest Aquí se tratarán los datos devueltos del servidor
+ * @param {String} url Archivo ajax donde se procesará los datos enviados
  */
 function fetchFileKev(meth, jsonData, jsonFile, fnRquest, url){
     let formData = new FormData();
