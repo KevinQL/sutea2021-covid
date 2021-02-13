@@ -5,7 +5,7 @@
     <?php
         include_once('views/modules/cdnsheader.html');
     ?>
-
+    
     <title>INICIO</title>
 </head>
 <body>

@@ -8,7 +8,7 @@
     <?php
         include_once("views/modules/cdnsheader.html");
     ?>
-
+    <link rel="stylesheet" href="views/css/home.css">
     <title>LOGIN</title>
   </head>
   <body>
