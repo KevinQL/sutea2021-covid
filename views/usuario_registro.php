@@ -5,8 +5,8 @@
     <?php
         include_once("views/modules/cdnsheader.html");
     ?>
-
-    <title>REGISTRARSE</title>
+    <link rel="stylesheet" href="views/css/home.css">
+    <title>Registrarse</title>
 </head>
 <body>
 

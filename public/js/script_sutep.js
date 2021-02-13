@@ -39,3 +39,20 @@ function whatsapp_exe(){
     }
     return false;
 }
+/* 
+function register(event) {
+    console.log(event);
+} */
+
+document.getElementById('formInscription').addEventListener('submit',(event) => {
+    const information = {
+        document: '',
+        name: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        specialty: '',
+        image: ''
+    };
+    console.log(event);
+});
