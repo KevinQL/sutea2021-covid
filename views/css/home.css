@@ -1,0 +1,42 @@
+
+.header-top {
+    height: 150px;
+    border-radius: 100%;
+    box-shadow: 0px 1px 9px 0px #555858;
+}
+.container-slide {
+    max-width: 100%;
+    max-height: 400px;
+}
+.container-slide>div>div>div>img {
+    max-height: 400px;
+}
+.carousel-caption {
+    top: 0;
+    background: #99cc00;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.container-event {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.dark-content {
+    background: #000;
+}
+
+/* styles footer*/
+.footer {
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    line-height: 40px;
+    border-top: 1px solid #55585838;
+  }
+
+.footer-img {
+    height: 120px;    
+    }

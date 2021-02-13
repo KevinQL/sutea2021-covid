@@ -1,9 +1,31 @@
 :root{
-    --color-header:tomato;
+    --color-header:#fff;
+    --color-font: #605c5c;
 }
 
 body{
     background:var(--color-header);
+}
+
+.btn-secondary-own {
+    border: 1px solid #9e9e9e;
+}
+
+.btn-secondary-own>a {
+    text-decoration: none;
+    color: #6c757d
+}
+
+.font-color-white {
+    color: var(--color-header);
+}
+
+.font-color-second {
+    color: var(--color-font);
+}
+
+.material-icons {
+    padding: 0px 6px;
 }
 
 
