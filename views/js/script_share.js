@@ -4,6 +4,31 @@
 //****************************************************************************************** */
 //****************************************************************************************** */
 //****************************************************************************************** */
+/**
+ * 
+ * @param {string} $nameimg nombre de la imagen: proporcionado por la porpiedad 'NAME' de FILE
+ */
+function nameImg_replace_curso($nameimg){
+    let name = $nameimg.trim().replace(' ','-')
+    return name;
+}
+
+//-- FUNCIONES DE OPERACION 
+/**
+ * @param {string} type_img formato de imagagen. EJM 'img/jpeg'. Este dato es proporcionado por la propiedad 'type' del elemento FILE html
+ * @function eval_sliderInsert Se está usando en está funcion
+ * @function eval_curso_insert 
+ *  
+ */
+function es_imagen_sliderInsert(type_img){
+    if(type_img == "image/png" || type_img == "image/jpeg" || type_img == "image/jpg"){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
 
 /**
  * Elementos inputs para ser limpiados.

@@ -18,6 +18,12 @@
             $result_operation = $obj->insert_user_Controller($data);
             echo json_encode($result_operation);
         }
+        elseif ($data->id === "save-img") {
+            # code...
+            $img_test = $_FILES["img_file"];
+            $result_operation = $obj->saveimg_Controller($data, $img_test);
+            echo json_encode($result_operation);
+        }
         elseif ($data->id === "SESSION-USER") {
             # code...
             //$result_operation = $obj->session_user_Controller($data);
