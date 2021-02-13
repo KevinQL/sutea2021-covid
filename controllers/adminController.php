@@ -77,19 +77,19 @@
          * 
          * SUTEP 2021 
          */
-        public function guardar_img_sutep($data, $file){
+        public function saveimg_Controller($data, $file){
             $dataModel = new stdClass;
 
-            $dataModel->nombre = $this->txtres($data->txt_carrerav);
-            $dataModel->dni = $this->txtres($data->txt_fechav);
+            $dataModel->nombre = $this->txtres($data->txt_nombrev);
+            $dataModel->dni = $this->txtres($data->txt_dniv);
             $dataModel->url_img = $this->txtres($data->nameIMG); //tratar nombre imagen
 
-            $res_model = self::insert_curso_Model($dataModel);
+            //$res_model = self::insert_curso_Model($dataModel);
             
-            $res_img = $this->guardar_img($file, './../public/curso_files/iduser-', $dataModel->url_img);
+            $res_img = $this->guardar_img($file, './../public/curso_files/imgtest-', $dataModel->url_img);
             
-            if( $res_model['eval'] && $res_img ){
-                return $res_model;
+            if($res_img ){
+                return ['eval'=>true, 'data'=>$dataModel];
             }else{
                 return ['eval'=>false, 'data'=>null];
             }
