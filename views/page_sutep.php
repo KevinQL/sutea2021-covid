@@ -148,12 +148,13 @@
 <!-- Pie de página -->
     <?php
         include_once('views/modules/footer.html');
+        include_once('views/modules/cdnsfooter.html');
+
     ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- CSS only -->
     <!--SCRIPT ME-->
     <!-- <script src="./public/js/script_sutep.js"></script> -->
-
   </body>
 </html>
