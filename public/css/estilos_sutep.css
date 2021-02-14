@@ -6,12 +6,8 @@
     --color-font: #605c5c;
     --color-font-third: #17c3b2;
 
-    --colo-one: #f95738;
-    --color-two: #ee964b;
-    --color-third: #f4d35e;
-    --color-five: #faf0ca;
-    --color-primary: rgba(34,124,157,1);
-    --color-second: #f4a100;
+    --colo-one: #d4731c;
+    --color-primary: rgba(220, 57, 45, 1);
 
 }
 
@@ -20,7 +16,7 @@ body{
 }
 
 .btn-primary-own {
-    background: var(--color-second) ;
+    background: var(--color-primary) ;
     color: var(--color-header)
 }
 
@@ -28,27 +24,32 @@ body{
     color: var(--color-header)
 }
 
-.btn-secondary-own {
-    border: 1px solid rgba(34,124,157,1);
-    color: rgba(34,124,157,1);
+.btn-secondary-own, .btn-secondary-own>a {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
 .btn-secondary-own:hover {
-    background: rgba(34,124,157,1);
+    background: var(--color-primary);
     color: #fff;
-}
-
-.btn-secondary-own>a {
-    text-decoration: none;
-    color: rgba(34,124,157,1)
 }
 
 .btn-secondary-own>a:hover{
     color: #fff;
 }
 
+.btn-inline-own,  .btn-inline-own>a {    
+    text-decoration: none;
+    color: var(--colo-one);
+}
+
 .font-color-white {
     color: var(--color-header);
+}
+
+.font-color-vprimary {
+    color: var(--color-primary) !important;
 }
 
 .fond-color-white {
@@ -63,8 +64,14 @@ body{
     padding: 0px 6px;
 }
 
+.bg-img-cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .card-own {
-    box-shadow: 0 0.125rem 0.3rem -0.0625rem rgba(0,0,0,0.03),0 0.275rem 0.75rem -0.0625rem rgba(0,0,0,0.06) !important
+    box-shadow: 0 0.125rem 0.3rem -0.0625rem rgba(0,0,0,0.03),0 0.275rem 0.75rem -0.0625rem rgba(0,0,0,0.2) !important
 }
 
 
