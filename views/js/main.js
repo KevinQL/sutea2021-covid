@@ -142,9 +142,3 @@ function execute_loginUser(){
 /**
  * 
  */
-
-function inscription_user(event){
-    console.log(event);
-    let txt_user = document.querySelector("#txt_user");
-    let txt_password = document.querySelector("#txt_password");
-}
