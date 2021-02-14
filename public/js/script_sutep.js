@@ -1,5 +1,3 @@
-alert("JS script sutep");
-
 
 var isMobile = {
     Android: function () {
@@ -43,16 +41,3 @@ function whatsapp_exe(){
 function register(event) {
     console.log(event);
 } */
-
-document.getElementById('formInscription').addEventListener('submit',(event) => {
-    const information = {
-        document: '',
-        name: '',
-        lastName: '',
-        phone: '',
-        email: '',
-        specialty: '',
-        image: ''
-    };
-    console.log(event);
-});

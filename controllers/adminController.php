@@ -97,6 +97,28 @@
         }
 
 
+        public function traerInfoDocente_Controller($data){
+            $dataModel = new stdClass;
+            $dataModel->dni = $this->txtres($data->txt_documentv);
+
+            $res = self::traerInfoDocente_Model($dataModel);
+            return $res;
+        }
+
+        public function exeInscripcion_Controller($data, $img_voucher){
+            $dataModel = new stdClass;
+            $dataModel->dni = $this->txtres($data->txt_documentv);
+            $dataModel->nombre = $this->txtres($data->txt_namev);
+            $dataModel->apellido = $this->txtres($data->txt_lastNamev);
+            $dataModel->celular = $this->txtres($data->txt_phonev);
+            $dataModel->correo = $this->txtres($data->txt_emailv);
+            $dataModel->especialidad = $this->txtres($data->txt_specialtyv);
+            $dataModel->control_dia = 0;
+            $dataModel->control_asistencia = 0;
+            $dataModel->tipo_persona_idtipo_persona = 1; //asistente
+
+            return date("Y");
+        }
 
         // ----------------- ejem metodos controller
         /**
