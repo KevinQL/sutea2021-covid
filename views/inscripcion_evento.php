@@ -59,7 +59,11 @@
         <input type="text" class="form-control" id="specialty" name="inscription_specialty" required placeholder="Especialidad" autocomplete="off">
       </div>
       <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <label for="specialty">Voucher</label>
+        <label for="operation">Número de operación</label>
+        <input type="text" class="form-control" id="operation" name="inscription_operation" required placeholder="Número de operación" autocomplete="off">
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <label for="voucher">Voucher</label>
         <input
           id="imageImport"
           type="file"
