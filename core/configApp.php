@@ -3,7 +3,7 @@
 	|  Datos del servidor - Data of the server  |
 	===========================================*/
 	const SERVER="localhost";
-	const DB="db_sutea2021";
+	const DB="sutep2021";
 	const USER="root";
 	const PASS="";
 
