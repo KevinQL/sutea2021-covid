@@ -53,8 +53,8 @@ header {
     color: #fff;
 }
 .container-event {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 .dark-content {
     background: #000;

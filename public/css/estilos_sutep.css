@@ -71,7 +71,15 @@ body{
 }
 
 .card-own {
-    box-shadow: 0 0.125rem 0.3rem -0.0625rem rgba(0,0,0,0.03),0 0.275rem 0.75rem -0.0625rem rgba(0,0,0,0.2) !important
+    box-shadow: 0 0.125rem 0.3rem -0.0625rem rgba(0,0,0,0.03),0 0.275rem 0.75rem -0.0625rem rgba(0,0,0,0.2) !important;
+    overflow: hidden;
+}
+
+.form-img {
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+    width: 11rem;
 }
 
 
