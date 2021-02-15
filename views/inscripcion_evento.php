@@ -22,7 +22,8 @@
           required 
           pattern="^[0-9\\s]+$"
           minLength="8"
-          maxlength = "8">
+          maxlength = "8"
+          onkeyup="execute_traerinfo(this)" >
       </div>
       <div class="col-12 col-md-6 col-lg-4 mb-3">
         <label for="name">Nombre</label>
@@ -59,7 +60,11 @@
         <input type="text" class="form-control" id="specialty" name="inscription_specialty" required placeholder="Especialidad" autocomplete="off">
       </div>
       <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <label for="specialty">Voucher</label>
+        <label for="operation">Número de operación</label>
+        <input type="text" class="form-control" id="operation" name="inscription_operation" required placeholder="Número de operación" autocomplete="off">
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <label for="voucher">Voucher</label>
         <input
           id="imageImport"
           type="file"
@@ -71,7 +76,7 @@
       </div>
       <div class="d-flex justify-content-end">
         <input type="button" id="inscription_clear" class="next btn btn-secondary-own mx-2" value="Cancelar"/>
-        <input type="submit" id="inscriptionSave" class="next btn btn-primary-own mx-2" value="Completar"/>
+        <input type="submit" id="inscriptionSave" class="next btn btn-primary-own mx-2" value="Completar" onclick="execute_inscripcion(this);" />
       </div>
       </fieldset>
     </form>
@@ -80,6 +85,6 @@
         include_once('views/modules/footer.html');
         include_once('views/modules/cdnsfooter.html');
     ?>
-    <script src="./public/js/script_sutep.js"></script>
+    <script src="./public/js/js_inscripcion.js"></script>
 </body>
 </html>

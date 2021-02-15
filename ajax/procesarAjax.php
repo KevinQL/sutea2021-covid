@@ -18,6 +18,18 @@
             $result_operation = $obj->insert_user_Controller($data);
             echo json_encode($result_operation);
         }
+        elseif ($data->id === "exe-traerinfo") {
+            # code...
+            $res = $obj->traerInfoDocente_Controller($data);
+            echo json_encode($res);
+        }
+        elseif ($data->id === "exe-inscripcion") {
+            # code...
+            $img_voucher = $_FILES["img_voucher"];
+            $res = $obj->exeInscripcion_Controller($data, $img_voucher);
+            echo json_encode($res);
+        }
+        
         elseif ($data->id === "save-img") {
             # code...
             $img_test = $_FILES["img_file"];
@@ -31,26 +43,10 @@
             $res = ["eval"=>true, "data"=>$data];
             echo json_encode($res);
         }
-        elseif ($data->id === "INSERT-SLIDER") {
-            # code...
-            $img_slider = $_FILES['img_file'];            
-            $result_operation = $obj->insert_slider_Controller($data, $img_slider);
-            echo json_encode($result_operation);
-        }
         elseif ($data->id === "INSERT-CURSO") {
             # code...
             $img_slider = $_FILES['img_file'];            
             $result_operation = $obj->insert_curso_Controller($data, $img_slider);
-            echo json_encode($result_operation);
-        }
-        elseif ($data->id === "SELECT-CURSO") {
-            # code...                     
-            $result_operation = $obj->select_curso_Controller($data);
-            echo json_encode($result_operation);
-        }
-        elseif ($data->id === "DELETE-CURSO") {
-            # code...                     
-            $result_operation = $obj->delete_curso_Controller($data);
             echo json_encode($result_operation);
         }
 

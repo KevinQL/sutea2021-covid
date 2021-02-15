@@ -48,6 +48,29 @@
             }
             return ['eval'=>$eval, 'data'=>$data];
         }
+
+
+
+
+        /**
+         * sutep 2021
+         */
+        protected function traerInfoDocente_Model($data){
+            $eval = false;
+            $docente = [];
+            
+            $query = "SELECT * FROM decente d WHERE d.dni = '{$data->dni}'";
+            $res_query = self::ejecutar_una_consulta($query);
+            if($res_query->rowCount() >= 1){
+                while ($elem_doc = $res_query->fetch(PDO::FETCH_ASSOC)) {
+                    $docente[] = $elem_doc;
+                }
+                $eval = true;
+            }
+            return ['eval'=>$eval, 'data'=>$docente];
+        }
+
+
         /**
          * 
          */
