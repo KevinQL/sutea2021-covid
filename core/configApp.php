@@ -3,9 +3,9 @@
 	|  Datos del servidor - Data of the server  |
 	===========================================*/
 	const SERVER="localhost";
-	const DB="sutep2021";
-	const USER="root";
-	const PASS="";
+	const DB="cersutea_2021"; //sutep2021
+	const USER="cersutea_2021"; //root
+	const PASS="rXesT[DTXgSJ";
 
 
 	// Solo modificar la siguiente línea en caso el gestor de base de datos no sea MySQL
