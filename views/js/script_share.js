@@ -202,7 +202,7 @@ function fetchKev(meth, jsonData, fnRquest, urlProcess){
 function fetchFileKev(meth, jsonData, jsonFile, fnRquest, url){
     let formData = new FormData();
 
-    for(nameIN in jsonFile){
+    for(nameIN in jsonFile){   
         formData.append(nameIN, jsonFile[nameIN]);
     }    
     
