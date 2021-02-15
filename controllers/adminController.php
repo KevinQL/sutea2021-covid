@@ -58,7 +58,7 @@
 
                 $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));                          
-                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info"];
+                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers"];
 
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
@@ -117,7 +117,28 @@
             $dataModel->control_asistencia = 0;
             $dataModel->tipo_persona_idtipo_persona = 1; //asistente
 
-            return date("Y");
+            $dataModel->anio = date("Y"); //
+            $dataModel->ruta_voucher = date("Y").$data->txt_documentv.".jpg"; //
+            $dataModel->type_voucher = $img_voucher["type"]; //
+            $dataModel->num_operacion = $this->txtres($data->txt_operationv); //
+            $dataModel->fecha_registro = null; 
+            $dataModel->estado = 0; //esto sirve para validar el voucher operacion 
+            $dataModel->decente_iddecente = $this->txtres($data->txt_documentv); //
+            $dataModel->evento_idevento = 100; // codigo del evento
+
+            $res_model = self::exeInscripcion_Model($dataModel);
+            //falta ordeanr el codigo de aaqui abajo
+            $res_img = false;
+            if($res_model["eval"] || $res_model["cvoucher"]){
+                $res_img = $this->guardar_img($img_voucher, './../public/img_voucher/', $dataModel->ruta_voucher);
+            }
+
+            if ($res_img) {
+                # code...
+                return $res_model;
+            }
+
+            return $res_model;
         }
 
         // ----------------- ejem metodos controller

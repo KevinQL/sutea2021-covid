@@ -12,8 +12,7 @@
   <?php
         include_once('views/modules/navegacion_inicio.html');
     ?>
-  <section>
-  <div class="container-slide">
+  <section class="container-slide">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -88,10 +87,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div>
+  </section>
 
   <!-- Sección Eventos -->
-  <div class="row mx-4 container-event" id="noticias">
+  <section class="row mx-4 container-event" id="noticias">
     <h2 class="text-center">Title in the list of events</h2>
     <p class="text-muted pb-4 text-center">Subtitle description</p>
     <div class="col-sm-4 mb-3">
@@ -164,52 +163,51 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Sección videos -->
-  <section class="bg-light container-event">
-    <h2 class="text-center">Capacitaciones con los mejores video</h2>
+  <section class="bg-light container-event" id="capacitacion">
+    <h2 class="text-center">Capacitaciones con los mejores videos</h2>
     <p class="text-muted pb-4 text-center"></p>
     <div class="container">
-    <div id="carouselVideoIndicators" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner carousel-videos bg-img-cover">        
-        <div class="carousel-item active">
-          <video width="100%" height="550px" controls>
-            <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        
-        <div class="carousel-item">
-          <div class="w-100">
-            <div class="">
-              <iframe class="" src="https://www.youtube.com/embed/6hgVihWjK2c?rel=0" allowfullscreen  width="100%" height="550vh"></iframe>
+      <div id="carouselVideoIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner carousel-videos bg-img-cover">        
+          <div class="carousel-item active">
+            <video width="100%" height="550px" controls>
+              <source src="movie.mp4" type="video/mp4">
+              <source src="movie.ogg" type="video/ogg">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="w-100">
+              <div class="">
+                <iframe class="" src="https://www.youtube.com/embed/6hgVihWjK2c?rel=0" allowfullscreen  width="100%" height="550vh"></iframe>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="carousel-item">
-          <div class="w-100">
-            <div class="">
-            <iframe width="100%" height="550vh" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen>
-              </iframe>
+          <div class="carousel-item">
+            <div class="w-100">
+              <div class="">
+              <iframe width="100%" height="550vh" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen>
+                </iframe>
+              </div>
             </div>
           </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselVideoIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselVideoIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a class="carousel-control-prev" href="#carouselVideoIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselVideoIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-</div>
     </div>
-</section>
-</section>
+  </section>
 
 <!-- Pie de página -->
     <?php
