@@ -72,31 +72,10 @@
 
         }
 
-        /***
-         * 
+        /**
          * 
          * SUTEP 2021 
          */
-        public function saveimg_Controller($data, $file){
-            $dataModel = new stdClass;
-
-            $dataModel->nombre = $this->txtres($data->txt_nombrev);
-            $dataModel->dni = $this->txtres($data->txt_dniv);
-            $dataModel->url_img = $this->txtres($data->nameIMG); //tratar nombre imagen
-
-            //$res_model = self::insert_curso_Model($dataModel);
-            
-            $res_img = $this->guardar_img($file, './../public/curso_files/imgtest-', $dataModel->url_img);
-            
-            if($res_img ){
-                return ['eval'=>true, 'data'=>$dataModel];
-            }else{
-                return ['eval'=>false, 'data'=>null];
-            }
-
-        }
-
-
         public function traerInfoDocente_Controller($data){
             $dataModel = new stdClass;
             $dataModel->dni = $this->txtres($data->txt_documentv);
@@ -105,6 +84,9 @@
             return $res;
         }
 
+        /**
+         * 
+         */
         public function exeInscripcion_Controller($data, $img_voucher){
             $dataModel = new stdClass;
             $dataModel->dni = $this->txtres($data->txt_documentv);
@@ -142,6 +124,8 @@
             return $res_model;
         }
 
+
+
         // ----------------- ejem metodos controller
         /**
          * 
@@ -149,9 +133,17 @@
         public function insert_user_Controller($data){
             $pass_hash = self::encriptar_desencriptar($this->txtres($data->txt_passwordv),'');
             $dataModel = new stdClass;            
-            $dataModel->user = $this->txtres($data->txt_userv);
+            $dataModel->usuario = $this->txtres($data->txt_userv);
             $dataModel->password = $pass_hash;
-            $dataModel->estado = 1; //1. activo 0. inactivo
+            $dataModel->dni = "";
+            $dataModel->nombre = "";
+            $dataModel->apellido = "";
+            $dataModel->celular = "";
+            $dataModel->email = "";
+            $dataModel->tipo_usuario = 0; //1. activo-admin 0. inactivo-admin
+            $dataModel->intentos = 0;
+            $dataModel->fecha_registro = null; //Set time out 
+
             $res_model = self::insert_user_Model($dataModel);     
             return $res_model;
         }
@@ -179,73 +171,10 @@
                 return ['eval'=>false,'data'=>[]];
             }            
         }
-        /**
-         * 
-         */
-        public function insert_slider_Controller($data, $file){
-            
-            $dataModel = new stdClass;
-
-            $dataModel->fecha_txt = $this->txtres($data->txt_fechav);
-
-            $res_model = self::insert_slider_Model($dataModel);
-
-            $res_img = $this->guardar_img($file, './../public/slider_files/iduser-', 'slider.png');
-
-            if( $res_model['eval'] && $res_img ){
-                return $res_model;
-            }else{
-                return ['eval'=>false,'eval_img'=>$res_img, 'data'=>null];
-            }
-        }       
-        /**
-         * 
-         */
-        public function insert_curso_Controller($data, $file){
-            $dataModel = new stdClass;
-
-            $dataModel->nombre_curso = $this->txtres($data->txt_carrerav);
-            $dataModel->fecha_txt = $this->txtres($data->txt_fechav);
-            $dataModel->costo = $this->txtres($data->txt_costov);
-            $dataModel->orden = $this->txtres($data->ordenSelectv);
-            $dataModel->url_img = $this->txtres($data->nameIMG); //tratar nombre imagen
-
-            $res_model = self::insert_curso_Model($dataModel);
-            
-            $res_img = $this->guardar_img($file, './../public/curso_files/iduser-', $dataModel->url_img);
-            
-            if( $res_model['eval'] && $res_img ){
-                return $res_model;
-            }else{
-                return ['eval'=>false, 'data'=>null];
-            }
-            /*
-            */            
-
-        }          
-        /**
-         * 
-         */
-        public function select_curso_Controller($data){
-            $txt_search = $this->txtres($data->txt_search);            
-            $res_model = self::select_curso_Model($txt_search);
-            return $res_model;
-        }
-        /**
-         * 
-         */
-        public function delete_curso_Controller($data){
-            $id_curso = $this->txtres($data->id_curso);            
-            $res_model = self::delete_curso_Model($id_curso);
-            return $res_model;
-        }
-
-        // fin ejemplo metodos controller
-
+        
 
 
         //------------------------------------------------------------------------------
-
         /**
          * Función para guardar imagenes en el servidor
          */        
@@ -253,6 +182,8 @@
             $resultado = move_uploaded_file($file['tmp_name'], $dir_destino . $name); 
             return $resultado;
         }
+
+
         /**
          * (IMPORTANTE)
          * Datos del usuario actual REGISTRADO o LOGUEADO
@@ -276,8 +207,9 @@
         }
 
 
-
     }
+
+
 
 
 

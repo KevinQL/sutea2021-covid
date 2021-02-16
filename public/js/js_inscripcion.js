@@ -222,7 +222,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
  * @param {*} elem 
  */
 function execute_inscripcion(elem){
-    console.log("hiii")
+    console.log("btn click")
     elem.style.display = "none";
     setTimeout(()=>{
         elem.style.display = "block";

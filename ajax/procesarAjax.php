@@ -13,10 +13,10 @@
         $obj = new adminController();
 
         //Regitro usuario para la administración del sistema 
-        if ($data->id === "REGISTRO-USER") {
+        if ($data->id === "exe-registroUser") {
             # code...
-            $result_operation = $obj->insert_user_Controller($data);
-            echo json_encode($result_operation);
+            $res = $obj->insert_user_Controller($data);
+            echo json_encode($res);
         }
         elseif ($data->id === "exe-traerinfo") {
             # code...
@@ -30,12 +30,7 @@
             echo json_encode($res);
         }
         
-        elseif ($data->id === "save-img") {
-            # code...
-            $img_test = $_FILES["img_file"];
-            $result_operation = $obj->saveimg_Controller($data, $img_test);
-            echo json_encode($result_operation);
-        }
+
         elseif ($data->id === "SESSION-USER") {
             # code...
             //$result_operation = $obj->session_user_Controller($data);
@@ -43,13 +38,6 @@
             $res = ["eval"=>true, "data"=>$data];
             echo json_encode($res);
         }
-        elseif ($data->id === "INSERT-CURSO") {
-            # code...
-            $img_slider = $_FILES['img_file'];            
-            $result_operation = $obj->insert_curso_Controller($data, $img_slider);
-            echo json_encode($result_operation);
-        }
-
 
         else {
             echo json_encode("ERROR!!");

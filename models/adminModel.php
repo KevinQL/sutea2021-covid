@@ -14,10 +14,15 @@
          */
         protected function insert_user_Model($data){
             $query = "INSERT INTO usuario SET 
-                        user = '{$data->user}',
+                        usuario = '{$data->usuario}',
                         password = '{$data->password}',
-                        estado = {$data->estado},
-                        tipo_usuario = 1
+                        dni = '{$data->dni}',
+                        nombre = '{$data->nombre}',
+                        apellido = '{$data->apellido}',
+                        celular = '{$data->celular}',
+                        email = '{$data->email}',
+                        tipo_usuario = {$data->tipo_usuario},
+                        intentos = '{$data->intentos}'
                         ";
             $result_query = self::ejecutar_una_consulta($query);
             if($result_query->rowCount() >= 1){
