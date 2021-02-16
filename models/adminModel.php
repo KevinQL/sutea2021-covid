@@ -147,6 +147,7 @@
                         celular = '{$data->celular}',
                         correo = '{$data->correo}',
                         especialidad = '{$data->especialidad}',
+                        ugel = '{$data->ugel}',
                         control_dia = '{$data->control_dia}',
                         control_asistencia = '{$data->control_asistencia}',
                         tipo_persona_idtipo_persona = '{$data->tipo_persona_idtipo_persona}'

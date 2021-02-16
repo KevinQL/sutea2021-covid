@@ -31,7 +31,7 @@
             <label for="name">Nombre</label>
             <input type="text" class="form-control" id="name" name="inscription_name" placeholder="Nombre" autocomplete="off"
               required 
-              pattern="^[A-Za-z0-9\\s]+$"
+              pattern="^[A-Za-z\\s]+${1,30}"
               maxlength = "30">
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -61,6 +61,14 @@
             <label for="specialty">Especialidad</label>
             <input type="text" class="form-control" id="specialty" name="inscription_specialty" required placeholder="Especialidad" autocomplete="off">
           </div>
+
+          <!-- Arreglar -->
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <label for="ugelName">Ugel</label>
+            <input type="text" class="form-control" id="ugelName" name="inscription_ugelName" required placeholder="Nombre ugel" autocomplete="off">
+          </div>
+          <!-- fin -->
+
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="operation">Número de operación</label>
             <input type="text" class="form-control" id="operation" name="inscription_operation" required placeholder="Número de operación" autocomplete="off">

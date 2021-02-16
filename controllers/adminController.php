@@ -113,6 +113,7 @@
             $dataModel->celular = $this->txtres($data->txt_phonev);
             $dataModel->correo = $this->txtres($data->txt_emailv);
             $dataModel->especialidad = $this->txtres($data->txt_specialtyv);
+            $dataModel->ugel = $this->txtres($data->txt_ugelNamev);
             $dataModel->control_dia = 0;
             $dataModel->control_asistencia = 0;
             $dataModel->tipo_persona_idtipo_persona = 1; //asistente
