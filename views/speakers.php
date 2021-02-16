@@ -15,33 +15,61 @@
     include_once('views/modules/navegacion_inicio.html');
     ?>
     <section class="container-event container bg-white py-10 ">
-        <h2 class="text-center">Título de la ponencia</h2>
+        <h2 class="text-center">Conferencistas COVID 2023 u.u</h2>
         <p class=" pb-4 text-center lead">Subtitulo descripción</p>
         <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
-                        <!-- imagen -->
+            <div class="column">
+                <div class="">
+                    <h3 class="mb-4">Día 1, <small> 23 de marzo desde las 8am </small></h3>
+                    <div class="row text-center">
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
                     </div>
-                    <h2>Nombre del ponente</h2>
-                    <p small>Título, cargo</p>
-                    <p class="mb-0">Breve descripción de la ponencia</p>
                 </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
-                        <!-- imagen -->
+                <div>
+                    <h3 class="mb-4">Día 2, <small> 24 de marzo desde las 9am </small></h3>
+                    <div class="row text-center">
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="text-white mb-3">
+                                <img src="views/assets/image/mariategui.jpg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                            </div>
+                            <h5>Nombre del ponente</h5>
+                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
+                        </div>
                     </div>
-                    <h2>Nombre del ponente</h2>
-                    <p small>Título, cargo</p>
-                    <p class="mb-0">Breve descripción de la ponencia</p>
-                </div>
-                <div class="col-lg-4">
-                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
-                        <!-- imagen -->
-                    </div>
-                    <h2>Nombre del ponente</h2>
-                    <p small>Título, cargo</p>
-                    <p class="mb-0">Breve descripción de la ponencia</p>
                 </div>
             </div>
         </div>

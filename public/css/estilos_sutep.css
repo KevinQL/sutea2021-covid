@@ -11,68 +11,8 @@
 
 }
 
-body{
-    background:var(--color-header);
-}
-
-.btn-primary-own {
-    background: var(--color-primary) ;
-    color: var(--color-header)
-}
-
-.btn-primary-own:hover {
-    color: var(--color-header)
-}
-
-.btn-secondary-own, .btn-secondary-own>a {
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-.btn-secondary-own:hover {
-    background: var(--color-primary);
-    color: #fff;
-}
-
-.btn-secondary-own>a:hover{
-    color: #fff;
-}
-
-.btn-inline-own,  .btn-inline-own>a {    
-    text-decoration: none;
-    color: var(--colo-one);
-}
-
-.font-color-white {
-    color: var(--color-header);
-}
-
-.font-color-vprimary {
-    color: var(--color-primary) !important;
-}
-
-.fond-color-white {
-    color: var(--color-header);
-}
-
-.font-color-second {
-    color: var(--color-font);
-}
-
 .material-icons {
     padding: 0px 6px;
-}
-
-.bg-img-cover {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.card-own {
-    box-shadow: 0 0.125rem 0.3rem -0.0625rem rgba(0,0,0,0.03),0 0.275rem 0.75rem -0.0625rem rgba(0,0,0,0.2) !important;
-    overflow: hidden;
 }
 
 .form-img {
@@ -80,6 +20,12 @@ body{
     right: 3rem;
     top: 2rem;
     width: 11rem;
+}
+
+/* Speakers */
+.speaker-photo{
+    height: 150px;
+    width: 150px;
 }
 
 
