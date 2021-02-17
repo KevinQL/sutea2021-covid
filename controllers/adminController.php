@@ -173,6 +173,16 @@
         }
         
 
+        /**
+         * 
+         */
+        public function exeTraerDocenteAsis_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->dni = $this->txtres($data->txt_documentv);
+            $res = self::exeTraerDocenteAsis_Model($dataModel);
+            return $res;
+        }
+
 
         //------------------------------------------------------------------------------
         /**

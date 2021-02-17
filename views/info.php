@@ -40,9 +40,10 @@
 
 
 
-
     <?php
-
+        echo $_SESSION["data"]["usuario"];
+        var_dump(date_default_timezone_get());
+        echo date("H:i:s"); 
     // $arr = [['nombre'=>'apple'],['nombre'=>'orange'],['nombre'=>'home']];
 
     // //var_dump($arr);

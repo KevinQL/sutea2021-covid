@@ -1,4 +1,7 @@
 <?php
+    // Configura la fecha de america lima 
+    date_default_timezone_set("America/Lima");
+    setlocale(LC_ALL,"es_ES");
 
     $conAjax = true;
 
@@ -30,6 +33,12 @@
         elseif ($data->id === "exe-loginUser") {
             # code...
             $res = $obj->session_user_Controller($data);
+            echo json_encode($res);
+        }
+
+        elseif ($data->id === "exe-traerDocenteAsis") {
+            # code...
+            $res = $obj->exeTraerDocenteAsis_Controller($data);
             echo json_encode($res);
         }
 

@@ -185,7 +185,7 @@
 
         //Suponiendo que el ultimo evento insertado es el evento activo
         private function obtenerEventoActivo(){
-            $query = "SELECT idevento FROM evento ORDER BY anio, idevento LIMIT 1";
+            $query = "SELECT idevento FROM evento ORDER BY anio, idevento DESC LIMIT 1";
             $res_query = self::ejecutar_una_consulta($query);
             if ($res_query->rowCount()) {
                 # code...
@@ -213,7 +213,25 @@
             return ["eval"=>$res, "data"=>$data];
         }
 
-        
+
+        /**
+         * Asistencia docente
+         */
+        protected function exeTraerDocenteAsis_Model($data){
+            $res = false;
+            $data_res = [];
+            $idevento = $this->obtenerEventoActivo();
+            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido FROM decente d INNER JOIN registro r on d.iddecente = r.decente_iddecente AND r.evento_idevento = {$idevento} AND d.dni = '{$data->dni}'";
+            $res_q = self::ejecutar_una_consulta($query);
+            if($res_q->rowCount()){
+                $res = true;
+                while ($elem = $res_q->fetch(PDO::FETCH_ASSOC)) {
+                    # code...
+                    $data_res[] = $elem;
+                }
+            }
+            return ["eval"=>$res, "data"=>$data_res];
+        }
 
         /**
          * --------------------------------------------- 
