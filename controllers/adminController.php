@@ -36,7 +36,8 @@
 
                 //Validando niveles de seguridad. [1]:NIVEL ADMINISTRADOR
                 if($_SESSION['data']['tipo_usuario']==1){
-                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
+                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info",    
+                    "inscripcion_evento", "assistance", "certification", "speakers"];
                 }else{
                     //Nivel invitado pro defecto
                     $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
