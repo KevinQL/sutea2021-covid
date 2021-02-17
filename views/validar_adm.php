@@ -14,7 +14,7 @@
         include_once("views/modules/navegacion__.php");        
     ?>
 
-    <div class="my-3"></div>
+    <div class="my-5"></div>
     <!-- Inscripción -->
     <div class="container">
         <table class="table">
