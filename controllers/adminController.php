@@ -37,7 +37,7 @@
                 //Validando niveles de seguridad. [1]:NIVEL ADMINISTRADOR
                 if($_SESSION['data']['tipo_usuario']==1){
                     $arrayPaginas = ["salir_sistema","inicio","page_sutep","info",    
-                    "inscripcion_evento", "assistance", "certification", "speakers"];
+                    "inscripcion_evento", "assistance", "certification", "speakers", "inscripcion_evento_adm", "validar_adm"];
                 }else{
                     //Nivel invitado pro defecto
                     $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
@@ -106,7 +106,7 @@
             $dataModel->type_voucher = $img_voucher["type"]; //
             $dataModel->num_operacion = $this->txtres($data->txt_operationv); //
             $dataModel->fecha_registro = null; 
-            $dataModel->estado = 0; //esto sirve para validar el voucher operacion 
+            $dataModel->estado = ($img_voucher["type"]=="admin")?1:0; //esto sirve para validar el voucher operacion 
             $dataModel->decente_iddecente = $this->txtres($data->txt_documentv); //
             $dataModel->evento_idevento = 100; // codigo del evento
 
@@ -114,7 +114,9 @@
             //falta ordeanr el codigo de aaqui abajo
             $res_img = false;
             if($res_model["eval"] || $res_model["cvoucher"]){
-                $res_img = $this->guardar_img($img_voucher, './../public/img_voucher/', $dataModel->ruta_voucher);
+                if($img_voucher["type"] != "admin"){
+                    $res_img = $this->guardar_img($img_voucher, './../public/img_voucher/', $dataModel->ruta_voucher);
+                }
             }
 
             if ($res_img) {

@@ -65,7 +65,7 @@ function dataHTML_inscripcion(){
  */
 function eval_inscripcion(){
     let res = true;
-
+    return res;
     let data = dataHTML_inscripcion();
     let { txt_documentv,
         txt_namev,
@@ -208,6 +208,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             
         }, URL_AJAX_PROCESAR);
     }else{
+        sweetModalMin("Falta rellenar datos!!","center",1500,"warning");
         console.log("Flata llenar el formulario")
     }
     

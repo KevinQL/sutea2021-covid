@@ -44,6 +44,12 @@
         echo $_SESSION["data"]["usuario"];
         var_dump(date_default_timezone_get());
         echo date("H:i:s"); 
+
+
+        echo "<br>";
+
+        $ok = isset($_FILES["img_voucher"])? "ok" : null;
+        var_dump($ok["type"]);
     // $arr = [['nombre'=>'apple'],['nombre'=>'orange'],['nombre'=>'home']];
 
     // //var_dump($arr);
