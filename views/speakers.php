@@ -211,7 +211,7 @@
         <!-- aqui culmina otro dia de ponentes -->
 
                 <!-- otra seccion de ponentes -->
-                <h2 class="text-center">MAERTES</h2>
+                <h2 class="text-center">MARTES</h2>
         <p class=" pb-4 text-center lead">02 de Marzo del 2021</p>
         <div class="container">
             <div class="row text-center">
