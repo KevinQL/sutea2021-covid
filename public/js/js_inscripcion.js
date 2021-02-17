@@ -145,8 +145,8 @@ function execute_traerinfo(elem){
                 txt_lastName.value = dataRes.apellido;
                 txt_phone.value = dataRes.celular;
                 txt_email.value = dataRes.correo;
-                txt_specialty.value = dataRes.especialidad;
-                txt_ugelName.value = dataRes.ugel;
+                agregarOption(txt_specialty,dataRes.especialidad,dataRes.especialidad,true);
+                agregarOption(txt_ugelName,dataRes.ugel,dataRes.ugel,true);
 
                 sweetModalMin("Docente encontrado!!","bottom-start",1500,"success");
             }else{
@@ -159,7 +159,6 @@ function execute_traerinfo(elem){
     }
 
 }
-
 
 
 /**
@@ -198,11 +197,23 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             console.log(data);
             if(data.eval){
                 sweetModalMin("Registro exitoso!!","center",1500,"success");
+                setTimeout(() => {
+                    //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                    location.reload(); 
+                },1600); 
             }else{
                 if(data.cvoucher){
                     sweetModalMin("Voucher actualizado!!","center",1500,"success");
+                    setTimeout(() => {
+                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                        location.reload(); 
+                    },1100); 
                 }else{
                     sweetModalMin("Su registro ya está validado!!","center",1500,"info");
+                    setTimeout(() => {
+                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                        location.reload(); 
+                    },1100); 
                 }
             }
             

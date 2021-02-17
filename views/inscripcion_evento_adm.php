@@ -63,19 +63,39 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="specialty">Especialidad</label>
-            <input type="text" class="form-control" id="specialty" name="inscription_specialty" 
+            <select class="form-select" aria-label="Default select example" id="specialty" name="inscription_specialty">
+              <option selected>Inicial</option>
+              <option value="Primaria">Primaria</option>
+              <option value="Secundaria">Secundaria</option>
+              <option value="Auxiliares">Auxiliares</option>
+              <option value="Estudiante">Estudiante</option>
+              <option value="Padre de familia">Padre de familia</option>
+              <option value="Otro">Otro</option>
+            </select>            
+            <!-- <input type="text" class="form-control" id="specialty" name="inscription_specialty" 
              
             placeholder="Especialidad" 
-            autocomplete="off">
+            autocomplete="off"> -->
           </div>
 
           <!-- Arreglar -->
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="ugelName">Ugel</label>
-            <input type="text" class="form-control" id="ugelName" name="inscription_ugelName" 
+            <select class="form-select" aria-label="Default select example" id="ugelName" name="inscription_ugelName" >
+              <option selected>Andahuaylas</option>
+              <option value="Abancay">Abancay</option>
+              <option value="Antabanba">Antabanba</option>
+              <option value="Aymaraes">Aymaraes</option>
+              <option value="Cotabanba">Cotabanba</option>
+              <option value="Chincheros">Chincheros</option>
+              <option value="Grau">Grau</option>
+              <option value="Huancarama">Huancarama</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <!-- <input type="text" class="form-control" id="ugelName" name="inscription_ugelName" 
              
             placeholder="Nombre ugel" 
-            autocomplete="off">
+            autocomplete="off"> -->
           </div>
           <!-- fin -->
 

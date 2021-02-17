@@ -4,6 +4,24 @@
 //****************************************************************************************** */
 //****************************************************************************************** */
 //****************************************************************************************** */
+
+/**
+ * Agrega un nuevo option a un select
+ * 
+ * @param {Object} element Elemento select 
+ * @param {String} value valor value para el nuevo option
+ * @param {String} text valor texto para el nuevo option
+ * @param {Boolean} selected true es para seleccionar el nuevo option
+ */
+function agregarOption(element, value, text, selected){
+    const option = document.createElement("option");
+    option.value = value;
+    option.text = text;
+    option.selected = selected;
+    element.appendChild(option);
+}
+
+
 /**
  * 
  * @param {string} $nameimg nombre de la imagen: proporcionado por la porpiedad 'NAME' de FILE
