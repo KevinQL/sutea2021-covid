@@ -1,3 +1,14 @@
+<?php
+    
+    session_destroy();
+    //session_start();
+    unset($_SESSION['start']);
+    unset($_SESSION['data']);
+
+    //$_SESSION['data'] = "okay";
+    var_dump($_SESSION["data"]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +17,7 @@
         include_once('views/modules/cdnsheader.html');
     ?>
 
-    <title>INFO</title>
+    <title>INFOs</title>
 </head>
 <body>
     

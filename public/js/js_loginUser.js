@@ -1,6 +1,6 @@
-console.log("load js_registroUsuario.js");
+console.log("load js_loginUser.js");
 
-function dataHTML_regisUser(){
+function dataHTML_loginUser(){
     let txt_user = document.querySelector("#txt_user");
     let txt_password = document.querySelector("#txt_password");
 
@@ -16,12 +16,12 @@ function dataHTML_regisUser(){
     }
 }
 
-function eval_regisUser(){
+function eval_loginUser(){
     //null
-    return false;
+    return true;
 }
 
-function execute_regisUser(elem){
+function execute_loginUser(elem){
     console.log("btn click")
     elem.style.display = "none";
     setTimeout(()=>{
@@ -37,24 +37,28 @@ function execute_regisUser(elem){
  */
 document.getElementById('formInscription').addEventListener('submit',(event) => {
     event.preventDefault();
-    let data = dataHTML_regisUser();
+    let data = dataHTML_loginUser();
     let {txt_userv,
         txt_passwordv } = data.values;
 
-    if(eval_regisUser()){
+    if(eval_loginUser()){
 
         fetchKev("POST",
         {
-            id:"exe-registroUser",
+            id:"exe-loginUser",
             txt_userv,
             txt_passwordv
         }, 
         data => {
-            //console.log(data);
+            console.log(data);
             if(data.eval){
-                sweetModal("Registro exitoso!!","center","success",2000);
+                sweetModal("autorizado!!","center","success",1000);
+                setTimeout(() => {
+                    //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                    location.reload(); 
+                },1100); 
             }else{
-                sweetModalMin("Ocurrio algo!!","center",1500,"warning");
+                sweetModalMin("No autorizado!!","center",1500,"warning");
             }
             
         }, URL_AJAX_PROCESAR);

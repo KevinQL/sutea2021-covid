@@ -126,7 +126,7 @@
 
 
 
-        // ----------------- ejem metodos controller
+        // ----------------- registro y logueo
         /**
          * 
          */
@@ -159,7 +159,6 @@
             $res_model = self::session_user_Model($user,$password);
             //evaluando resultados
             if($res_model['eval']){           
-                
                 $data_user = $res_model['data'];
                 //Iniciando session
                 session_start();

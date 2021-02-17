@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     $conAjax = true;
 
     require_once("../controllers/adminController.php");
@@ -29,13 +27,9 @@
             $res = $obj->exeInscripcion_Controller($data, $img_voucher);
             echo json_encode($res);
         }
-        
-
-        elseif ($data->id === "SESSION-USER") {
+        elseif ($data->id === "exe-loginUser") {
             # code...
-            //$result_operation = $obj->session_user_Controller($data);
-            //echo json_encode($result_operation);
-            $res = ["eval"=>true, "data"=>$data];
+            $res = $obj->session_user_Controller($data);
             echo json_encode($res);
         }
 

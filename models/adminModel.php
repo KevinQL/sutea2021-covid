@@ -24,6 +24,7 @@
                         tipo_usuario = {$data->tipo_usuario},
                         intentos = '{$data->intentos}'
                         ";
+            //verificar si el usuario ya existe. Programarlo, o configurar en el modelo de db a unique
             $result_query = self::ejecutar_una_consulta($query);
             if($result_query->rowCount() >= 1){
                 return ['eval'=>true, 'data'=> $data];
@@ -37,7 +38,7 @@
          * 
          */
         protected function session_user_Model($user,$password){
-            $query = "SELECT id_usuario,user,password,estado,tipo_usuario FROM usuario WHERE user='{$user}' AND estado=1";
+            $query = "SELECT * FROM usuario u WHERE u.usuario='{$user}' AND u.tipo_usuario=1";
             $result = mainModel::ejecutar_una_consulta($query);
             
             $eval = false;
@@ -45,7 +46,8 @@
 
             if($result->rowCount() >= 1){
                 while($user_fla = $result->fetch(PDO::FETCH_ASSOC)){
-                    if($this->encriptar_desencriptar($password,$user_fla['password'])){
+                    //verifica que la contrasenia sea correspondida
+                    if($this->encriptar_desencriptar($password, $user_fla['password'])){
                         $data = $user_fla;
                         $eval = true;
                     }
@@ -56,11 +58,8 @@
 
 
 
-
-
-
         /**
-         * sutep 2021
+         *
          */
         protected function traerInfoDocente_Model($data){
             $eval = false;
@@ -183,6 +182,7 @@
             }
             return $eval;
         }
+
         //Suponiendo que el ultimo evento insertado es el evento activo
         private function obtenerEventoActivo(){
             $query = "SELECT idevento FROM evento ORDER BY anio, idevento LIMIT 1";
@@ -197,6 +197,7 @@
                 return 0;
             }
         }
+
         private function existeDocente($dni){
             $res = false;
             $data = null;
@@ -212,16 +213,10 @@
             return ["eval"=>$res, "data"=>$data];
         }
 
-
-
-
-
-
-
-
+        
 
         /**
-         * 
+         * --------------------------------------------- 
          */
         protected function insert_slider_Model($data){
             $query = "UPDATE slider SET fecha_txt='{$data->fecha_txt}' WHERE id_slider = 1";
@@ -232,42 +227,7 @@
             }
             return ['eval'=>$eval, 'data'=>$data];
         }
-        /**
-         * 
-         */
-        protected function insert_curso_Model($data){
-            $query = "INSERT INTO curso SET 
-                        nombre_curso = '{$data->nombre_curso}',
-                        fecha_txt = '{$data->fecha_txt}',
-                        costo = '{$data->costo}',
-                        orden = '{$data->orden}',
-                        url_img = '{$data->url_img}'
-            ";
-            $result_query = self::ejecutar_una_consulta($query);
-            $eval = false;
-            if($result_query->rowCount() >= 1){
-                $eval = true;
-            }
-            return ['eval'=>$eval, 'data'=>$data];
-        }
-        /**
-         * 
-         */
-        protected function select_curso_Model($txt_search){
-            
-            $eval = false;
-            $all_curse = [];
 
-            $query = "SELECT * FROM curso WHERE nombre_curso LIKE '%{$txt_search}%' ORDER BY orden DESC";
-            $result_query = self::ejecutar_una_consulta($query);
-            if($result_query->rowCount() >= 1){
-                while ($fl_curse = $result_query->fetch(PDO::FETCH_ASSOC)) {
-                    $all_curse[] = $fl_curse;
-                }
-                $eval = true;
-            }
-            return ['eval'=>$eval, 'data'=>$all_curse];
-        }
         /**
          * 
          */
