@@ -16,6 +16,9 @@ console.log(pruebaArchivo("js_inscripcion"))
 
 
 
+/**
+ * 
+ */
 function dataHTML_inscripcion(){
     let txt_document = document.querySelector("#document");
     let txt_name = document.querySelector("#name");
@@ -23,6 +26,7 @@ function dataHTML_inscripcion(){
     let txt_phone = document.querySelector("#phone");
     let txt_email = document.querySelector("#email");
     let txt_specialty =  document.querySelector("#specialty");
+    let txt_ugelName = document.querySelector("#ugelName");
     let img_voucher =  document.querySelector("#imageImport");
 
     let txt_operation =  document.querySelector("#operation");
@@ -35,6 +39,7 @@ function dataHTML_inscripcion(){
             txt_phone,
             txt_email,
             txt_specialty,
+            txt_ugelName,
             img_voucher,
             txt_operation
         },
@@ -45,6 +50,7 @@ function dataHTML_inscripcion(){
             txt_phonev : txt_phone.value ,
             txt_emailv : txt_email.value ,
             txt_specialtyv : txt_specialty.value ,
+            txt_ugelNamev : txt_ugelName.value,
             img_voucherv  : img_voucher.files,
             txt_operationv : txt_operation.value
         }
@@ -52,9 +58,14 @@ function dataHTML_inscripcion(){
 
 }
 
+
+
+/**
+ * 
+ */
 function eval_inscripcion(){
     let res = true;
-
+    return res;
     let data = dataHTML_inscripcion();
     let { txt_documentv,
         txt_namev,
@@ -62,6 +73,7 @@ function eval_inscripcion(){
         txt_phonev,
         txt_emailv,
         txt_specialtyv,
+        txt_ugelNamev,
         img_voucherv,
         txt_operationv } = data.values;
 
@@ -72,6 +84,7 @@ function eval_inscripcion(){
         txt_phonev,
         txt_emailv,
         txt_specialtyv,
+        txt_ugelNamev,
         txt_operationv];
 
     arr_velem.forEach(element => {
@@ -86,7 +99,14 @@ function eval_inscripcion(){
     return res;
 }
 
-//Busca en la base de datos si el docente ya se encuentra registrado.
+
+
+/**
+ * Busca en la base de datos si el docente ya se encuentra registrado.
+ * 
+ * elemento de caudro de texto dni docente inscripcion
+ * @param {*} elem 
+ */
 function execute_traerinfo(elem){
     let data = dataHTML_inscripcion();
     let {txt_name,
@@ -94,6 +114,7 @@ function execute_traerinfo(elem){
         txt_phone,
         txt_email,
         txt_specialty,
+        txt_ugelName,
         txt_operation } = data.elements;
     
     //clear form
@@ -102,6 +123,7 @@ function execute_traerinfo(elem){
     txt_phone.value = "";
     txt_email.value = "";
     txt_specialty.value = "";
+    txt_ugelName.value = "";
     txt_operation.value = "";
 
     //the input number is dni?
@@ -123,7 +145,8 @@ function execute_traerinfo(elem){
                 txt_lastName.value = dataRes.apellido;
                 txt_phone.value = dataRes.celular;
                 txt_email.value = dataRes.correo;
-                txt_specialty.value = dataRes.especialidad;
+                agregarOption(txt_specialty,dataRes.especialidad,dataRes.especialidad,true);
+                agregarOption(txt_ugelName,dataRes.ugel,dataRes.ugel,true);
 
                 sweetModalMin("Docente encontrado!!","bottom-start",1500,"success");
             }else{
@@ -137,6 +160,10 @@ function execute_traerinfo(elem){
 
 }
 
+
+/**
+ * envia los datos docente para su registro o actualizacion de la foto voucher
+ */
 document.getElementById('formInscription').addEventListener('submit',(event) => {
     event.preventDefault();
     let data = dataHTML_inscripcion();
@@ -146,6 +173,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_phonev,
         txt_emailv,
         txt_specialtyv,
+        txt_ugelNamev,
         img_voucherv,
         txt_operationv } = data.values;
 
@@ -160,6 +188,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_phonev,
             txt_emailv,
             txt_specialtyv,
+            txt_ugelNamev,
             txt_operationv
         }, {
             img_voucher:img_voucherv[0]
@@ -168,23 +197,48 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             console.log(data);
             if(data.eval){
                 sweetModalMin("Registro exitoso!!","center",1500,"success");
+                setTimeout(() => {
+                    //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                    location.reload(); 
+                },1600); 
             }else{
                 if(data.cvoucher){
                     sweetModalMin("Voucher actualizado!!","center",1500,"success");
+                    setTimeout(() => {
+                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                        location.reload(); 
+                    },1100); 
                 }else{
                     sweetModalMin("Su registro ya está validado!!","center",1500,"info");
+                    setTimeout(() => {
+                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+                        location.reload(); 
+                    },1100); 
                 }
             }
             
         }, URL_AJAX_PROCESAR);
     }else{
+        sweetModalMin("Falta rellenar datos!!","center",1500,"warning");
         console.log("Flata llenar el formulario")
     }
     
 });
 
-//Registra al docente en la base de datos
-function execute_inscripcion(event){
-    console.log("hiii")
+
+
+/**
+ * Permite controlar que el inscrito no presione mas de dos veces el boton de COMPLETAR
+ * 
+ * Boton de COMPLETAR en el formulario
+ * @param {*} elem 
+ */
+function execute_inscripcion(elem){
+    console.log("btn click")
+    elem.style.display = "none";
+    setTimeout(()=>{
+        elem.style.display = "block";
+    },
+    1000);
 }
 

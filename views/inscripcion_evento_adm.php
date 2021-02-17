@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+    
     <?php
         include_once('views/modules/cdnsheader.html');
     ?>
-    <link rel="stylesheet" href="views/css/home.css">
-    <title>Inscripción</title>
+    
+    <title>Inscripcion</title>
 </head>
 <body>
+
     <?php
-        include_once('views/modules/navegacion_inicio.html');
+        include_once("views/modules/navegacion__.php");        
     ?>
+
+    <div class="my-5"></div>
     <!-- Inscripción -->
-  <div class="container container-event">
+    <div class="container container-event ">
     <div class="card card-own p-sm-4 p-md-4">
       <div class="card-body">
         <h2 class="text-center">Ficha de inscripción docente</h2>
@@ -44,7 +48,7 @@
           <div class="col-6 col-md-6 col-lg-4 mb-3">
             <label for="phone">Nro. Teléfono</label>
             <input type="text" class="form-control" id="phone" name="inscription_phone" placeholder="Teléfono" autocomplete="off"
-              required 
+               
               pattern="^[0-9\\s]+$" 
               minLength="6"
               maxLength="9"
@@ -53,7 +57,7 @@
           <div class="col-6 col-md-6 col-lg-4 mb-3">
             <label for="email">Correo electronico</label>
             <input type="email" class="form-control" id="email" name="inscription_email" placeholder="email" autocomplete="off"
-              required 
+               
               pattern="/^\s@\"
               maxLength="20">
           </div>
@@ -67,7 +71,11 @@
               <option value="Estudiante">Estudiante</option>
               <option value="Padre de familia">Padre de familia</option>
               <option value="Otro">Otro</option>
-            </select>  
+            </select>            
+            <!-- <input type="text" class="form-control" id="specialty" name="inscription_specialty" 
+             
+            placeholder="Especialidad" 
+            autocomplete="off"> -->
           </div>
 
           <!-- Arreglar -->
@@ -84,12 +92,19 @@
               <option value="Huancarama">Huancarama</option>
               <option value="Otro">Otro</option>
             </select>
+            <!-- <input type="text" class="form-control" id="ugelName" name="inscription_ugelName" 
+             
+            placeholder="Nombre ugel" 
+            autocomplete="off"> -->
           </div>
           <!-- fin -->
 
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="operation">Número de operación</label>
-            <input type="text" class="form-control" id="operation" name="inscription_operation" required placeholder="Número de operación" autocomplete="off">
+            <input type="text" class="form-control" id="operation" name="inscription_operation" 
+             
+            placeholder="Número de operación" 
+            autocomplete="off">
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="voucher">Voucher</label>
@@ -99,7 +114,7 @@
               multiple="false"
               accept=".jpg, .jpeg, .png"
               class="mb-3 mt-3 file-import"
-              required
+              
             >
           </div>
           <div class="d-flex justify-content-end">
@@ -111,10 +126,12 @@
       </div>
     </div>
   </div>
-  <?php
-        include_once('views/modules/footer.html');
+
+
+    <?php        
         include_once('views/modules/cdnsfooter.html');
     ?>
     <script src="./public/js/js_inscripcion.js"></script>
+
 </body>
 </html>

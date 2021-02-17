@@ -18,12 +18,12 @@
 
     <!-- CUADR DE VIENDENIDA AL USUARIO-->
     <div class="jumbotron container mt-5">
-        <h1 class="display-3">Bienvenido, <?= $_SESSION['data']['user'] ?>!</h1>    
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-3">Bienvenido, <?= $_SESSION['data']['usuario'] ?>!</h1>    
+        <p class="lead">Página de presentación de CERSUTEA 2021</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>...</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Más información</a>
+            <a class="btn btn-danger btn-lg" target="_blank" href="?pg=page_sutep" role="button">WEB CERSUTEA 2021</a>
         </p>
 
     </div>
