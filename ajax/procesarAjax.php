@@ -47,6 +47,12 @@
             $res = $obj->exeTraerDocenteEvento_Controller($data);
             echo json_encode($res);
         }
+        //validar registro desde admin
+        elseif ($data->id === "exe-validarRegistro") {
+            # code...
+            $res = $obj->exeValidarRegistro_Controller($data);
+            echo json_encode($res);
+        }
 
         else {
             echo json_encode("ERROR!!");

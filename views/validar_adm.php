@@ -55,23 +55,14 @@
             <th scope="col">Apellido</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
+            <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody id="tableListDocente">
             <tr class="table-success">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="ver('70598957');">
-                    ver
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-success">Validar</button>
-                </td>
+               <td colspan="7">
+                Cargando . . . .
+               </td> 
             </tr>
         </tbody>
         </table>

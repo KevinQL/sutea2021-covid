@@ -263,6 +263,30 @@
         }
 
         /**
+         * validar registro. 
+         */
+        protected function exeValidarRegistro_Model($data){
+            $res = false;
+            $estado = ($data->estado==="0")? "1":"0";
+            $idevento = $this->obtenerEventoActivo();
+            $query = "UPDATE registro r 
+                    SET r.estado='{$estado}' 
+                    WHERE r.idregistro = '{$data->idregistro}' 
+                    AND r.decente_iddecente = '{$data->iddecente}' 
+                    AND r.evento_idevento = '{$idevento}'";
+
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return ['eval'=>$res, 'data'=>$data];
+        }
+
+
+
+
+
+        /**
          * --------------------------------------------- 
          */
         protected function insert_slider_Model($data){
