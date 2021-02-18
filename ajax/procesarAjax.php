@@ -42,6 +42,12 @@
             echo json_encode($res);
         }
 
+        elseif ($data->id === "exe-traerDocenteEvento") {
+            # code...
+            $res = $obj->exeTraerDocenteEvento_Controller($data);
+            echo json_encode($res);
+        }
+
         else {
             echo json_encode("ERROR!!");
         }

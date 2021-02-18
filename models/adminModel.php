@@ -233,6 +233,35 @@
             return ["eval"=>$res, "data"=>$data_res];
         }
 
+
+
+        /**
+         * Validar docente
+         */
+        protected function exeTraerDocenteEvento_Model($data){
+            $res = false;
+            $data_res = [];
+            $idevento = $this->obtenerEventoActivo();
+            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado 
+            FROM decente d INNER JOIN registro r 
+            on d.iddecente = r.decente_iddecente 
+            AND r.evento_idevento = {$idevento} 
+            AND d.dni LIKE '%{$data->dni}%' 
+            AND d.nombre LIKE '%{$data->nombre}%' 
+            AND d.apellido LIKE '%{$data->apellido}%' ORDER BY r.estado ASC";
+
+            $res_q = self::ejecutar_una_consulta($query);
+            if($res_q->rowCount()){
+                $res = true;
+                while ($elem = $res_q->fetch(PDO::FETCH_ASSOC)) {
+                    # code...
+                    $data_res[] = $elem;
+                }
+            }
+            return ["eval"=>$res, "data"=>$data_res];            
+
+        }
+
         /**
          * --------------------------------------------- 
          */
