@@ -119,3 +119,30 @@ function validarRegistro(iddecente, idregistro, estado){
     URL_AJAX_PROCESAR );
 
 }
+
+
+function eliminarRegistro(iddecente, idregistro, estado ){
+    console.log(iddecente, idregistro, estado)
+    //return null;
+    fetchKev("POST",{
+        id:"exe-eliminarRegistro",
+        iddecente,
+        idregistro,
+        estado
+    }, 
+    data => {
+
+        console.log(data);
+        console.log(data.msj)
+        if(data.eval){
+            sweetModalMin(data.msj,'center',1000,'success');
+            setTimeout(() => {
+                execute_traerDocentesEvento();
+            }, 1200);
+        }else{
+            sweetModalMin("Accion invalido!",'center',1500,'warning');
+        }
+
+    }, 
+    URL_AJAX_PROCESAR );
+}

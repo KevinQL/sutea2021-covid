@@ -208,6 +208,15 @@
             return $res;
         }
 
+
+        /**
+         * Eliminar registro de admin validar
+         */
+        public function exeeliminarRegistro_Controller($data){
+            $res = self::exeeliminarRegistro_Model($data);
+            return $res;
+        }
+
         //------------------------------------------------------------------------------
         /**
          * Función para guardar imagenes en el servidor

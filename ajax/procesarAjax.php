@@ -54,6 +54,12 @@
             echo json_encode($res);
         }
 
+        elseif ($data->id === "exe-eliminarRegistro") {
+            # code...
+            $res = $obj->exeeliminarRegistro_Controller($data);
+            echo json_encode($res);
+        }
+
         else {
             echo json_encode("ERROR!!");
         }
