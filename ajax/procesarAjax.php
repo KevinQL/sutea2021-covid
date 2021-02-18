@@ -1,6 +1,7 @@
 <?php
-
-    session_start();
+    // Configura la fecha de america lima 
+    date_default_timezone_set("America/Lima");
+    setlocale(LC_ALL,"es_ES");
 
     $conAjax = true;
 
@@ -13,10 +14,10 @@
         $obj = new adminController();
 
         //Regitro usuario para la administración del sistema 
-        if ($data->id === "REGISTRO-USER") {
+        if ($data->id === "exe-registroUser") {
             # code...
-            $result_operation = $obj->insert_user_Controller($data);
-            echo json_encode($result_operation);
+            $res = $obj->insert_user_Controller($data);
+            echo json_encode($res);
         }
         elseif ($data->id === "exe-traerinfo") {
             # code...
@@ -25,31 +26,27 @@
         }
         elseif ($data->id === "exe-inscripcion") {
             # code...
-            $img_voucher = $_FILES["img_voucher"];
+            $img_voucher = isset($_FILES["img_voucher"])? $_FILES["img_voucher"] : ["type"=>"admin"];
             $res = $obj->exeInscripcion_Controller($data, $img_voucher);
             echo json_encode($res);
         }
-        
-        elseif ($data->id === "save-img") {
+        elseif ($data->id === "exe-loginUser") {
             # code...
-            $img_test = $_FILES["img_file"];
-            $result_operation = $obj->saveimg_Controller($data, $img_test);
-            echo json_encode($result_operation);
-        }
-        elseif ($data->id === "SESSION-USER") {
-            # code...
-            //$result_operation = $obj->session_user_Controller($data);
-            //echo json_encode($result_operation);
-            $res = ["eval"=>true, "data"=>$data];
+            $res = $obj->session_user_Controller($data);
             echo json_encode($res);
         }
-        elseif ($data->id === "INSERT-CURSO") {
+
+        elseif ($data->id === "exe-traerDocenteAsis") {
             # code...
-            $img_slider = $_FILES['img_file'];            
-            $result_operation = $obj->insert_curso_Controller($data, $img_slider);
-            echo json_encode($result_operation);
+            $res = $obj->exeTraerDocenteAsis_Controller($data);
+            echo json_encode($res);
         }
 
+        elseif ($data->id === "exe-traerDocenteEvento") {
+            # code...
+            $res = $obj->exeTraerDocenteEvento_Controller($data);
+            echo json_encode($res);
+        }
 
         else {
             echo json_encode("ERROR!!");
