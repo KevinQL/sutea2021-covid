@@ -65,7 +65,7 @@ function dataHTML_inscripcion(){
  */
 function eval_inscripcion(){
     let res = true;
-    return res;
+    //return res;
     let data = dataHTML_inscripcion();
     let { txt_documentv,
         txt_namev,
@@ -92,9 +92,10 @@ function eval_inscripcion(){
             res = false;
     });
     if(res){
-        if(img_voucherv.length === 0){
+        if(img_voucherv.length === 0 || !input_es_imagen(img_voucherv[0].type)){
             res = false;
         }
+
     }
     return res;
 }
@@ -219,7 +220,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             
         }, URL_AJAX_PROCESAR);
     }else{
-        sweetModalMin("Falta rellenar datos!!","center",1500,"warning");
+        sweetModalMin("Los datos no son correctos!!","center",2000,"warning");
         console.log("Flata llenar el formulario")
     }
     

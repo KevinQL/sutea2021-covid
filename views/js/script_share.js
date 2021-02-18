@@ -38,7 +38,7 @@ function nameImg_replace_curso($nameimg){
  * @function eval_curso_insert 
  *  
  */
-function es_imagen_sliderInsert(type_img){
+function input_es_imagen(type_img){
     if(type_img == "image/png" || type_img == "image/jpeg" || type_img == "image/jpg"){
         return true;
     }else{
