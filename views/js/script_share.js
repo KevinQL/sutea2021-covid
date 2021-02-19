@@ -65,7 +65,6 @@ function cleanInputs(arrElement){
  * 
  */
 function sweetModalCargando(){
-    console.log("okok")
     Swal.fire({
         icon: 'success',
         title: `

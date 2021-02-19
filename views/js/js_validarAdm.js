@@ -1,17 +1,9 @@
 console.log("load js_validarAdm.js");
 
-function verVoucher(dni, ruta_voucher){
-    //Marca el registro seleccionado
-    let tablee_tr = document.querySelector("#tr"+dni);
-    tablee_tr.style.background = 'rgba(204, 218, 209,.3)';
 
-    // intercambia imagen dentro del modal
-    let el = document.querySelector("#imagen");
-    el.innerHTML = `
-            <img src="./public/img_voucher/${ruta_voucher}" class="mx-auto img-fluid" alt="...">
-        `;
-}
-
+/**
+ * 
+ */
 function dataHTML_validarAdm(){
     let txt_dni = document.querySelector("#txt_dni");
     let txt_nombre = document.querySelector("#txt_nombre");
@@ -68,7 +60,7 @@ function execute_traerDocentesEvento(){
                             <td>${element.apellido}</td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}');">
+                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">
                                 ver
                                 </button>
                             </td>
@@ -145,4 +137,31 @@ function eliminarRegistro(iddecente, idregistro, estado ){
 
     }, 
     URL_AJAX_PROCESAR );
+}
+
+
+
+
+//Click para generar el modal 
+/**
+ * 
+ * @param {*} dni 
+ * @param {*} ruta_voucher 
+ * @param {*} num_operacion 
+ */
+function verVoucher(dni, ruta_voucher, num_operacion){
+    //Marca el registro seleccionado
+    let tablee_tr = document.querySelector("#tr"+dni);
+    tablee_tr.style.background = 'rgba(204, 218, 209,.3)';
+
+    // intercambia imagen dentro del modal
+    let el = document.querySelector("#imagen");
+    el.innerHTML = `
+            <img src="./public/img_voucher/${ruta_voucher}" class="mx-auto img-fluid" alt="...">
+        `;
+
+    // imprime el numero de operacion
+    let operacion = document.querySelector("#res_operacion");
+    num_operacion = num_operacion.trim() === "" ? "Sin numero.":num_operacion;
+    operacion.innerHTML = `${num_operacion}`;
 }

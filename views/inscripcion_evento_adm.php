@@ -118,8 +118,8 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="estado" checked>
-              <label class="form-check-label" for="estado">Validar Registro</label>
+              <input class="form-check-input" type="checkbox" id="check_estado" checked>
+              <label class="form-check-label" for="check_estado">Validar Registro</label>
             </div>
           </div>
 
