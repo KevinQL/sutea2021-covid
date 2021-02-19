@@ -85,19 +85,24 @@
             $idevento = $this->obtenerEventoActivo();
             $res = false;
             $cvoucher = false;
+            $res_ope = false;
             //id evento actual
             $data->evento_idevento = $idevento;
             if($res_docente["eval"]){
                 //obteniendo id docente
                 $data->decente_iddecente = $res_docente["data"]["iddecente"];
                 // traemos registro si existe. Traemos ESTADO y idregistro
-                $regitro = $this->docenteRegistrado($data);
+                $registro = $this->docenteRegistrado($data);
                 //Si no está registrado.
-                if(!$regitro["eval"]){
-                    $res = $this->insertarRegistro($data);
+                if(!$registro["eval"]){
+                    if(!$this->existeNumOperacion($data)){
+                        $res = $this->insertarRegistro($data);
+                    }else{
+                        $res_ope = true;
+                    }
                 }else{
-                    $data->idregistro = $regitro["data"]["idregistro"]; // id registro
-                    $data->estado = $regitro["data"]["estado"]; // estado registro
+                    $data->idregistro = $registro["data"]["idregistro"]; // id registro
+                    $data->estado = $registro["data"]["estado"]; // estado registro
                     // Si esta registrado: hacer
                     //Si el registro esta VALIDADO aun
                     if($data->estado){
@@ -107,6 +112,8 @@
                         if(!$this->existeNumOperacion($data)){
                             $res = $this->cambiarNumOperacion($data);
                             $cvoucher = true; // admite cambiar el voucehr por que aun no se validad
+                        }else{
+                            $res_ope = true;
                         }
                     }
                 }
@@ -119,14 +126,20 @@
                         $data->decente_iddecente = $res_docente["data"]["iddecente"]; // id docente registrado
                         $res = $this->insertarRegistro($data);
                     }
+                }else{
+                    $res_ope = true;
                 }
             }
             //return $res_docente["data"]["iddecente"];
-            return ["eval"=>$res, "data"=>$data, "cvoucher" => $cvoucher];
+            return ["eval"=>$res, "data"=>$data, "cvoucher" => $cvoucher, "operacion"=>$res_ope];
         }
 
         //Comprueba que el numero de operacion no se duplique en todos los registros. Esto debe ser únicos
         private function existeNumOperacion($data){
+            if($data->num_operacion === ""){
+                return false;
+            }
+
             $res = false;
             $query = "SELECT idregistro, anio, num_operacion 
                         FROM registro 
@@ -171,7 +184,7 @@
 
         private function docenteRegistrado($data){
             $res = false;
-            $data = [];
+            $res_data = [];
             $query = "SELECT idregistro, estado 
                         FROM registro r 
                         WHERE r.decente_iddecente = '{$data->decente_iddecente}' 
@@ -182,11 +195,11 @@
                 $res = true;
                 while ($elem = $res_query->fetch(PDO::FETCH_ASSOC)) {
                     # code...
-                    $data = $elem;
+                    $res_data = $elem;
                 }
                 //$data = $res_query->fetch(PDO::FETCH_ASSOC);
             }
-            return ["eval"=>$res, "data"=> $data];
+            return ["eval"=>$res, "data"=> $res_data];
         }
 
         private function insertarDocente($data){

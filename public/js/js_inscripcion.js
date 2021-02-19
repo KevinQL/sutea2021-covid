@@ -198,6 +198,8 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         }, data => {
             
             console.log(data);
+
+            //return null;
             if(data.eval){
                 sweetModalMin("Registro exitoso!!","center",1500,"success");
                 setTimeout(() => {
@@ -210,13 +212,17 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
                     setTimeout(() => {
                         //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
                         location.reload(); 
-                    },1100); 
-                }else{
+                    },1600); 
+                }
+                else if (data.operacion) {
+                    sweetModalMin("El código de operacion ya existe!!","center",1500,"warning");
+                }
+                else{
                     sweetModalMin("Su registro ya está validado!!","center",1500,"info");
                     setTimeout(() => {
                         //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
                         location.reload(); 
-                    },1100); 
+                    },1600); 
                 }
             }
             
