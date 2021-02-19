@@ -5,6 +5,7 @@
 //****************************************************************************************** */
 //****************************************************************************************** */
 
+
 /**
  * Agrega un nuevo option a un select
  * 
@@ -59,6 +60,30 @@ function cleanInputs(arrElement){
     })
 }
 
+
+/**
+ * 
+ */
+function sweetModalCargando(){
+    console.log("okok")
+    Swal.fire({
+        icon: 'success',
+        title: `
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span> 
+        `,
+        text: 'Espere por favor!',
+        confirmButtonText: 'Cargando...',
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+}
 
 
 /**

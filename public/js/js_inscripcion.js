@@ -64,39 +64,28 @@ function dataHTML_inscripcion(){
  * 
  */
 function eval_inscripcion(){
-    let res = true;
+    let res = false;
     //return res;
     let data = dataHTML_inscripcion();
-    let { txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        img_voucherv,
+    let { img_voucherv,
         txt_operationv } = data.values;
 
-    let arr_velem = [
-        txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        txt_operationv];
-
-    arr_velem.forEach(element => {
-        if(element.trim() === "")
-            res = false;
-    });
-    if(res){
-        if(img_voucherv.length === 0 || !input_es_imagen(img_voucherv[0].type)){
-            res = false;
-        }
-
+    // si operacion está vacio, y no hay imagen
+    if(txt_operationv.trim() === "" && img_voucherv.length === 0){
+        res = true;
     }
+    
+    // si operacion no está vacio, exige que incluya voucher imagen.
+    // si incluye voucher, exige que sea imagen.
+    if(txt_operationv.trim() !== "" || img_voucherv.length >= 1){
+
+        if(img_voucherv.length >= 1){
+            if(input_es_imagen(img_voucherv[0].type)){
+                res = true;
+            }
+        }
+    }
+
     return res;
 }
 
@@ -162,6 +151,7 @@ function execute_traerinfo(elem){
 }
 
 
+
 /**
  * envia los datos docente para su registro o actualizacion de la foto voucher
  */
@@ -179,6 +169,8 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_operationv } = data.values;
 
     if(eval_inscripcion()){
+
+        sweetModalCargando();
 
         fetchFileKev("POST",
         {
