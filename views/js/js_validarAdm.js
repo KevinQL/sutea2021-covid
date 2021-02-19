@@ -1,11 +1,9 @@
 console.log("load js_validarAdm.js");
 
-function ver(dni){
-    console.log("ok ver ", dni);
-    let el = document.querySelector("#imagen");
-    el.innerHTML = '<img src="./public/img_voucher/2021'+dni+'.jpg" class="mx-auto img-fluid" alt="...">';
-}
 
+/**
+ * 
+ */
 function dataHTML_validarAdm(){
     let txt_dni = document.querySelector("#txt_dni");
     let txt_nombre = document.querySelector("#txt_nombre");
@@ -43,23 +41,35 @@ function execute_traerDocentesEvento(){
         let table_HTML = ``;
         let e_num = 1;
         if (data.eval) {
-            //console.log(data);
+            console.log(data);
             data.data.forEach(element => {
-                console.log(element.dni)
+                //console.log(element.dni)
+                let btn_validar = `
+                        <button type="button" class="btn btn-warning" onclick="validarRegistro('${element.iddecente}','${element.idregistro}','${element.estado}');">Validar</button>
+                    `;
+                if(element.estado === "1"){
+                    btn_validar = `
+                            <button type="button" class="btn btn-success" onclick="validarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">Validado</button>
+                            `;
+                }
                 table_HTML += `
-                        <tr class="table-success">
+                        <tr class="" id="tr${element.dni}">
                             <th scope="row">${e_num++}</th>
                             <td>${element.dni}</td>
                             <td>${element.nombre}</td>
                             <td>${element.apellido}</td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="ver('70598957');">
+                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">
                                 ver
                                 </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success">Validar</button>
+                                ${btn_validar}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" onclick="eliminarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">Elimnar</button>
+                                
                             </td>
                         </tr>
                 `;
@@ -68,10 +78,90 @@ function execute_traerDocentesEvento(){
         }else{
             in_table.innerHTML = '';
         }
-    }, URL_AJAX_PROCESAR);
+    }, 
+    URL_AJAX_PROCESAR );
 }
 
 // cargar datos en la tabla
 setTimeout(() => {
     execute_traerDocentesEvento();
-}, 1500);
+}, 500);
+
+function validarRegistro(iddecente, idregistro, estado){
+    console.log(iddecente, idregistro)
+
+    fetchKev("POST",{
+        id:"exe-validarRegistro",
+        iddecente,
+        idregistro,
+        estado
+    }, 
+    data => {
+
+        console.log(data);
+
+        if(data.eval){
+            sweetModalMin("Acción procesada",'center',1000,'success');
+            setTimeout(() => {
+                execute_traerDocentesEvento();
+            }, 1200);
+        }
+
+    }, 
+    URL_AJAX_PROCESAR );
+
+}
+
+
+function eliminarRegistro(iddecente, idregistro, estado ){
+    console.log(iddecente, idregistro, estado)
+    //return null;
+    fetchKev("POST",{
+        id:"exe-eliminarRegistro",
+        iddecente,
+        idregistro,
+        estado
+    }, 
+    data => {
+
+        console.log(data);
+        console.log(data.msj)
+        if(data.eval){
+            sweetModalMin(data.msj,'center',1000,'success');
+            setTimeout(() => {
+                execute_traerDocentesEvento();
+            }, 1200);
+        }else{
+            sweetModalMin("Accion invalido!",'center',1500,'warning');
+        }
+
+    }, 
+    URL_AJAX_PROCESAR );
+}
+
+
+
+
+//Click para generar el modal 
+/**
+ * 
+ * @param {*} dni 
+ * @param {*} ruta_voucher 
+ * @param {*} num_operacion 
+ */
+function verVoucher(dni, ruta_voucher, num_operacion){
+    //Marca el registro seleccionado
+    let tablee_tr = document.querySelector("#tr"+dni);
+    tablee_tr.style.background = 'rgba(204, 218, 209,.3)';
+
+    // intercambia imagen dentro del modal
+    let el = document.querySelector("#imagen");
+    el.innerHTML = `
+            <img src="./public/img_voucher/${ruta_voucher}" class="mx-auto img-fluid" alt="...">
+        `;
+
+    // imprime el numero de operacion
+    let operacion = document.querySelector("#res_operacion");
+    num_operacion = num_operacion.trim() === "" ? "Sin numero.":num_operacion;
+    operacion.innerHTML = `${num_operacion}`;
+}

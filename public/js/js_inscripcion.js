@@ -28,8 +28,15 @@ function dataHTML_inscripcion(){
     let txt_specialty =  document.querySelector("#specialty");
     let txt_ugelName = document.querySelector("#ugelName");
     let img_voucher =  document.querySelector("#imageImport");
+    let check_estado = document.querySelector("#check_estado");
 
     let txt_operation =  document.querySelector("#operation");
+
+    let estado = 0; //false
+    
+    if(check_estado){
+        estado = check_estado.checked ? 1 : 0; // true : false
+    }
 
     return {
         elements : {
@@ -52,7 +59,8 @@ function dataHTML_inscripcion(){
             txt_specialtyv : txt_specialty.value ,
             txt_ugelNamev : txt_ugelName.value,
             img_voucherv  : img_voucher.files,
-            txt_operationv : txt_operation.value
+            txt_operationv : txt_operation.value,
+            estadov : estado
         }
     }
 
@@ -64,38 +72,28 @@ function dataHTML_inscripcion(){
  * 
  */
 function eval_inscripcion(){
-    let res = true;
-    return res;
+    let res = false;
+    //return res;
     let data = dataHTML_inscripcion();
-    let { txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        img_voucherv,
+    let { img_voucherv,
         txt_operationv } = data.values;
 
-    let arr_velem = [
-        txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        txt_operationv];
+    // si operacion está vacio, y no hay imagen
+    if(txt_operationv.trim() === "" && img_voucherv.length === 0){
+        res = true;
+    }
+    
+    // si operacion no está vacio, exige que incluya voucher imagen.
+    // si incluye voucher, exige que sea imagen.
+    if(txt_operationv.trim() !== "" || img_voucherv.length >= 1){
 
-    arr_velem.forEach(element => {
-        if(element.trim() === "")
-            res = false;
-    });
-    if(res){
-        if(img_voucherv.length === 0){
-            res = false;
+        if(img_voucherv.length >= 1){
+            if(input_es_imagen(img_voucherv[0].type)){
+                res = true;
+            }
         }
     }
+
     return res;
 }
 
@@ -122,9 +120,9 @@ function execute_traerinfo(elem){
     txt_lastName.value = "";
     txt_phone.value = "";
     txt_email.value = "";
-    txt_specialty.value = "";
-    txt_ugelName.value = "";
     txt_operation.value = "";
+    // txt_specialty.value = "";
+    // txt_ugelName.value = "";
 
     //the input number is dni?
     if (elem.value.length === 8) {
@@ -161,6 +159,7 @@ function execute_traerinfo(elem){
 }
 
 
+
 /**
  * envia los datos docente para su registro o actualizacion de la foto voucher
  */
@@ -175,9 +174,12 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_specialtyv,
         txt_ugelNamev,
         img_voucherv,
+        estadov,
         txt_operationv } = data.values;
 
     if(eval_inscripcion()){
+
+        sweetModalCargando();
 
         fetchFileKev("POST",
         {
@@ -189,12 +191,15 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_emailv,
             txt_specialtyv,
             txt_ugelNamev,
+            estadov,
             txt_operationv
         }, {
             img_voucher:img_voucherv[0]
         }, data => {
             
             console.log(data);
+
+            //return null;
             if(data.eval){
                 sweetModalMin("Registro exitoso!!","center",1500,"success");
                 setTimeout(() => {
@@ -207,19 +212,23 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
                     setTimeout(() => {
                         //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
                         location.reload(); 
-                    },1100); 
-                }else{
+                    },1600); 
+                }
+                else if (data.operacion) {
+                    sweetModalMin("El código de operacion ya existe!!","center",1500,"warning");
+                }
+                else{
                     sweetModalMin("Su registro ya está validado!!","center",1500,"info");
                     setTimeout(() => {
                         //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
                         location.reload(); 
-                    },1100); 
+                    },1600); 
                 }
             }
             
         }, URL_AJAX_PROCESAR);
     }else{
-        sweetModalMin("Falta rellenar datos!!","center",1500,"warning");
+        sweetModalMin("Los datos no son correctos!!","center",2000,"warning");
         console.log("Flata llenar el formulario")
     }
     

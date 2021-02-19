@@ -89,6 +89,8 @@
          * 
          */
         public function exeInscripcion_Controller($data, $img_voucher){
+
+
             $dataModel = new stdClass;
             $dataModel->dni = $this->txtres($data->txt_documentv);
             $dataModel->nombre = $this->txtres($data->txt_namev);
@@ -106,15 +108,15 @@
             $dataModel->type_voucher = $img_voucher["type"]; //
             $dataModel->num_operacion = $this->txtres($data->txt_operationv); //
             $dataModel->fecha_registro = null; 
-            $dataModel->estado = ($img_voucher["type"]=="admin")?1:0; //esto sirve para validar el voucher operacion 
-            $dataModel->decente_iddecente = $this->txtres($data->txt_documentv); //
-            $dataModel->evento_idevento = 100; // codigo del evento
+            $dataModel->estado = $this->txtres($data->estadov); //esto sirve para validar el voucher operacion 
+            $dataModel->decente_iddecente = 0; //
+            $dataModel->evento_idevento = 0; // codigo del evento
 
             $res_model = self::exeInscripcion_Model($dataModel);
             //falta ordeanr el codigo de aaqui abajo
             $res_img = false;
             if($res_model["eval"] || $res_model["cvoucher"]){
-                if($img_voucher["type"] != "admin"){
+                if($img_voucher["type"] !== "admin"){ // hay imagen, por lo tanto intercambia
                     $res_img = $this->guardar_img($img_voucher, './../public/img_voucher/', $dataModel->ruta_voucher);
                 }
             }
@@ -200,8 +202,22 @@
         }
 
 
+        /**
+         * Validar docente desde amdin
+         */
+        public function exeValidarRegistro_Controller($data){
+            $res = self::exeValidarRegistro_Model($data);
+            return $res;
+        }
 
 
+        /**
+         * Eliminar registro de admin validar
+         */
+        public function exeeliminarRegistro_Controller($data){
+            $res = self::exeeliminarRegistro_Model($data);
+            return $res;
+        }
 
         //------------------------------------------------------------------------------
         /**

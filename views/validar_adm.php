@@ -55,23 +55,14 @@
             <th scope="col">Apellido</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
+            <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody id="tableListDocente">
             <tr class="table-success">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="ver('70598957');">
-                    ver
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-success">Validar</button>
-                </td>
+               <td colspan="7">
+                Cargando . . . .
+               </td> 
             </tr>
         </tbody>
         </table>
@@ -84,17 +75,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">OPERACION: <span id="res_operacion">...</span></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div id="imagen" style="width: 100%;" class="text-center">
-                <img src="./public/img_voucher/2021112345678.jpg" class="mx-auto img-fluid" alt="..." >
+                <!-- <img src="./public/img_voucher/2021112345678.jpg" class="mx-auto img-fluid" alt="..." > -->
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+            <button type="button" class="btn btn-primary">OK</button>
         </div>
         </div>
     </div>
