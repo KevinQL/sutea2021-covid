@@ -91,7 +91,7 @@
             <label for="operation">Número de operación</label>
             <input type="text" class="form-control" id="operation" name="inscription_operation" required placeholder="Número de operación" autocomplete="off">
           </div>
-          <div class="col-12 col-md-6 col-lg-8 mb-5">            
+          <div class="col-12 col-md-6 col-lg-4 mb-4">            
             <label for="imageImport">Voucher</label>
             <input
               id="imageImport"

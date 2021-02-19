@@ -73,10 +73,31 @@ header {
     color: #d4731c;
     text-decoration: none;
 }
+.ctn-speaker {
+    background: url(https://www.rcrperu.com/wp-content/uploads/2019/07/sutep.jpg) no-repeat fixed;
+}
+.ctn-speaker::before {
+    opacity: 0.8;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+}
+
+.header-presentation-hide {
+    display: none;
+}
 
 @media(max-width: 690px) {
     .header-presentation {
         display: none !important;
+    }
+    .header-presentation-hide {
+        display: block;
+        margin-bottom: 40px;
     }
     nav {
         position: fixed !important;
