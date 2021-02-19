@@ -28,8 +28,15 @@ function dataHTML_inscripcion(){
     let txt_specialty =  document.querySelector("#specialty");
     let txt_ugelName = document.querySelector("#ugelName");
     let img_voucher =  document.querySelector("#imageImport");
+    let check_estado = document.querySelector("#check_estado");
 
     let txt_operation =  document.querySelector("#operation");
+
+    let estado = 0; //false
+    
+    if(check_estado){
+        estado = check_estado.checked ? 1 : 0; // true : false
+    }
 
     return {
         elements : {
@@ -52,7 +59,8 @@ function dataHTML_inscripcion(){
             txt_specialtyv : txt_specialty.value ,
             txt_ugelNamev : txt_ugelName.value,
             img_voucherv  : img_voucher.files,
-            txt_operationv : txt_operation.value
+            txt_operationv : txt_operation.value,
+            estadov : estado
         }
     }
 
@@ -112,9 +120,9 @@ function execute_traerinfo(elem){
     txt_lastName.value = "";
     txt_phone.value = "";
     txt_email.value = "";
-    txt_specialty.value = "";
-    txt_ugelName.value = "";
     txt_operation.value = "";
+    // txt_specialty.value = "";
+    // txt_ugelName.value = "";
 
     //the input number is dni?
     if (elem.value.length === 8) {
@@ -166,6 +174,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_specialtyv,
         txt_ugelNamev,
         img_voucherv,
+        estadov,
         txt_operationv } = data.values;
 
     if(eval_inscripcion()){
@@ -182,6 +191,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_emailv,
             txt_specialtyv,
             txt_ugelNamev,
+            estadov,
             txt_operationv
         }, {
             img_voucher:img_voucherv[0]

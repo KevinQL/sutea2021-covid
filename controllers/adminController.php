@@ -106,7 +106,7 @@
             $dataModel->type_voucher = $img_voucher["type"]; //
             $dataModel->num_operacion = $this->txtres($data->txt_operationv); //
             $dataModel->fecha_registro = null; 
-            $dataModel->estado = ($img_voucher["type"]=="admin")?1:0; //esto sirve para validar el voucher operacion 
+            $dataModel->estado = $this->txtres($data->estadov); //esto sirve para validar el voucher operacion 
             $dataModel->decente_iddecente = $this->txtres($data->txt_documentv); //
             $dataModel->evento_idevento = 100; // codigo del evento
 
