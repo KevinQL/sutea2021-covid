@@ -263,6 +263,83 @@
         }
 
         /**
+         * validar registro. 
+         */
+        protected function exeValidarRegistro_Model($data){
+            $res = false;
+            $estado = ($data->estado==="0")? "1":"0";
+            $idevento = $this->obtenerEventoActivo();
+            $query = "UPDATE registro r 
+                    SET r.estado='{$estado}' 
+                    WHERE r.idregistro = '{$data->idregistro}' 
+                    AND r.decente_iddecente = '{$data->iddecente}' 
+                    AND r.evento_idevento = '{$idevento}'";
+
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return ['eval'=>$res, 'data'=>$data];
+        }
+
+        /**
+         * Eliminar registro
+         */
+        protected function exeeliminarRegistro_Model($data){
+            $res = false;
+            $msj = "";
+            //cuando el registro no está validado
+            if(!$data->estado){
+                $res = $this->eliminarControl($data);
+                $msj .= $res? "Se Eliminó Control.":"No se eliminó Control.";
+                //eliminar registro del evento actual
+                $res = $this->eliminarRegistro($data);
+                $msj .= $res? "\n Se Eliminó Registro.":"\n No se eliminó Registro.";
+                // eliminar docente
+                if($res){
+                    $res = $this->eliminarDocente($data);
+                    $msj .= $res? "\n Se Eliminó docente.":"\n No se eliminó docente.";
+                }
+            }
+
+            return ['eval'=>$res, 'data'=>$data, "msj" => $msj];
+        }
+
+        private function eliminarControl($data){
+            $res = false;
+            $query = "DELETE FROM control 
+                    WHERE registro_idregistro='{$data->idregistro}'";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+
+        private function eliminarRegistro($data){
+            $idevento = $this->obtenerEventoActivo();
+            $res = false;
+            $query = "DELETE FROM registro 
+                    WHERE idregistro='{$data->idregistro}' 
+                    AND evento_idevento = '{$idevento}'";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+        private function eliminarDocente($data){
+            $res = false;
+            $query = "DELETE FROM decente
+                    WHERE iddecente='{$data->iddecente}' ";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+
+        /**
          * --------------------------------------------- 
          */
         protected function insert_slider_Model($data){

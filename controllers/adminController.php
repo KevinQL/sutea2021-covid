@@ -200,8 +200,22 @@
         }
 
 
+        /**
+         * Validar docente desde amdin
+         */
+        public function exeValidarRegistro_Controller($data){
+            $res = self::exeValidarRegistro_Model($data);
+            return $res;
+        }
 
 
+        /**
+         * Eliminar registro de admin validar
+         */
+        public function exeeliminarRegistro_Controller($data){
+            $res = self::exeeliminarRegistro_Model($data);
+            return $res;
+        }
 
         //------------------------------------------------------------------------------
         /**

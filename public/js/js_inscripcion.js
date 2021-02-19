@@ -64,38 +64,28 @@ function dataHTML_inscripcion(){
  * 
  */
 function eval_inscripcion(){
-    let res = true;
-    return res;
+    let res = false;
+    //return res;
     let data = dataHTML_inscripcion();
-    let { txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        img_voucherv,
+    let { img_voucherv,
         txt_operationv } = data.values;
 
-    let arr_velem = [
-        txt_documentv,
-        txt_namev,
-        txt_lastNamev,
-        txt_phonev,
-        txt_emailv,
-        txt_specialtyv,
-        txt_ugelNamev,
-        txt_operationv];
+    // si operacion está vacio, y no hay imagen
+    if(txt_operationv.trim() === "" && img_voucherv.length === 0){
+        res = true;
+    }
+    
+    // si operacion no está vacio, exige que incluya voucher imagen.
+    // si incluye voucher, exige que sea imagen.
+    if(txt_operationv.trim() !== "" || img_voucherv.length >= 1){
 
-    arr_velem.forEach(element => {
-        if(element.trim() === "")
-            res = false;
-    });
-    if(res){
-        if(img_voucherv.length === 0){
-            res = false;
+        if(img_voucherv.length >= 1){
+            if(input_es_imagen(img_voucherv[0].type)){
+                res = true;
+            }
         }
     }
+
     return res;
 }
 
@@ -161,6 +151,7 @@ function execute_traerinfo(elem){
 }
 
 
+
 /**
  * envia los datos docente para su registro o actualizacion de la foto voucher
  */
@@ -178,6 +169,8 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_operationv } = data.values;
 
     if(eval_inscripcion()){
+
+        sweetModalCargando();
 
         fetchFileKev("POST",
         {
@@ -219,7 +212,7 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             
         }, URL_AJAX_PROCESAR);
     }else{
-        sweetModalMin("Falta rellenar datos!!","center",1500,"warning");
+        sweetModalMin("Los datos no son correctos!!","center",2000,"warning");
         console.log("Flata llenar el formulario")
     }
     
