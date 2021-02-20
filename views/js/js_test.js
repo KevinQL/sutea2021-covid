@@ -93,7 +93,10 @@ function readImage (input) {
       var reader = new FileReader();
       reader.onload = function (e) {
           $('#blah').attr('src', e.target.result); // Renderizamos la imagen
-          console.log("ok->", e.target.result);
+          console.log("ok->", reader.result);
+          let intblon = document.querySelector("#txt_nombre");
+
+          intblon.value = reader.result;
       }
       reader.readAsDataURL(input.files[0]);
     //   console.log(reader.readAsDataURL(input.files[0]));  
