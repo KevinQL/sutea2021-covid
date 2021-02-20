@@ -40,7 +40,7 @@
     </div>
     <!-- Validar -->
     <div class="container">
-        <table class="table card-own">
+        <table class="table card-own mt-4">
         <thead>
             <tr>
             <th scope="col">#</th>
