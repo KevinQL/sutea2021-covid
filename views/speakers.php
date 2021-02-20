@@ -21,29 +21,36 @@
             <div class="column">
                 <div class="">
                     <h3 class="mb-4">Lunes, <small> 22 de febreroro del 2021 </small></h3>
-                    <div class="row text-center">
-                        <div class="col-lg-4 mb-5">
-                            <div class="text-white mb-3">
-                                <img src="views/assets/animation/employee.svg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card-speakers">
+                                <div class="text-white mb-3">
+                                    <img src="views/assets/animation/employee.svg" class="bg-img-cover rounded-circle speaker-photo">
+                                </div>
+                                <h5>Prof. Moisés Chipana Valencia</h5>
+                                <span small class="font-color-vprimary font-weight-bold">Dirigente Nacional de FENATEPERU</span>
+                                <p class="mt-2"> Sindicalismo Clasista (principios del sindicalismo) luchas y perspectivas</p>
                             </div>
-                            <h5>Prof. Moisés Chipana Valencia</h5>
-                            <p small class="font-color-vprimary font-weight-bold">Dirigente Nacional de FENATEPERU</p>
-                            <p class="mb-0"> Sindicalismo Clasista (principios del sindicalismo) luchas y perspectivas</p>
                         </div>
-                        <div class="col-lg-4 mb-5">
-                            <div class="text-white mb-3">
-                                <img src="views/assets/animation/employee.svg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card-speakers">
+                                <div class="text-white mb-3">
+                                    <img src="views/assets/animation/employee.svg" class="bg-img-cover rounded-circle speaker-photo">
+                                </div>
+                                <h5>Dr. Julio Reza Huaroc Gómez</h5>
+                                <span small class="font-color-vprimary font-weight-bold">Laboralista Internacional</span>
+                                <p class="mt-2">Legislación Educativa y derechos laborales</p>
                             </div>
-                            <h5>Dr. Julio Reza Huaroc Gómez</h5>
-                            <p small class="font-color-vprimary font-weight-bold">Laboralista Internacional</p>
-                            <p class="mb-0">Legislación Educativa y derechos laborales</p>
                         </div>
-                        <div class="col-lg-4 mb-5">
-                            <div class="text-white mb-3">
-                                <img src="views/assets/animation/employee.svg" class="bg-img-cover shadow-box-ow rounded-circle speaker-photo">
+                        <div class="col-lg-4 mb-3">
+                            <div class="card-speakers">
+                                <div class="text-white mb-3">
+                                    <img src="views/assets/animation/employee.svg" class="bg-img-cover rounded-circle speaker-photo">
+                                </div>
+                                <h5>Nombre del ponente</h5>
+                                <span small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</span>
+                                <p class="mt-2"></p>
                             </div>
-                            <h5>Nombre del ponente</h5>
-                            <p small class="font-color-vprimary font-weight-bold">Doctorado en ciencia de los datos y machine learning en Universidad de OXFORT</p>
                         </div>
                     </div>
                 </div>
