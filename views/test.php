@@ -8,7 +8,7 @@ var_dump($file);
 // echo "ojoj2";
 $data = json_decode( json_encode($_FILES));
 
-$nombre = "slider.png";
+$nombre = "slider.jpg";
 $dir_img_slider = './../public/img_vouchers/test' . $nombre;
 
 $resultado = move_uploaded_file($file['tmp_name'], $dir_img_slider); //se guarda el modelo json
