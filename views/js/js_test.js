@@ -86,5 +86,26 @@ function execute_test(event){
 
 
 
+//-------------------- imagen 
+
+function readImage (input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+          console.log("ok->", e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    //   console.log(reader.readAsDataURL(input.files[0]));  
+    }
+  }
+
+  $("#img_test").change(function () {
+    // C贸digo a ejecutar cuando se detecta un cambio de archivO
+    readImage(this);
+  });
+  
+
+
 
 

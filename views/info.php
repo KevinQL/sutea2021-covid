@@ -32,6 +32,8 @@
             <div class="mb-3">
                 <label for="img_test" class="form-label">Default file input example</label>
                 <input class="form-control" type="file" id="img_test" name="img_test">
+
+                <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" width="150" height="150px" />
             </div>
             <button type="submit" class="btn btn-primary">Submit 1</button>
             <!-- <button type="submit" class="btn btn-primary" onclick="execute_test(event);">Submit</button> -->
@@ -44,7 +46,6 @@
 <script>
     
 </script>
-
 
 
     <?php
