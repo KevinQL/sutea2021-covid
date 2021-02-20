@@ -1,0 +1,16 @@
+table>thead>tr {
+    background: #f1f1f1;
+    color: #858585;
+}
+table>thead>tr>th {
+    font-weight: 500;
+    padding: 15px 6px!important;
+}
+.table>tbody>:not(caption)>*{
+    background: #fff !important;
+    color: rgba(0,0,0,.54);
+    padding: 12px 6px;
+}
+td:first-of-type {
+    padding-left: 24px
+}

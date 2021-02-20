@@ -10,9 +10,6 @@ header {
 }
 .header-top {
     height: 140px;
-    border-radius: 100%;
-    box-shadow: 0px 1px 9px 0px #555858;
-   /*  background: linear-gradient(180deg,#ffeb3b 0,rgb(255 193 7 / 86%) 36.87%,rgba(244,161,0,1) 66.99%); */
 }
 .navbar-own {
     font-weight: 500;
@@ -56,9 +53,6 @@ header {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
-.dark-content {
-    background: #000;
-}
 
 /* styles footer*/
 .footer {
@@ -79,10 +73,31 @@ header {
     color: #d4731c;
     text-decoration: none;
 }
+.ctn-speaker {
+    background: url(https://www.rcrperu.com/wp-content/uploads/2019/07/sutep.jpg) no-repeat fixed;
+}
+.ctn-speaker::before {
+    opacity: 0.8;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+}
+
+.header-presentation-hide {
+    display: none;
+}
 
 @media(max-width: 690px) {
     .header-presentation {
         display: none !important;
+    }
+    .header-presentation-hide {
+        display: block;
+        margin-bottom: 40px;
     }
     nav {
         position: fixed !important;

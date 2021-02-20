@@ -43,13 +43,18 @@ function execute_traerDocentesEvento(){
         if (data.eval) {
             console.log(data);
             data.data.forEach(element => {
-                //console.log(element.dni)
                 let btn_validar = `
-                        <button type="button" class="btn btn-warning" onclick="validarRegistro('${element.iddecente}','${element.idregistro}','${element.estado}');">Validar</button>
+                        <button type="button" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="bottom" title="Validar"
+                            onclick="validarRegistro('${element.iddecente}','${element.idregistro}','${element.estado}');">
+                            <i class="fas fa-check"></i>
+                        </button>
                     `;
                 if(element.estado === "1"){
                     btn_validar = `
-                            <button type="button" class="btn btn-success" onclick="validarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">Validado</button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="bottom" title="Validado"
+                                onclick="validarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">
+                                <i class="fas fa-check-double"></i>
+                            </button>
                             `;
                 }
                 table_HTML += `
@@ -60,16 +65,18 @@ function execute_traerDocentesEvento(){
                             <td>${element.apellido}</td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">
-                                ver
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">
+                                    <i class="fas fa-tags"></i>
                                 </button>
                             </td>
                             <td>
                                 ${btn_validar}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger" onclick="eliminarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">Elimnar</button>
-                                
+                            <button type="button" class="btn btn-outline-danger" onclick="eliminarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                                                            
                             </td>
                         </tr>
                 `;

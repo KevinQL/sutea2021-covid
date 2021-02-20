@@ -21,8 +21,13 @@
         class="d-none d-md-block" style="margin: 3rem auto;">
       <form action="" method="POST" class="d-flex flex-column align-items-center">
         <div class="col-12 col-md-9 col-lg-6 mb-3">
-          <label for="name">Seleccionar año</label>
-          <input type="text" class="form-control" id="year" name="certification_name" placeholder="Nombre" autocomplete="off" required pattern="^[A-Za-z0-9\\s]+$" maxlength="30">
+          <select id="year" class="w-100 p-2">
+            <option selected>Seleccione el año</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2022">2022</option>
+          </select>
         </div>
         <div class="col-12 col-md-9 col-lg-6 mb-3">
           <!-- Definir estandar de tipos de documentos  -->
