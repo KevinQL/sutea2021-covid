@@ -58,9 +58,8 @@
                 //Presentación de la página principal
 
                 $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
-                $pagina = strtolower(trim($pagina));                          
+                $pagina = strtolower(trim($pagina));         
                 $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers"];
-
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
                 }else {

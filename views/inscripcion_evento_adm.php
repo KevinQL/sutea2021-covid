@@ -5,7 +5,7 @@
     <?php
         include_once('views/modules/cdnsheader.html');
     ?>
-    
+    <link rel="stylesheet" href="views/css/home.css">    
     <title>Inscripcion</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         include_once("views/modules/navegacion__.php");        
     ?>
 
-    <div class="my-5"></div>
+    <div class="my-3"></div>
     <!-- Inscripción -->
     <div class="container container-event ">
     <div class="card card-own p-sm-4 p-md-4">
