@@ -64,7 +64,7 @@ if($bytes){
 
 
 <?php
-        header("Location: http://localhost/sutea2021-covid/index.php?pg=info");
+        header("Location: ../index.php?pg=info");
         die;
         //echo json_encode([$data_res,$file]);
         //echo json_encode("okok");
