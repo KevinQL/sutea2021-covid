@@ -5,7 +5,7 @@ $file = $_FILES['files'];
 
 $nombre = "slider.png";
 $tmg_save = $file['tmp_name'];
-$dir_img_slider = './../public/slider_files/iduser-';
+$dir_img_slider = './../public/img_vouchers/test';
 
 $resultado = move_uploaded_file($tmg_save, $dir_img_slider . $nombre); //se guarda el modelo json
 
@@ -17,6 +17,18 @@ if($resultado){
 }else{
     echo json_encode("errrrrror");
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 $data = json_decode($_REQUEST['data']);

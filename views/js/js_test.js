@@ -1,5 +1,5 @@
 //---------------
-console.log(pruebaArchivo("js test new"));
+console.log(pruebaArchivo("Cargado js_test.js"));
 
 //****************************************************************************************** */
 //****************************************************************************************** */
@@ -75,7 +75,7 @@ function execute_test(event){
                 
             }
 
-        },URL_AJAX_PROCESAR); //URL_AJAX_PROCESAR  /  URL_prueba
+        },URL_prueba); //URL_AJAX_PROCESAR  /  URL_prueba
 
     }else{
         sweetModal('Verificar datos!','center','warning',1500);
