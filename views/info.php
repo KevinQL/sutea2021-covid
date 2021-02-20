@@ -19,7 +19,7 @@
     </div>
 
     <section class="container">   
-        <form action="">
+        <form enctype="multipart/form-data" action="./views/test.php" method="POST">
             <div class="mb-3">
                 <label for="txt_dni" class="form-label" id="lb_dni">DNI</label>
                 <input type="text" class="form-control" id="txt_dni" name="txt_dni" aria-describedby="emailHelp">
@@ -31,9 +31,10 @@
             </div>
             <div class="mb-3">
                 <label for="img_test" class="form-label">Default file input example</label>
-                <input class="form-control" type="file" id="img_test">
+                <input class="form-control" type="file" id="img_test" name="img_test">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="execute_test(event);">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit 1</button>
+            <!-- <button type="submit" class="btn btn-primary" onclick="execute_test(event);">Submit</button> -->
         </form>
     </section>
     
