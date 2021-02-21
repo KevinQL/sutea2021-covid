@@ -26,11 +26,26 @@
         }
         elseif ($data->id === "exe-inscripcion") {
             # code...
+            
             //en el caso de que no se suba el voucher, 
             $img_voucher = isset($_FILES["img_voucher"])? $_FILES["img_voucher"] : ["type"=>"admin"];
             $res = $obj->exeInscripcion_Controller($data, $img_voucher);
+
+            if($data->txt_base64v !== ""){
+                if($res["eval"] || $res["cvoucher"]){
+                    
+                    $ruta = "./../public/img_voucher/";
+                    $arr_data = explode(",",$data->txt_base64v);
+                    $base64 = $arr_data[1]; //base64 en texto plano
+                    $file_img = base64_decode($base64);
+                    $ruta_name = $ruta .$res["data"]->ruta_voucher;
+                    file_put_contents($ruta_name, $file_img);
+                }
+            }
+
             echo json_encode($res);
         }
+        
         elseif ($data->id === "exe-loginUser") {
             # code...
             $res = $obj->session_user_Controller($data);

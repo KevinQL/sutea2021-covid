@@ -30,10 +30,12 @@ function dataHTML_inscripcion(){
     let img_voucher =  document.querySelector("#imageImport");
     let check_estado = document.querySelector("#check_estado");
 
+    let txt_base64 = document.querySelector("#base64");
+
     let txt_operation =  document.querySelector("#operation");
 
     let estado = 0; //false
-    
+
     if(check_estado){
         estado = check_estado.checked ? 1 : 0; // true : false
     }
@@ -60,7 +62,8 @@ function dataHTML_inscripcion(){
             txt_ugelNamev : txt_ugelName.value,
             img_voucherv  : img_voucher.files,
             txt_operationv : txt_operation.value,
-            estadov : estado
+            estadov : estado,
+            txt_base64v : txt_base64.value
         }
     }
 
@@ -175,10 +178,11 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_ugelNamev,
         img_voucherv,
         estadov,
-        txt_operationv } = data.values;
+        txt_operationv,
+        txt_base64v } = data.values;
 
     if(eval_inscripcion()){
-
+        
         sweetModalCargando();
 
         fetchFileKev("POST",
@@ -192,11 +196,12 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_specialtyv,
             txt_ugelNamev,
             estadov,
-            txt_operationv
+            txt_operationv,
+            txt_base64v
         }, {
-            img_voucher:img_voucherv[0]
+            img_voucher:null //img_voucherv[0]
         }, data => {
-            
+            console.log("respuesta local");
             console.log(data);
 
             //return null;
@@ -243,11 +248,19 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
  * @param {*} elem 
  */
 function execute_inscripcion(elem){
+    
     console.log("btn click")
     elem.style.display = "none";
     setTimeout(()=>{
         elem.style.display = "block";
     },
     1000);
+
+
+    //--------pr imprimir base64
+    // let data = dataHTML_inscripcion();
+    // let {txt_base64v} = data.values;
+    // console.log("esot->", txt_base64v);
+    //--------end pr imprimir base64
 }
 
