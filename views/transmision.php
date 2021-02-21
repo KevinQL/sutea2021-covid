@@ -1,31 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-
+  <head>
+    <!-- Required meta tags -->
     <?php
-    include_once('views/modules/cdnsheader.html');
+        include_once('views/modules/cdnsheader.html');
     ?>
-
-    <title>Inicio</title>
-</head>
-
-<body>
-
-    <?php
-    include_once("views/modules/navegacion__.php");
+    <link rel="stylesheet" href="views/css/home.css">
+    <title>Surtea</title>
+  </head> 
+  <body>
+  <?php
+        include_once('views/modules/navegacion_inicio.html');
     ?>
-
-
+  <section class="container-slide my-4">
         <section class="container">
             <iframe width="100%" height="550" src="https://www.youtube.com/embed/Qg0JnO5-OC4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
+  </section>
 
-
+<!-- Pie de página -->
     <?php
-    include_once('views/modules/cdnsfooter.html');
+        include_once('views/modules/footer.html');
+        include_once('views/modules/cdnsfooter.html');
     ?>
-
-</body>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- CSS only -->
+    <!--SCRIPT ME-->
+    <!-- <script src="./public/js/script_sutep.js"></script> -->
+  </body>
 </html>
