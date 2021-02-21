@@ -59,10 +59,10 @@
             <input type="email" class="form-control" id="email" name="inscription_email" placeholder="email" autocomplete="off"
                
               pattern="/^\s@\"
-              maxLength="20">
+              maxLength="70">
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <label for="specialty">Especialidad</label>
+            <label for="specialty">Nivel</label>
             <select class="form-select" aria-label="Default select example" id="specialty" name="inscription_specialty">
               <option selected>Inicial</option>
               <option value="Primaria">Primaria</option>
@@ -82,8 +82,8 @@
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="ugelName">Ugel</label>
             <select class="form-select" aria-label="Default select example" id="ugelName" name="inscription_ugelName" >
-              <option selected>Andahuaylas</option>
-              <option value="Abancay">Abancay</option>
+              <option selected>Abancay</option>
+              <option value="Andahuaylas">Andahuaylas</option>
               <option value="Antabanba">Antabanba</option>
               <option value="Aymaraes">Aymaraes</option>
               <option value="Cotabanba">Cotabanba</option>

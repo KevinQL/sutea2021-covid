@@ -317,7 +317,6 @@ function readImage (input) {
 
   $("#imageImport").change(function () {
     // Codigo a ejecutar cuando se detecta un cambio de archivO
-    alert("hiii")
     readImage(this);
   });
   
