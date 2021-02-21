@@ -63,6 +63,7 @@ function execute_traerDocentesEvento(){
                             <td>${element.dni}</td>
                             <td>${element.nombre}</td>
                             <td>${element.apellido}</td>
+                            <td>${element.celular}</td>
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">

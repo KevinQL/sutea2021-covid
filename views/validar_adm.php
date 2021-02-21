@@ -47,6 +47,7 @@
             <th scope="col">DNI</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
+            <th scope="col">Celular</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
             <th scope="col">Eliminar</th>
