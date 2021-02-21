@@ -115,6 +115,7 @@
             //falta ordeanr el codigo de aaqui abajo
             $res_img = false;
             if($res_model["eval"] || $res_model["cvoucher"]){
+                
                 if($img_voucher["type"] !== "admin"){ // hay imagen, por lo tanto intercambia
                     $res_img = $this->guardar_img($img_voucher, './../public/img_voucher/', $dataModel->ruta_voucher);
                 }

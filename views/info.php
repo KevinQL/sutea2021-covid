@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="txt_nombre" class="form-label">NOMBRE</label>
-                <input type="text" class="form-control" id="txt_nombre" nombre="txt_nombre">
+                <input type="text" class="form-control" id="txt_nombre" name="txt_nombre">
             </div>
             <div class="mb-3">
                 <label for="img_test" class="form-label">Default file input example</label>
@@ -40,7 +40,15 @@
         </form>
     </section>
     
+    <div class="container">
+        <textarea name="base64" id="base64" rows='10' cols='90'></textarea>
+        <input type="text" id="orig" name="orig" value=""/>
 
+        <div id="img_otro">
+            <img src="" alt="Image preview" id="preview_new" style="display:none">
+      </div>
+
+    </div>
 
 
 <script>

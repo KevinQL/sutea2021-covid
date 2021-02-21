@@ -115,6 +115,8 @@
               accept=".jpg, .jpeg, .png"
               class="mb-3 mt-3 file-import"
             >
+            <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" width="150" height="150px" />
+
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="form-check form-switch">
@@ -132,6 +134,15 @@
       </div>
     </div>
   </div>
+
+
+<div class="container">
+  <small>BASE DE CODIFICACION DE VERIFICANDO DE VOUCHER</small> <br>
+  <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
+  <div id="img_otro">
+      <img src="" alt="Image preview" id="preview_new" style="display:none">
+  </div>
+</div>
 
 
     <?php        

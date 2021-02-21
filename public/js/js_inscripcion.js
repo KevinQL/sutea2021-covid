@@ -30,10 +30,12 @@ function dataHTML_inscripcion(){
     let img_voucher =  document.querySelector("#imageImport");
     let check_estado = document.querySelector("#check_estado");
 
+    let txt_base64 = document.querySelector("#base64");
+
     let txt_operation =  document.querySelector("#operation");
 
     let estado = 0; //false
-    
+
     if(check_estado){
         estado = check_estado.checked ? 1 : 0; // true : false
     }
@@ -60,7 +62,8 @@ function dataHTML_inscripcion(){
             txt_ugelNamev : txt_ugelName.value,
             img_voucherv  : img_voucher.files,
             txt_operationv : txt_operation.value,
-            estadov : estado
+            estadov : estado,
+            txt_base64v : txt_base64.value
         }
     }
 
@@ -175,10 +178,11 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_ugelNamev,
         img_voucherv,
         estadov,
-        txt_operationv } = data.values;
+        txt_operationv,
+        txt_base64v } = data.values;
 
     if(eval_inscripcion()){
-
+        
         sweetModalCargando();
 
         fetchFileKev("POST",
@@ -192,11 +196,12 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_specialtyv,
             txt_ugelNamev,
             estadov,
-            txt_operationv
+            txt_operationv,
+            txt_base64v
         }, {
-            img_voucher:img_voucherv[0]
+            img_voucher:null //img_voucherv[0]
         }, data => {
-            
+            console.log("respuesta local");
             console.log(data);
 
             //return null;
@@ -243,11 +248,124 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
  * @param {*} elem 
  */
 function execute_inscripcion(elem){
+    
     console.log("btn click")
     elem.style.display = "none";
     setTimeout(()=>{
         elem.style.display = "block";
     },
     1000);
+
+
+    //--------pr imprimir base64
+    // let data = dataHTML_inscripcion();
+    // let {txt_base64v} = data.values;
+    // console.log("esot->", txt_base64v);
+    //--------end pr imprimir base64
 }
+
+
+
+
+/**
+ * 
+ * 
+ */
+// PROGRAMACION TEMPORAL 
+
+function readImage (input) {
+    sweetModalCargando();
+    document.querySelector("#base64").value = "";
+    if (input.files && input.files[0]) {
+      let k = "";
+      let reader = new FileReader();
+      reader.onload = function (e) {
+          $('#preview_new').attr('src', reader.result); // Renderizamos la imagen con su tamanio normla
+          k = reader.result;
+          console.log("ok->", k);
+          setTimeout(() => {
+              let img = document.querySelector("#preview_new"); // capturamos la imagen renderiada en su tamanio normal
+              console.log("img principal: ",img.width, img.height);
+              if(img.height >= img.width){
+                if(img.width > 400 || img.height > 650);
+                  k = _resize(img, 400, 650); // me devuelve el base64 de la imagen renderizada, reescalado.
+                console.log("ok2->",k);
+                document.querySelector("#base64").value = k; // imprimimos el base 64 de la imgen redimensionada
+                $('#blah').attr('src', k); // imprimimos la imagen en la imagen de previsualización
+                
+                setTimeout(() => {
+                  $('#preview_new').attr('src', k); // imprimimos la imagen en la imagen de previsualización
+                  console.log("img final: ",img.width, img.height);
+                }, 700);
+
+                sweetModalMin("Voucher Cargado con exito!!","center",2000,"success");
+              }else{                
+                
+                sweetModalMin("Por favor Subir otra foto del voucher!!","center",2500,"error");
+                input.value = "";
+                $('#preview_new').attr('src', "");
+                $('#blah').attr('src', "https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg");
+              }
+          }, 1500);
+        //imprime valor base64 
+          //renderiza la img en la img principal
+      }
+      reader.readAsDataURL(input.files[0]);
+      
+    }
+}
+
+  $("#imageImport").change(function () {
+    // Codigo a ejecutar cuando se detecta un cambio de archivO
+    alert("hiii")
+    readImage(this);
+  });
+  
+  
+  //----------------------------------------------------------
+  //----------------- CODIGO DE IMAGEN -----------------------
+  //----------------------------------------------------------
+  //----------------------------------------------------------
+
+  function _resize(img, maxWidth, maxHeight) 
+  {
+        let ratio = 1;
+        let canvas = document.createElement("canvas");
+        canvas.style.display="block";
+        document.body.appendChild(canvas);
+
+        let canvasCopy = document.createElement("canvas");
+        canvasCopy.style.display="block";
+        document.body.appendChild(canvasCopy);
+
+        let ctx = canvas.getContext("2d");
+        let copyContext = canvasCopy.getContext("2d");
+
+        if(img.width > maxWidth)
+            ratio = maxWidth / img.width;
+        else if(img.height > maxHeight)
+            ratio = maxHeight / img.height;
+
+        canvasCopy.width = img.width;
+        canvasCopy.height = img.height;
+        try {
+            copyContext.drawImage(img, 0, 0);
+        } catch (e) { 
+            //document.getElementById('loader').style.display="none";
+            alert("Aquí fue el problema - Porfavor tome otra foto, o suba otra foto");
+            return false;
+        }
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        // the line to change
+        //ctx.drawImage(canvasCopy, 0, 0, canvasCopy.width, canvasCopy.height, 0, 0, canvas.width, canvas.height);
+        // the method signature you are using is for slicing
+        ctx.drawImage(canvasCopy, 0, 0, canvas.width, canvas.height);
+        let dataURL = canvas.toDataURL("image/jpg");
+        document.body.removeChild(canvas);
+        document.body.removeChild(canvasCopy);
+
+        //return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        return dataURL;
+  };
 
