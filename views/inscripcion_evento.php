@@ -101,6 +101,8 @@
               class="form-control"
               required
             >
+            <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" width="150" height="150px" />
+
           </div>
           <div class="d-flex justify-content-end">
             <input type="button" id="inscription_clear" class="next btn btn-secondary-own mx-2" value="Cancelar"/>
@@ -111,10 +113,26 @@
       </div>
     </div>
   </div>
+
+<div class="container">
+  <small>BASE DE CODIFICACION DE VERIFICANDO DE VOUCHER</small> <br>
+  <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
+  <div id="img_otro">
+      <img src="" alt="Image preview" id="preview_new" style="display:none">
+  </div>
+</div>
+
+
   <?php
         include_once('views/modules/footer.html');
         include_once('views/modules/cdnsfooter.html');
     ?>
     <script src="./public/js/js_inscripcion.js"></script>
+
+
+    <script>
+
+    
+    </script>
 </body>
 </html>

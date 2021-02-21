@@ -40,7 +40,15 @@
         </form>
     </section>
     
+    <div class="container">
+        <textarea name="base64" id="base64" rows='10' cols='90'></textarea>
+        <input type="text" id="orig" name="orig" value=""/>
 
+        <div id="img_otro">
+            <img src="" alt="Image preview" id="preview_new" style="display:none">
+      </div>
+
+    </div>
 
 
 <script>
