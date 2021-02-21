@@ -1,5 +1,5 @@
 //---------------
-console.log(pruebaArchivo("js test new"));
+console.log(pruebaArchivo("Cargado js_test.js"));
 
 //****************************************************************************************** */
 //****************************************************************************************** */
@@ -75,7 +75,7 @@ function execute_test(event){
                 
             }
 
-        },URL_AJAX_PROCESAR); //URL_AJAX_PROCESAR  /  URL_prueba
+        },URL_prueba); //URL_AJAX_PROCESAR  /  URL_prueba
 
     }else{
         sweetModal('Verificar datos!','center','warning',1500);
@@ -84,6 +84,30 @@ function execute_test(event){
 
 
 
+
+
+//-------------------- imagen 
+
+function readImage (input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+          console.log("ok->", reader.result);
+          let intblon = document.querySelector("#txt_nombre");
+
+          intblon.value = reader.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    //   console.log(reader.readAsDataURL(input.files[0]));  
+    }
+  }
+
+  $("#img_test").change(function () {
+    // C贸digo a ejecutar cuando se detecta un cambio de archivO
+    readImage(this);
+  });
+  
 
 
 

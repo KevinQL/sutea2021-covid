@@ -80,37 +80,87 @@
          * 
          */
         protected function exeInscripcion_Model($data){
+            // Traemos docente si existe
             $res_docente = $this->existeDocente($data->dni);
             $idevento = $this->obtenerEventoActivo();
             $res = false;
             $cvoucher = false;
-
+            $res_ope = false;
+            //id evento actual
             $data->evento_idevento = $idevento;
             if($res_docente["eval"]){
+                //obteniendo id docente
                 $data->decente_iddecente = $res_docente["data"]["iddecente"];
-                //verificar si ya esta registrado
-                if(!$this->docenteRegistrado($data)){
-                    $res = $this->insertarRegistro($data);
+                // traemos registro si existe. Traemos ESTADO y idregistro
+                $registro = $this->docenteRegistrado($data);
+                //Si no está registrado.
+                if(!$registro["eval"]){
+                    if(!$this->existeNumOperacion($data)){
+                        $res = $this->insertarRegistro($data);
+                    }else{
+                        $res_ope = true;
+                    }
                 }else{
-                    //actualizar numero de operacion mientras aun no se le valida al usuario (PENDIENTE)
-                    //actualizar voucher en el caso de que no ha sido VALIDADO aun
-                    if($this->estadoVoucher($data)){
+                    $data->idregistro = $registro["data"]["idregistro"]; // id registro
+                    $data->estado = $registro["data"]["estado"]; // estado registro
+                    // Si esta registrado: hacer
+                    //Si el registro esta VALIDADO aun
+                    if($data->estado){
                         $cvoucher = false; // ya no admite cambiar el voucher por que ya esta validado
                     }else{
-                        $cvoucher = true; // admite cambiar el voucehr por que aun no se validad
+                        //actualizar numero de operacion mientras aun no se le valida al usuario (PENDIENTE)
+                        if(!$this->existeNumOperacion($data)){
+                            $res = $this->cambiarNumOperacion($data);
+                            $cvoucher = true; // admite cambiar el voucehr por que aun no se validad
+                        }else{
+                            $res_ope = true;
+                        }
                     }
                 }
             }else{
                 //insertar en docente y luego en registro
-                $res = $this->insertarDocente($data);
-                if($res){
-                    $res_docente = $this->existeDocente($data->dni);
-                    $data->decente_iddecente = $res_docente["data"]["iddecente"];
-                    $res = $this->insertarRegistro($data);
+                if(!$this->existeNumOperacion($data)){
+                    $res = $this->insertarDocente($data);
+                    if($res){
+                        $res_docente = $this->existeDocente($data->dni); // traer id docente creado
+                        $data->decente_iddecente = $res_docente["data"]["iddecente"]; // id docente registrado
+                        $res = $this->insertarRegistro($data);
+                    }
+                }else{
+                    $res_ope = true;
                 }
             }
             //return $res_docente["data"]["iddecente"];
-            return ["eval"=>$res, "data"=>$data, "cvoucher" => $cvoucher];
+            return ["eval"=>$res, "data"=>$data, "cvoucher" => $cvoucher, "operacion"=>$res_ope];
+        }
+
+        //Comprueba que el numero de operacion no se duplique en todos los registros. Esto debe ser únicos
+        private function existeNumOperacion($data){
+            if($data->num_operacion === ""){
+                return false;
+            }
+
+            $res = false;
+            $query = "SELECT idregistro, anio, num_operacion 
+                        FROM registro 
+                        WHERE num_operacion='{$data->num_operacion}' LIMIT 1";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+
+        private function cambiarNumOperacion($data){
+            $res = false;
+            $query = "UPDATE registro 
+                        SET num_operacion='{$data->num_operacion}' 
+                        WHERE idregistro = '{$data->idregistro}'";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
         }
 
         //Verifica el estado del voucher, o el registro del docente. Si su registro es valido o no.
@@ -134,13 +184,22 @@
 
         private function docenteRegistrado($data){
             $res = false;
-            $query = "SELECT * FROM registro r WHERE r.decente_iddecente = '{$data->decente_iddecente}' AND r.evento_idevento = '{$data->evento_idevento}'";
+            $res_data = [];
+            $query = "SELECT idregistro, estado 
+                        FROM registro r 
+                        WHERE r.decente_iddecente = '{$data->decente_iddecente}' 
+                        AND r.evento_idevento = '{$data->evento_idevento}' LIMIT 1";
             $res_query = self::ejecutar_una_consulta($query);
             if ($res_query->rowCount()) {
                 # code...
                 $res = true;
+                while ($elem = $res_query->fetch(PDO::FETCH_ASSOC)) {
+                    # code...
+                    $res_data = $elem;
+                }
+                //$data = $res_query->fetch(PDO::FETCH_ASSOC);
             }
-            return $res;
+            return ["eval"=>$res, "data"=> $res_data];
         }
 
         private function insertarDocente($data){
@@ -200,7 +259,7 @@
 
         private function existeDocente($dni){
             $res = false;
-            $data = null;
+            $data = [];
             $query = "SELECT iddecente, dni FROM decente d WHERE d.dni = '{$dni}' LIMIT 1";
             $res_query = self::ejecutar_una_consulta($query);
             if($res_query->rowCount() >= 1){
@@ -260,6 +319,83 @@
             }
             return ["eval"=>$res, "data"=>$data_res];            
 
+        }
+
+        /**
+         * validar registro. 
+         */
+        protected function exeValidarRegistro_Model($data){
+            $res = false;
+            $estado = ($data->estado==="0")? "1":"0";
+            $idevento = $this->obtenerEventoActivo();
+            $query = "UPDATE registro r 
+                    SET r.estado='{$estado}' 
+                    WHERE r.idregistro = '{$data->idregistro}' 
+                    AND r.decente_iddecente = '{$data->iddecente}' 
+                    AND r.evento_idevento = '{$idevento}'";
+
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return ['eval'=>$res, 'data'=>$data];
+        }
+
+        /**
+         * Eliminar registro
+         */
+        protected function exeeliminarRegistro_Model($data){
+            $res = false;
+            $msj = "";
+            //cuando el registro no está validado
+            if(!$data->estado){
+                $res = $this->eliminarControl($data);
+                $msj .= $res? "Se Eliminó Control.":"No se eliminó Control.";
+                //eliminar registro del evento actual
+                $res = $this->eliminarRegistro($data);
+                $msj .= $res? "\n Se Eliminó Registro.":"\n No se eliminó Registro.";
+                // eliminar docente
+                if($res){
+                    $res = $this->eliminarDocente($data);
+                    $msj .= $res? "\n Se Eliminó docente.":"\n No se eliminó docente.";
+                }
+            }
+
+            return ['eval'=>$res, 'data'=>$data, "msj" => $msj];
+        }
+
+        private function eliminarControl($data){
+            $res = false;
+            $query = "DELETE FROM control 
+                    WHERE registro_idregistro='{$data->idregistro}'";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+
+        private function eliminarRegistro($data){
+            $idevento = $this->obtenerEventoActivo();
+            $res = false;
+            $query = "DELETE FROM registro 
+                    WHERE idregistro='{$data->idregistro}' 
+                    AND evento_idevento = '{$idevento}'";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
+        }
+        private function eliminarDocente($data){
+            $res = false;
+            $query = "DELETE FROM decente
+                    WHERE iddecente='{$data->iddecente}' ";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+            return $res;
         }
 
         /**

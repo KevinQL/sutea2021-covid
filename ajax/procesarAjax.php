@@ -26,6 +26,7 @@
         }
         elseif ($data->id === "exe-inscripcion") {
             # code...
+            //en el caso de que no se suba el voucher, 
             $img_voucher = isset($_FILES["img_voucher"])? $_FILES["img_voucher"] : ["type"=>"admin"];
             $res = $obj->exeInscripcion_Controller($data, $img_voucher);
             echo json_encode($res);
@@ -45,6 +46,18 @@
         elseif ($data->id === "exe-traerDocenteEvento") {
             # code...
             $res = $obj->exeTraerDocenteEvento_Controller($data);
+            echo json_encode($res);
+        }
+        //validar registro desde admin
+        elseif ($data->id === "exe-validarRegistro") {
+            # code...
+            $res = $obj->exeValidarRegistro_Controller($data);
+            echo json_encode($res);
+        }
+
+        elseif ($data->id === "exe-eliminarRegistro") {
+            # code...
+            $res = $obj->exeeliminarRegistro_Controller($data);
             echo json_encode($res);
         }
 

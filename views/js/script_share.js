@@ -5,6 +5,7 @@
 //****************************************************************************************** */
 //****************************************************************************************** */
 
+
 /**
  * Agrega un nuevo option a un select
  * 
@@ -38,7 +39,7 @@ function nameImg_replace_curso($nameimg){
  * @function eval_curso_insert 
  *  
  */
-function es_imagen_sliderInsert(type_img){
+function input_es_imagen(type_img){
     if(type_img == "image/png" || type_img == "image/jpeg" || type_img == "image/jpg"){
         return true;
     }else{
@@ -59,6 +60,29 @@ function cleanInputs(arrElement){
     })
 }
 
+
+/**
+ * 
+ */
+function sweetModalCargando(){
+    Swal.fire({
+        icon: 'success',
+        title: `
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span> 
+        `,
+        text: 'Espere por favor!',
+        confirmButtonText: 'Cargando...',
+        showCloseButton: false,
+        showCancelButton: false,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+}
 
 
 /**

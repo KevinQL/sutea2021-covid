@@ -5,7 +5,7 @@
     <?php
         include_once('views/modules/cdnsheader.html');
     ?>
-    
+    <link rel="stylesheet" href="views/css/home.css">    
     <title>Inscripcion</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         include_once("views/modules/navegacion__.php");        
     ?>
 
-    <div class="my-5"></div>
+    <div class="my-3"></div>
     <!-- Inscripción -->
     <div class="container container-event ">
     <div class="card card-own p-sm-4 p-md-4">
@@ -114,9 +114,15 @@
               multiple="false"
               accept=".jpg, .jpeg, .png"
               class="mb-3 mt-3 file-import"
-              
             >
           </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="check_estado" checked>
+              <label class="form-check-label" for="check_estado">Validar Registro</label>
+            </div>
+          </div>
+
           <div class="d-flex justify-content-end">
             <input type="button" id="inscription_clear" class="next btn btn-secondary-own mx-2" value="Cancelar"/>
             <input type="submit" id="inscriptionSave" class="next btn btn-primary-own mx-2" value="Completar" onclick="execute_inscripcion(this);" />
