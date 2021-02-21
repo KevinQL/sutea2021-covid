@@ -27,7 +27,7 @@ $f = base64_decode($base64);
 // $base64size = strlen($_POST['base64']);
 // $f = base64_decode($_POST['base64']);
 
-$name = microtime(true).".png";
+$name = microtime(true).".jpg";
 $ruta_name = $ruta . $name;
 file_put_contents($ruta_name, $f);
 
