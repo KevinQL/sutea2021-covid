@@ -15,12 +15,30 @@
     ?>
 
     <?php
+        $anio = date("Y");
+        $fecha_actual = date("Y-m-d H:i:s");
+        $fecha_temprano = [date("Y-m-d")." 09:00:00", date("Y-m-d")." 13:00:00"];
+        $fecha_tarde = [date("Y-m-d")." 13:59:00", date("Y-m-d")." 17:00:00"];
 
-        var_dump(date("Y-m-d H:i:s"));
+        var_dump($fecha_actual);
         echo "<br>";
-        var_dump(date("Y"));
-        // var_dump(date());
-        // var_dump(date());
+        var_dump($fecha_temprano);
+        echo "<br>";
+        var_dump($fecha_tarde);
+        echo "<br>";
+        var_dump($anio);
+
+        if($fecha_actual > $fecha_temprano[0] && $fecha_actual < $fecha_temprano[1]){
+            echo "entro mania";
+        }
+        elseif ($fecha_actual > $fecha_tarde[0] && $fecha_actual < $fecha_tarde[1]) {
+            # code...
+            echo "entro tared";
+        } else {
+            # code...
+            echo "La asistencia aun no está habilitada";
+        }
+    
 
     ?>
 

@@ -129,9 +129,9 @@ document.querySelector("#formInscription").addEventListener("submit", event => {
             
             console.log(res);
             if (res.eval) {
-                sweetModal("Asistencia registrado!","center","success",2000);
+                sweetModal(res.sis_msj, "center", "success", 2000);
             }else{
-                sweetModal("Asistencia ya registradad!!","center","info",2000);                
+                sweetModal(res.sis_msj, "center", "info", 2000);                
             }
             
         }, URL_AJAX_PROCESAR);
