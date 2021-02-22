@@ -404,28 +404,117 @@
          * Modulo asistencia docente
          */
         protected function exedocenteAsistencia_Model($data){
-            $res = false;
+            
             // el docente esta registrado en el evento actual. Esto se valida en el formulario.
             // datos que llegan aquí 
+
+            $res = false;
+            $sis_msj = "";
+            $sis_ctrl_reg = true; // Poner en 'false' para que funcione el control de validacion de docente.
+            
             $anio = date("Y");
             $control_dia=0;
             $control_asistencia=0;
-            $query = "INSERT INTO control SET 
-                        anio = {$anio},
-                        fecha_registro = current_timestamp(),
-                        control_dia = '{$control_dia}',
-                        control_asistencia = '{$control_asistencia}',
-                        registro_idregistro = '{$data->idregistro}'
-            ";
-            $result_query = self::ejecutar_una_consulta($query);
-            if($result_query->rowCount() >= 1){
-                $res = true;
+
+            // El registro del docente está validado?
+            $reg_val = $this->registroValidado($data->registro_idregistro);
+            
+            if($reg_val || $sis_ctrl_reg){
+                $res_ctrl = false;
+                //obtener registro de control, y validar su registro de acuerdo a la fecha acual ingresada. 
+                // verifica si ya registró su asistencia en el intervalo de tiempo programado
+                $res_ctrl = $this->controlAsistenciaControl($data->registro_idregistro);
+                $sis_msj = $res_ctrl["sis_msj"];
+                if(!$res_ctrl["eval"]){
+                    $query = "INSERT INTO control SET 
+                                anio = {$anio},
+                                fecha_registro = current_timestamp(),
+                                control_dia = '{$control_dia}',
+                                control_asistencia = '{$control_asistencia}',
+                                registro_idregistro = '{$data->registro_idregistro}'
+                    ";
+                    $result_query = self::ejecutar_una_consulta($query);
+                    if($result_query->rowCount() >= 1){
+                        $sis_msj = "Asistencia Registrada!";
+                        $res = true;
+                    }else{
+                        $sis_msj = "No se inserto ningún dato.";
+                    }
+                }
+            }else{
+                $sis_msj = "Falta validar su registro";
             }
          
-            return ['eval'=>$res, 'data'=>$data];
+            return ['eval'=>$res, 'data'=>$data, "sis_msj"=>$sis_msj];
 
         }
+        //----
+        private function controlAsistenciaControl($idregistro){
+            // El idregistro, ya está validado que pertenece al evento actual.
+            $res = false;
+            $sis_msj = "";
+            $anio = date("Y");
+            $fecha_actual = date("Y-m-d H:i:s");
+            $fecha_temprano = [date("Y-m-d")." 09:00:00", date("Y-m-d")." 13:00:00"];
+            $fecha_tarde = [date("Y-m-d")." 13:59:00", date("Y-m-d")." 17:00:00"];
 
+            $f_entrada="";
+            $f_salida="";
+            //entonecs traemos las fechas registradas del registro en cotrol
+            
+            if($fecha_actual > $fecha_temprano[0] && $fecha_actual < $fecha_temprano[1]){
+                # code...
+                // echo "entro mania";
+                $f_entrada = $fecha_temprano[0];
+                $f_salida = $fecha_temprano[1];
+            }
+            elseif ($fecha_actual > $fecha_tarde[0] && $fecha_actual < $fecha_tarde[1]) {
+                # code...
+                // echo "entro tared";
+                $f_entrada = $fecha_tarde[0];
+                $f_salida = $fecha_tarde[1];
+            } else {
+                # code...
+                $sis_msj = "La asistencia aun no está habilitada";
+            }
+
+            if($sis_msj === ""){
+                $query = "SELECT * FROM control c 
+                            WHERE c.fecha_registro > '{$f_entrada}' 
+                            AND c.fecha_registro < '{$f_salida}' 
+                            AND C.registro_idregistro = '{$idregistro}'
+                            AND c.anio = '{$anio}'
+                        ";
+                $res_q = self::ejecutar_una_consulta($query);
+                if($res_q->rowCount() >= 1){
+                    $res = true;   
+                    $sis_msj = "El docente ya registró su asistencia";
+                }else{
+                    $sis_msj = "El docente aun no registro su asistencia";
+                }
+            }
+
+            return ["eval"=>$res, "sis_msj"=>$sis_msj];
+
+        }
+        //---
+        private function registroValidado($idregistro){
+            $res = false;
+            $data_estado = "0";
+            $query = "SELECT estado FROM registro r WHERE r.idregistro = '{$idregistro}'";
+            $res_q = self::ejecutar_una_consulta($query);
+            if($res_q->rowCount() >= 1){
+                while ($elem = $res_q->fetch(PDO::FETCH_ASSOC)) {
+                    # code...
+                    $data_estado = $elem["estado"];
+                }
+                if($data_estado === "1"){
+                    $res = true;
+                }
+            }
+         
+            return $res;
+        }
 
 
         /**

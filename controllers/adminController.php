@@ -226,8 +226,8 @@
         public function exedocenteAsistencia_Controller($data){
             $dataModel = new StdClass;
             $dataModel->dni = $this->txtres($data->txt_documentv);
-            $dataModel->idregistro = $this->txtres($data->txt_idregistrov);
             $dataModel->iddecente = $this->txtres($data->txt_iddocentev);
+            $dataModel->registro_idregistro = $this->txtres($data->txt_idregistrov);
             $res = self::exedocenteAsistencia_Model($dataModel);
             return $res;
         }
