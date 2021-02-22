@@ -171,7 +171,7 @@
         <div class="carousel-inner carousel-videos bg-img-cover">        
           <div class="carousel-item active">
             <video width="100%" height="550px" controls>
-              <source src="movie.mp4" type="video/mp4">
+              <source src="public/img/HIMNO DEL SUTEP.mp4" type="video/mp4">
               <!-- <source src="movie.ogg" type="video/ogg"> -->
               Your browser does not support the video tag.
             </video>
@@ -180,7 +180,7 @@
           <div class="carousel-item">
             <div class="w-100">
               <div class="">
-                <iframe class="" src="https://www.youtube.com/embed/h8F-YMdbCLs" allowfullscreen  width="100%" height="550vh"></iframe>
+                <iframe class="" src="https://www.youtube.com/embed/YodrrqzRnDE" allowfullscreen  width="100%" height="550vh"></iframe>
               </div>
             </div>
           </div>
