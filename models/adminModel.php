@@ -280,7 +280,7 @@
             $res = false;
             $data_res = [];
             $idevento = $this->obtenerEventoActivo();
-            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido FROM decente d INNER JOIN registro r on d.iddecente = r.decente_iddecente AND r.evento_idevento = {$idevento} AND d.dni = '{$data->dni}'";
+            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, r.idregistro FROM decente d INNER JOIN registro r on d.iddecente = r.decente_iddecente AND r.evento_idevento = {$idevento} AND d.dni = '{$data->dni}'";
             $res_q = self::ejecutar_una_consulta($query);
             if($res_q->rowCount()){
                 $res = true;
@@ -397,6 +397,36 @@
             }
             return $res;
         }
+
+
+
+        /**
+         * Modulo asistencia docente
+         */
+        protected function exedocenteAsistencia_Model($data){
+            $res = false;
+            // el docente esta registrado en el evento actual. Esto se valida en el formulario.
+            // datos que llegan aquí 
+            $anio = date("Y");
+            $control_dia=0;
+            $control_asistencia=0;
+            $query = "INSERT INTO control SET 
+                        anio = {$anio},
+                        fecha_registro = current_timestamp(),
+                        control_dia = '{$control_dia}',
+                        control_asistencia = '{$control_asistencia}',
+                        registro_idregistro = '{$data->idregistro}'
+            ";
+            $result_query = self::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+            }
+         
+            return ['eval'=>$res, 'data'=>$data];
+
+        }
+
+
 
         /**
          * --------------------------------------------- 

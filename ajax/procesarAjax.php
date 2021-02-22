@@ -76,6 +76,12 @@
             echo json_encode($res);
         }
 
+        elseif ($data->id === "exe-docenteAsistencia") {
+            # code...
+            $res = $obj->exedocenteAsistencia_Controller($data);
+            echo json_encode($res);
+        }
+
         else {
             echo json_encode("ERROR!!");
         }
