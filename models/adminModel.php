@@ -301,7 +301,7 @@
             $res = false;
             $data_res = [];
             $idevento = $this->obtenerEventoActivo();
-            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado 
+            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado 
             FROM decente d INNER JOIN registro r 
             on d.iddecente = r.decente_iddecente 
             AND r.evento_idevento = {$idevento} 

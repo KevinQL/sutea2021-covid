@@ -63,6 +63,7 @@ function execute_traerDocentesEvento(){
                             <td>${element.dni}</td>
                             <td>${element.nombre}</td>
                             <td>${element.apellido}</td>
+                            <td>${element.celular}</td>
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verVoucher('${element.dni}','${element.ruta_voucher}','${element.num_operacion}');">
@@ -73,7 +74,7 @@ function execute_traerDocentesEvento(){
                                 ${btn_validar}
                             </td>
                             <td>
-                            <button type="button" class="btn btn-outline-danger" onclick="eliminarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">
+                            <button type="button" class="btn btn-outline-danger" onclick="eliminarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}', '${element.nombre} ${element.apellido}');">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                                                             
@@ -120,30 +121,54 @@ function validarRegistro(iddecente, idregistro, estado){
 }
 
 
-function eliminarRegistro(iddecente, idregistro, estado ){
-    console.log(iddecente, idregistro, estado)
-    //return null;
-    fetchKev("POST",{
-        id:"exe-eliminarRegistro",
-        iddecente,
-        idregistro,
-        estado
-    }, 
-    data => {
+function eliminarRegistro(iddecente, idregistro, estado, $nombreEliminar ){
+    console.log(iddecente, idregistro, estado, $nombreEliminar)
 
-        console.log(data);
-        console.log(data.msj)
-        if(data.eval){
-            sweetModalMin(data.msj,'center',1000,'success');
-            setTimeout(() => {
-                execute_traerDocentesEvento();
-            }, 1200);
-        }else{
-            sweetModalMin("Accion invalido!",'center',1500,'warning');
+    Swal.fire({
+        title: 'Está seguro?',
+        //text: `No podrá revertir esto para el docente ${$nombreEliminar}`,
+        html: `No podrá revertir esto para el/la docente </br> <strong>${$nombreEliminar}</strong>`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        //en el caso de que desee borrar
+        if (result.isConfirmed) {
+
+            fetchKev("POST",{
+                id:"exe-eliminarRegistro",
+                iddecente,
+                idregistro,
+                estado
+            }, 
+            data => {
+
+                console.log(data);
+                console.log(data.msj)
+                if(data.eval){
+                    sweetModalMin(data.msj,'center',1000,'success');
+                    setTimeout(() => {
+                        execute_traerDocentesEvento();
+                    }, 1200);
+                }else{
+                    sweetModalMin("Accion invalidado!",'center',1500,'warning');
+                }
+
+            }, 
+            URL_AJAX_PROCESAR );
+        
         }
+        else{
+            sweetModalMin("Sin acciones.",'center',1000,'info');
+        }
+    });
 
-    }, 
-    URL_AJAX_PROCESAR );
+
+
+    
+
 }
 
 
