@@ -14,6 +14,16 @@
         include_once("views/modules/navegacion__.php");        
     ?>
 
+    <?php
+
+        var_dump(date("Y-m-d H:i:s"));
+        echo "<br>";
+        var_dump(date("Y"));
+        // var_dump(date());
+        // var_dump(date());
+
+    ?>
+
     <div class="container my-4">
         <h1>PÁGINA DE INFORMACIÓN</h1>
     </div>

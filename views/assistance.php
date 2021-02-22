@@ -33,7 +33,7 @@
                         required 
                         pattern="^[A-Za-z0-9\\s]+$"
                         maxlength = "30"
-                        disabled>
+                        readonly>
                     </div>
                     <div class="col-12 col-md-9 col-lg-6 mb-3">
                         <label for="lastName">Apellido</label>
@@ -41,8 +41,14 @@
                         required 
                         pattern="^[A-Za-z0-9\\s]+${1,50}" 
                         maxlength = "50"
-                        disabled>
+                        readonly>
                     </div>
+                    <!-- INput default -->
+                    <div class="col-12 col-md-9 col-lg-6 mb-3">
+                        <input type="hidden" id="txt_idregistro" name="txt_idregistro">
+                        <input type="hidden" id="txt_iddocente" name="txt_iddocente">
+                    </div>
+
                     <input type="submit" id="assistanceSave" class="next btn btn-primary-own mx-2" value="Confirmar"/>
                 </form>
             </div>

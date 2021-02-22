@@ -219,6 +219,21 @@
             return $res;
         }
 
+
+        /**
+         * Modulo de asistencia
+         */
+        public function exedocenteAsistencia_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->dni = $this->txtres($data->txt_documentv);
+            $dataModel->idregistro = $this->txtres($data->txt_idregistrov);
+            $dataModel->iddecente = $this->txtres($data->txt_iddocentev);
+            $res = self::exedocenteAsistencia_Model($dataModel);
+            return $res;
+        }
+
+
+
         //------------------------------------------------------------------------------
         /**
          * Función para guardar imagenes en el servidor
