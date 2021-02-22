@@ -114,8 +114,8 @@
     </div>
   </div>
 
-<div class="container">
-  <small>BASE DE CODIFICACION DE VERIFICANDO DE VOUCHER</small> <br>
+<div class="container container-event">
+  <h5>Base de codificación de verificando de voucher</h5>
   <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
   <div id="img_otro">
       <img src="" alt="Image preview" id="preview_new" style="display:none">

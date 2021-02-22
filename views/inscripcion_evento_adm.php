@@ -113,7 +113,7 @@
               type="file"
               multiple="false"
               accept=".jpg, .jpeg, .png"
-              class="mb-3 mt-3 file-import"
+              class="form-control"
             >
             <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" width="150" height="150px" />
 
@@ -136,8 +136,8 @@
   </div>
 
 
-<div class="container">
-  <small>BASE DE CODIFICACION DE VERIFICANDO DE VOUCHER</small> <br>
+<div class="container container-event">
+  <h5>Base de codificación de verificando de voucher</h5>
   <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
   <div id="img_otro">
       <img src="" alt="Image preview" id="preview_new" style="display:none">
