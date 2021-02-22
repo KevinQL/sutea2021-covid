@@ -23,9 +23,7 @@
         <div class="container-event container my-3 container-login">
             <form action="" method="POST" class="col-12 col-md-6 col-lg-4 card-own p-5 m-auto" id="formInscription">
                 <div class="d-flex flex-column align-items-center">
-
-                    <h3 class="text-center text-muted lead">Registrarse</h3>
-                    <hr>
+                    <h3 class="text-center mb-3">Registrarse</h3>
                     <input type="text" id="txt_user" class="form-control my-2" placeholder="Ingrese usuario" autocomplete="off" required pattern="^[A-Za-z\\s]+${1,30}" maxlength="30">
                     <input type="password" id="txt_password" class="form-control my-2" placeholder="Ingrese contraseña" autocomplete="off" required pattern="^[A-Za-z\\s]+${1,30}" maxlength="30">
                     <br>
