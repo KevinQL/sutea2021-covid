@@ -7,7 +7,7 @@ export const slider = {
             "buttons": [
                 {
                     "name": "Ir al evento",
-                    "link": ""
+                    "link": "?pg=transmision"
                 }
             ]
         },

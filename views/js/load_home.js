@@ -11,7 +11,7 @@ function loadSliders() {
         let button = '';
         item.buttons.forEach(but => {
             button += `<a 
-            class="btn btn-primary-own font-weight-500 aos-init aos-animate" href="#${but.link}" data-aos="fade-up" data-aos-delay="100">${but.name}</a>
+            class="btn btn-primary-own font-weight-500 aos-init aos-animate" href="${but.link}" data-aos="fade-up" data-aos-delay="100">${but.name}</a>
             `;
         })
         slider_HTML += `
