@@ -53,7 +53,7 @@
           <div class="col-6 col-md-6 col-lg-4 mb-3">
             <label for="email">Correo electronico</label>
             <input type="email" class="form-control" id="email" name="inscription_email" placeholder="email" autocomplete="off"
-              required 
+       
               pattern="/^\s@\"
               maxLength="70">
           </div>
