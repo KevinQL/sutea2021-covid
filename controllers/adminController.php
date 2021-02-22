@@ -37,10 +37,10 @@
                 //Validando niveles de seguridad. [1]:NIVEL ADMINISTRADOR
                 if($_SESSION['data']['tipo_usuario']==1){
                     $arrayPaginas = ["salir_sistema","inicio","page_sutep","info",    
-                    "inscripcion_evento", "assistance", "certification", "speakers", "inscripcion_evento_adm", "validar_adm"];
+                    "inscripcion_evento", "assistance", "certification", "speakers", "inscripcion_evento_adm", "validar_adm", "transmision"];
                 }else{
                     //Nivel invitado pro defecto
-                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento"];
+                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento",  "transmision"];
                 }              
                 
                 /**
@@ -59,7 +59,7 @@
 
                 $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));         
-                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers"];
+                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers", "transmision"];
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
                 }else {
