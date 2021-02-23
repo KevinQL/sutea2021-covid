@@ -427,7 +427,8 @@
                 $sis_msj = $res_ctrl["sis_msj"];
                 if(!$res_ctrl["eval"]){
                     $query = "INSERT INTO control SET 
-                                anio = {$anio},
+                                idcontrol = NULL,
+                                anio = '{$anio}',
                                 fecha_registro = current_timestamp(),
                                 control_dia = '{$control_dia}',
                                 control_asistencia = '{$control_asistencia}',
