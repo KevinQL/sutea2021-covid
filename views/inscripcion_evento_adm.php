@@ -46,7 +46,8 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <label for="specialty">Nivel</label>
-            <select class="form-select" aria-label="Default select example" id="specialty" name="inscription_specialty">
+
+            <select class="form-select" aria-label="Default select example" id="specialty_select" name="inscription_specialty" onclick="cambioSeleccionNivel(this);">
               <option selected>Inicial</option>
               <option value="Primaria">Primaria</option>
               <option value="Secundaria">Secundaria</option>
@@ -55,10 +56,9 @@
               <option value="Padre de familia">Padre de familia</option>
               <option value="Otro">Otro</option>
             </select>
-            <!-- <input type="text" class="form-control" id="specialty" name="inscription_specialty" 
-             
-            placeholder="Especialidad" 
-            autocomplete="off"> -->
+
+            <input type="hidden" class="form-control mt-1" id="specialty" name="specialty" required placeholder="Especificar nivel" value="inicial" autocomplete="off">
+
           </div>
 
           <!-- Arreglar -->
@@ -89,17 +89,16 @@
           <div class="col-12 col-md-12 col-lg-4 mb-3">
             <label for="voucher">Voucher</label>
             <input id="imageImport" type="file" multiple="false" accept=".jpg, .jpeg, .png" class="form-control">
-          </div>
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" style="width: 100%; height: 200px;" />
-          </div>
 
+            <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" alt="Tu imagen" style="width: 100%; height: 200px;" />
+
+          </div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="form-check form-switch" style="font-size: 18px;">
               <input class="form-check-input" type="checkbox" id="check_estado" checked>
               <label class="form-check-label" for="check_estado">Validar Registro</label>
             </div>
-            <div>
+            <div class="d-flex justify-content-between align-items-center">
               <input type="button" id="inscription_clear" class="next btn btn-secondary-own mx-2" value="Cancelar" />
               <input type="submit" id="inscriptionSave" class="next btn btn-primary-own mx-2" value="Completar" onclick="execute_inscripcion(this);" />
             </div>

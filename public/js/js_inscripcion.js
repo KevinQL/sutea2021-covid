@@ -34,6 +34,8 @@ function dataHTML_inscripcion(){
 
     let txt_operation =  document.querySelector("#operation");
 
+    let txt_specialty_select =  document.querySelector("#specialty_select");
+
     let estado = 0; //false
 
     if(check_estado){
@@ -50,7 +52,8 @@ function dataHTML_inscripcion(){
             txt_specialty,
             txt_ugelName,
             img_voucher,
-            txt_operation
+            txt_operation,
+            txt_specialty_select
         },
         values : {
             txt_documentv : txt_document.value ,
@@ -63,7 +66,8 @@ function dataHTML_inscripcion(){
             img_voucherv  : img_voucher.files,
             txt_operationv : txt_operation.value,
             estadov : estado,
-            txt_base64v : txt_base64.value
+            txt_base64v : txt_base64.value,
+            txt_specialty_selectv : txt_specialty_select.value
         }
     }
 
@@ -116,7 +120,8 @@ function execute_traerinfo(elem){
         txt_email,
         txt_specialty,
         txt_ugelName,
-        txt_operation } = data.elements;
+        txt_operation,
+        txt_specialty_select } = data.elements;
     
     //clear form
     txt_name.value = "";
@@ -124,6 +129,8 @@ function execute_traerinfo(elem){
     txt_phone.value = "";
     txt_email.value = "";
     txt_operation.value = "";
+    txt_specialty.value = txt_specialty_select.value;
+    txt_specialty.type = "hidden";
     // txt_specialty.value = "";
     // txt_ugelName.value = "";
 
@@ -146,8 +153,9 @@ function execute_traerinfo(elem){
                 txt_lastName.value = dataRes.apellido;
                 txt_phone.value = dataRes.celular;
                 txt_email.value = dataRes.correo;
-                agregarOption(txt_specialty,dataRes.especialidad,dataRes.especialidad,true);
-                agregarOption(txt_ugelName,dataRes.ugel,dataRes.ugel,true);
+                txt_specialty.value = dataRes.especialidad;
+                agregarOption(txt_specialty_select, dataRes.especialidad, dataRes.especialidad,true);
+                agregarOption(txt_ugelName, dataRes.ugel, dataRes.ugel,true);
 
                 sweetModalMin("Docente encontrado!!","bottom-start",1500,"success");
             }else{
@@ -265,6 +273,24 @@ function execute_inscripcion(elem){
 }
 
 
+//funcion para habilitar text cuando el valor sea Otro, y pueda modificarlo.
+function cambioSeleccionNivel($this){
+    let data = dataHTML_inscripcion();
+    let {txt_specialty} = data.elements;
+
+    //console.log("slect: ", $this.value);
+
+    txt_specialty.value = $this.value;
+    txt_specialty.type = "hidden";
+
+    if($this.value === "Otro"){
+        txt_specialty.value = "";
+        txt_specialty.type = "text";
+    }
+    //console.log("txt: ", txt_specialty.value);
+
+}
+
 
 
 /**
@@ -282,14 +308,14 @@ function readImage (input) {
       reader.onload = function (e) {
           $('#preview_new').attr('src', reader.result); // Renderizamos la imagen con su tamanio normla
           k = reader.result;
-          console.log("ok->", k);
+          //console.log("ok->", k);
           setTimeout(() => {
               let img = document.querySelector("#preview_new"); // capturamos la imagen renderiada en su tamanio normal
               console.log("img principal: ",img.width, img.height);
               if(img.height >= img.width){
                 if(img.width > 400 || img.height > 650);
                   k = _resize(img, 400, 650); // me devuelve el base64 de la imagen renderizada, reescalado.
-                console.log("ok2->",k);
+                //console.log("ok2->",k);
                 document.querySelector("#base64").value = k; // imprimimos el base 64 de la imgen redimensionada
                 $('#blah').attr('src', k); // imprimimos la imagen en la imagen de previsualización
                 
