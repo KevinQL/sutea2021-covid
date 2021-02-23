@@ -63,9 +63,9 @@
             <select class="form-select" aria-label="Default select example" id="ugelName" name="inscription_ugelName">
               <option selected>Abancay</option>
               <option value="Andahuaylas">Andahuaylas</option>
-              <option value="Antabanba">Antabanba</option>
+              <option value="Antabanba">Antabamba</option>
               <option value="Aymaraes">Aymaraes</option>
-              <option value="Cotabanba">Cotabanba</option>
+              <option value="Cotabanba">Cotabambas</option>
               <option value="Chincheros">Chincheros</option>
               <option value="Grau">Grau</option>
               <option value="Huancarama">Huancarama</option>
