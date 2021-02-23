@@ -19,6 +19,8 @@ function load_speakers() {
                             <h5>${spk.name}</h5>
                             <span small class="font-color-vprimary font-weight-bold">${spk.proffesion}</span>
                             <p class="mt-2">${spk.description}</p>
+                            <span small class="font-color-vprimary font-weight-bold">${spk.date}</span>
+                            
                         </div>
                     </div>
              `
