@@ -98,7 +98,7 @@
               <input class="form-check-input" type="checkbox" id="check_estado" checked>
               <label class="form-check-label" for="check_estado">Validar Registro</label>
             </div>
-            <div>
+            <div class="d-flex justify-content-between align-items-center">
               <input type="button" id="inscription_clear" class="next btn btn-secondary-own mx-2" value="Cancelar" />
               <input type="submit" id="inscriptionSave" class="next btn btn-primary-own mx-2" value="Completar" onclick="execute_inscripcion(this);" />
             </div>
