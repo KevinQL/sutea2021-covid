@@ -476,6 +476,7 @@
             } else {
                 # code...
                 $sis_msj = "La asistencia aun no está habilitada";
+                $res = true;
             }
 
             if($sis_msj === ""){
