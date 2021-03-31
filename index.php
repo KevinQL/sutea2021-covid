@@ -3,7 +3,7 @@
     session_start();
     
     // Desactivar toda las notificaciónes del PHP
-    error_reporting(0);
+    // error_reporting(0);
     
     // Configura la fecha de america lima 
     date_default_timezone_set("America/Lima");
