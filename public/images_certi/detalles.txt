@@ -1,0 +1,3 @@
+cert1. PONENTE
+cert2. ORGANIZADOR
+cert3. ASISTENTE
