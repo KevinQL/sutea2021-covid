@@ -7,6 +7,7 @@ require_once("./public/lib/phpqrcode/qrlib.php");
 //VARIABLES OBTENIDAS
 $dni = $_GET['code'];
 $anio = $_GET['anio'];
+$control_asistente = isset($_GET['ctrl_asistente'])? false:true; //Si existe, permitimos buscar solo como asistente u organizador.
 
 //filtrar y limpiar los datos para ataques de inyeccion sql
 
@@ -28,7 +29,7 @@ $eval_certi = true; //Controla si el registro existe en la base de datos.
 $res_ponente = $objPDF->obtenerPonente_Controller($dni,$anio); // Se filtran los datos en la tabla ponente. 
 
 //Es ponente? En el caso de que exista 
-if($res_ponente['eval']){
+if($res_ponente['eval'] && $control_asistente){
     $ponente = $res_ponente['data'];
 
     $nombre = txt_certi($ponente['nombre']) . ' ' . txt_certi($ponente['apellido']);

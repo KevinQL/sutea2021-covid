@@ -3,6 +3,7 @@ console.log("CARGADO => main.js");
 // VARIABLES GLOBALES
 const URL_AJAX_PROCESAR = "./ajax/procesarAjax.php";
 const URL_prueba = "./ajax/pruebaAjax.php"
+const URL_AJAX_PDF = "./ajax/procesarPDF.php";
 
 
 // //****************************************************************************************** */

@@ -39,6 +39,7 @@
                 ON tp.idtipo_persona = d.tipo_persona_idtipo_persona
                 WHERE r.anio = {$data->anio}
                 AND d.dni = '{$data->dni}'
+                AND r.estado = 1
             ";
             $result = mainModel::ejecutar_una_consulta($query);
             
