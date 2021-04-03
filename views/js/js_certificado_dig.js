@@ -4,7 +4,7 @@ function verificarAsistente(event){
     event.preventDefault()
     let anio = document.querySelector("#year").value;
     let dni = document.querySelector("#document").value;
-    console.log({anio, dni})
+    // console.log({anio, dni})
 
     if(anio != "Seleccionar"  && dni.length != 0){
             

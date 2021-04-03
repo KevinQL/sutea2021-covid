@@ -4,6 +4,7 @@ console.log("CARGADO => main.js");
 const URL_AJAX_PROCESAR = "./ajax/procesarAjax.php";
 const URL_prueba = "./ajax/pruebaAjax.php"
 const URL_AJAX_PDF = "./ajax/procesarPDF.php";
+const URL_AJAX_EVENTO = "./ajax/procesarEvento.php";
 
 
 // //****************************************************************************************** */

@@ -61,7 +61,11 @@
          *  Función que se utiliza en la automatizacion de PDF's 
          */
         protected function obtenerPonente_Model($data){
-            $query = "SELECT * FROM ponente p WHERE p.dni='{$data->dni}' AND p.anio={$data->anio} AND p.estado=1";
+            $query = "SELECT * FROM ponente p 
+                        WHERE p.dni='{$data->dni}' 
+                        AND p.anio={$data->anio} 
+                        AND p.estado=1
+                    ";
             $result = mainModel::ejecutar_una_consulta($query);
             
             $eval = false;

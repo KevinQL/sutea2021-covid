@@ -12,6 +12,7 @@
     // clases con los metodos de conexion al servidor
     require_once("controllers/adminController.php");
     require_once("controllers/webSutepController.php");
+    require_once("controllers/eventoController.php");
     
     $pag = new adminController();
 
