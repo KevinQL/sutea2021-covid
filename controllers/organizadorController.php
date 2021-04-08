@@ -126,6 +126,22 @@
          * ****************************************
          * METODOS DE ACCESO RAPIDO.
          */
+        //
+        public function eliminarRegistro_Controller($data){
+            $msj_sys = "No se elmino el registro {$data->idregistro}";
+            $res = false;
+            $query = "DELETE FROM registro 
+                    WHERE idregistro='{$data->idregistro}'
+                    AND evento_idevento={$data->id_eventoActivo}
+                ";
+                // "DELETE FROM `registro` WHERE `registro`.`idregistro` = 712"
+            $result_query = mainModel::ejecutar_una_consulta($query);
+            if($result_query->rowCount() >= 1){
+                $res = true;
+                $msj_sys = "Se elmino el registro {$data->idregistro}";
+            }
+            return ["eval"=>$res,"msj"=>$msj_sys];
+        }
 
         //
         public function EsDniDocenteDuplicado_Controller($dni, $id_decente){

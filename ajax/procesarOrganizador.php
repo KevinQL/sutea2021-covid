@@ -153,6 +153,25 @@
         }
 
 
+        elseif ($data->id === "eliminar-registro") {
+            # code...
+            $msj_sys = [];
+
+            $evento_arr = $objevento->eventoActivo_Controller();
+            $data->id_eventoActivo = $evento_arr['data'][0]['idevento'];
+            $msj_sys[] = $evento_arr["msj"];
+
+            $res = $objOrg->eliminarRegistro_Controller($data);
+            $msj_sys[] = $res["msj"];
+            $data->operacion = $res["eval"];
+
+            $data->informe_sys = $msj_sys;
+
+            echo json_encode($data);
+
+        }
+
+
         else {
             echo json_encode("ERROR 2!!");
         }

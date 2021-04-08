@@ -107,8 +107,8 @@ function eval_agregarOrganizadorNuevo(){
             if(key == "correo_cv"){ 
                 let exp = new RegExp('@(gmail|hotmail).com', 'g');
                 let rep = exp.test(element);
-                if(!rep){
-                    alert("Corregi correo");
+                if(!rep){                    
+                    sweetModal("Corregi correo", "center","warning",1300);
                     res = false;
                 }
             }
@@ -143,8 +143,15 @@ function agregarOrganizadorNuevo(){
         fetchKev('POST',
             data_env,
             res => {
-                console.log(res);
-                alert(res.accion);
+                // console.log(res);
+                if(res.operacion){
+                    sweetModal(res.accion, "center","success",1500);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                }else{
+                    sweetModal(res.accion, "center","warning",1300);
+                }
             },
             URL_AJAX_ORGANIZADOR
         );
@@ -179,10 +186,9 @@ function obtenerDecente(){
                 dni_cv
             },
             res => {
-                console.log(res);
+                // console.log(res);
                 if(res.eval){
                     sweetModalMin("Docente encontrado","bottom-end",1500,"success")
-                    // sweetModal("Docente encontrado.","center","success",1500);
 
                     decente = res.data;
 
@@ -194,13 +200,13 @@ function obtenerDecente(){
                     ugel_c.value = decente.ugel
                     estado_c.checked = (decente.estado=="1")? true : false;
                 }
-                // alert(res.accion);
+                
             },
             URL_AJAX_ORGANIZADOR
         );
 
     }else{
-        alert("Codigo con pocos valores")
+        sweetModalMin("Codigo con pocos valores","top-end",1500,"error")
     }
 
 }
@@ -226,7 +232,7 @@ function obtenerTodosLosOrganizadores(){
         // console.log(res);
         if(res.operacion){
             sweetModalMin("Lista de docentes cargado","bottom-end",1500,"success")
-            // sweetModal("Docente encontrado.","center","success",1500);
+            
             let data_html = ``;
             organizador = res.data_res;
             let cont = 0;
@@ -273,7 +279,7 @@ window.onload = function (){
 
 
 /**
- * 
+ * Carga los datos en el modal, para actualizar los datos del organizador
  */
 function cargarParaActualizar(idregistro){
     
@@ -325,7 +331,7 @@ function cargarParaActualizar(idregistro){
 
 }
 
-//
+// Actualiza los datos del organizador,cuando se presiona el boton de actualizar en el modal. 
 function actualizarOrganizador(){
 
     let data = data_organizador();
@@ -373,6 +379,33 @@ function actualizarOrganizador(){
                 }, 1500);
             }else{
                 sweetModal("No actualizado. El dni del usuario ya existe", "center", "error", 1500);
+            }
+        },
+        URL_AJAX_ORGANIZADOR
+    );
+
+}
+
+
+/**
+ * Eliminar el organizador.
+ * Elimina en la tabla registro del evento actual activo. Siempre y cuando no exista dependencia en otras tablas dependientes de registro, por ejemplo en control.
+ */
+function eliminarRegistroOrganizador(idregistro){
+
+    fetchKev("POST",{
+            id: "eliminar-registro",
+            idregistro
+        },
+        res => {
+            console.log(res)
+            if(res.operacion){
+                sweetModal("Registro eliminado!","center","success",1300);
+                setTimeout(() => {
+                    obtenerTodosLosOrganizadores();
+                }, 1300);
+            }else{
+                sweetModal("No se eliminó el Registro!","center","warning",1300);
             }
         },
         URL_AJAX_ORGANIZADOR
