@@ -13,6 +13,7 @@
     require_once("controllers/adminController.php");
     require_once("controllers/webSutepController.php");
     require_once("controllers/eventoController.php");
+    require_once("controllers/organizadorController.php");
     
     $pag = new adminController();
 

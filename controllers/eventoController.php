@@ -10,6 +10,14 @@
 
     class eventoController extends eventoModel{
 
+        /**
+         * Devuelve los datos del evento actual activo.
+         * retorna: ['res'=>$eval, 'data'=>[0 : arr_data]]
+         */
+        public function eventoActivo_Controller(){
+            return self::eventoActivo_Model();
+        }
+
 
         /**
          * Actualizar Evento
