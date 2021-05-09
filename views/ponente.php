@@ -131,14 +131,10 @@
                         <h5 class="lead">ACTUALIZAR DATOS PONENTE</h5>
                         <article class="card p-3">
                             <div class="input-group">
-                                <input type="hidden" class="form-control" 
-                                    id="txt_idregistro_upd" 
-                                    placeholder="Documento de identidad..." 
-                                >
 
                                 <input type="hidden" class="form-control" 
-                                    id="txt_iddecente_upd" 
-                                    placeholder="Documento de identidad..." 
+                                    id="txt_idponente_upd" 
+                                    placeholder="Id ponente..." 
                                 >
                             </div>
 
@@ -161,48 +157,63 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Número Celular</span>
-                                <input type="number" aria-label="Numero celular" class="form-control" 
-                                    id="txt_celular_upd" placeholder="Numero de Celular..."
-                                >
-                                <input type="email" class="form-control" 
-                                    id="txt_correo_upd" placeholder="Correo electrónico"
-                                >
-                                <span class="input-group-text" id="basic-addon2">@example.com</span>
+                                <label for="txt_obs_upd" class="input-group-text">Observación</label>
+                                <textarea class="form-control" 
+                                    id="txt_obs_upd" rows="3"
+                                    placeholder="Observacion" ></textarea>
                             </div>
 
                             <div class="input-group ">
-                                <span class="input-group-text">Especialidad</span>
-                                <input type="text" class="form-control" 
-                                    id="txt_especialidad_upd"  placeholder="Especialidad..."
-                                >
-                                <label class="input-group-text" for="txt_ugel_upd">Ugel</label>
-                                <select class="form-select" id="txt_ugel_upd">
-                                    <option selected>Cambiar...</option>
-                                    <option >Abancay</option>
-                                    <option >Andahuaylas</option>
-                                    <option >grau</option>
-                                </select>
-                            </div>
-                        </article>
-
-                        <h4 class="lead mt-3">DATOS REGISTRO</h4>
-                        <article class="card p-3">
-                            <div class="input-group mb-3">
-                                <label class="input-group-text" for="txt_tipoPersona">Tipo Persona</label>
-                                <select class="form-select" id="txt_tipoPersona_upd">
-                                    <option selected>Cambiar...</option>
-                                    <option value="1">Asistente</option>
-                                    <option value="2">Organizador</option>
-                                    <option value="3">Ponente</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
                                 <label class="input-group-text" for="check_estado">Estado</label>
                                 <div class="input-group-text">
                                     <input class="form-check-input mt-0" type="checkbox" value="" 
                                         id="check_estado_upd"
                                         aria-label="Checkbox for following text input">
+                                </div>
+                            </div>
+                        </article>
+
+                        <h4 class="lead mt-3">ARCHIVOS</h4>
+                        <article class="card p-3">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Foto</span>
+                                <input type="file" class="form-control" 
+                                    id="file_foto_upd"  
+                                    accept="image/*"
+                                >
+                                <input type="button" class="form-control btn btn-primary" 
+                                    id="btn_subir_foto"
+                                    value="SUBIR"
+                                    onclick="subirFotoPonente();"
+                                >
+                            </div>
+                            <div class="input-group mb-3">
+                                <img src="./public/ponentes/ejemplo.jpg" alt="Foto Ponente" 
+                                    style="width:200px"
+                                    id="foto_ponente_upd"
+                                >
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Documentos</span>
+                                <input type="file" class="form-control" 
+                                    id="file_doc_upd"
+                                >
+                                <input type="button" class="form-control btn btn-primary" 
+                                    id="btn_subir_doc"
+                                    value="SUBIR"
+                                    onclick="subirDocumentosPonente();"
+                                >
+                            </div>
+                            <div class="input-group mb-3">
+                                <div>
+                                    <h5 class="d-block">Lista Documentos:</h5>
+                                    <ul class="list_doc text-success">
+                                        Carpeta vacia!
+                                        <!-- <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, iure.</li>
+                                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, iure.</li>
+                                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, iure.</li> -->
+                                    </ul>
                                 </div>
                             </div>
                         </article>

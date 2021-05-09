@@ -10,6 +10,85 @@
 
     class ponenteController extends ponenteModel{
 
+        
+        /**
+         * 
+         */
+        public function subirDocPonente_Controller($data){
+            //creado carpeta en el caso de que no exista.
+            $estructura = "../public/curso_files/evento-{$data->id_eventoActivo}/{$data->txt_dni_updv}/";
+            $res_carpeta = mainModel::crear_carpeta($estructura);
+            //guardar foto ponetne
+            $res = mainModel::guardar_archvo($data->documento, $estructura, $data->documento["name"]);
+            return $res;
+        }
+
+
+        /**
+         * 
+         */
+        public function subirFotoPonente_Controller($data){
+            //creado carpeta en el caso de que no exista.
+            $estructura = "../public/ponentes/{$data->txt_dni_updv}/";
+            $res_carpeta = mainModel::crear_carpeta($estructura);
+            //guardar foto ponetne
+            $res = mainModel::guardar_imagen($data->img_ponente, $estructura, "ponente.jpg");
+            return $res;
+        }
+
+
+        /**
+         * 
+         */
+        public function actualizarPonente_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->idponente = $data->txt_idponente_updv;
+            $dataModel->dni = $data->txt_dni_updv;
+            $dataModel->nombre = $data->txt_nombre_updv;
+            $dataModel->apellido = $data->txt_apellido_updv;
+            $dataModel->observacion = $data->txt_obs_updv;
+            $dataModel->evento_idevento = $data->id_eventoActivo;
+
+            $res = self::actualizarPonente_Model($dataModel);
+
+            return $res;
+        }
+
+
+        /**
+         * 
+         */
+        public function obtener_estructura_directorios($ruta){
+            $res = mainModel::obtener_estructura_directorios($ruta);
+            return $res;
+        }
+
+        /**
+         * 
+         */
+        public function obtenerPonenteId_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->idponente = $data->idponente;
+            $dataModel->evento_idevento = $data->id_eventoActivo;
+
+            $res = self::obtenerPonenteId_Model($dataModel);
+
+            return $res;
+        }
+
+        /**
+         * 
+         */
+        public function eliminarPonente_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->idponente = $data->idponente;
+            $dataModel->evento_idevento = $data->id_eventoActivo;
+
+            $res = self::eliminarPonente_Model($dataModel);
+
+            return $res;
+        }
+
 
         /**
          * 
@@ -22,18 +101,30 @@
             $dataModel->observacion = $this->txtres($data->txt_obs_crearv);
             $dataModel->estado = $data->check_estado_crearv ? 1 : 0;
 
+            $dataModel->anio = date("Y");
+
+            $dataModel->ruta_foto = "/public/ponentes/{$dataModel->dni}/";
+            $dataModel->ruta_archivos = "/public/curso_files/evento-{$data->id_eventoActivo}/{$dataModel->dni}/";
+
+            $dataModel->evento_idevento = $data->id_eventoActivo;
+
+
             $res = self::crearPonente_Model($dataModel);
 
-// Estructura de la carpeta deseada
-$estructura = '../public/nivel1/nivel2/nivel3/';
-
-// Para crear una estructura anidada se debe especificar
-// el parámetro $recursive en mkdir().
-
-if(!mkdir($estructura, 0777, true)) {
-    die('Fallo al crear las carpetas...');
-}
-
+            try {
+                //code...
+                $estructura = "../public/ponentes/{$dataModel->dni}/";
+                $res_carpeta = mainModel::crear_carpeta($estructura);
+                
+                $estructura2 = "../public/curso_files/evento-{$data->id_eventoActivo}/{$dataModel->dni}/";
+                $res_carpeta2 = mainModel::crear_carpeta($estructura2);
+                
+            } catch (Exception $e) {
+                //throw $th;
+                $msj2 = 'Excepción capturada: ' .  $e->getMessage(). "\n";
+            }
+            
+                
             return $res;
         }
 
@@ -62,7 +153,7 @@ if(!mkdir($estructura, 0777, true)) {
             AND p.nombre LIKE '%{$nombre}%'
             AND p.apellido LIKE '%{$apellido}%'
             AND p.evento_idevento = '{$idevento}'
-            ORDER BY p.estado DESC
+            ORDER BY p.estado  DESC, p.idponente DESC
             ";
             $result = mainModel::ejecutar_una_consulta($query);
             

@@ -66,8 +66,90 @@
             # code...
 
             $res = $objPonente->crearPonente_Controller($data);
-            $data->data_res = $res;
+            $data->data_res = $res["data"];
+            $msj_sys[] = $res["msj"];
 
+            $data->informe_sys = $msj_sys;
+            $data->operacion = $res["eval"];
+
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "eliminar-ponente") {
+            # code...
+            $res = $objPonente->eliminarPonente_Controller($data);
+            $msj_sys[] = $res["msj"];
+
+            $data->informe_sys = $msj_sys;
+            $data->operacion = $res["eval"];
+
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "obtener-ponente-upd") {
+            # code... 
+            // Obteniendo ponene por idponente
+            $res = $objPonente->obtenerPonenteId_Controller($data);
+            $data->data_res = $res["data"][0];
+            $msj_sys[] = $res["msj"];
+
+            $data->operacion = $res["eval"];
+            // Obteniendo lista de documentos del ponente
+            $res_doc = $objPonente->obtener_estructura_directorios(".." . $data->data_res["ruta_archivos"]);
+            $data->data_res_doc = $res_doc["data"];
+            $msj_sys[] = $res_doc["msj"];
+
+            $data->informe_sys = $msj_sys;
+
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "upd-ponente") {
+            # code...
+
+            // actualizar ponente
+            $res = $objPonente->actualizarPonente_Controller($data);
+            $msj_sys[] = $res["msj"];
+            
+            $data->operacion = $res["eval"];
+            $data->informe_sys = $msj_sys;
+
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "subir_foto_ponente") {
+            # code...
+            //recibiendo imagen
+            $data->img_ponente = $_FILES["file_foto_updv"];
+            //guardando foto postuante
+            $res = $objPonente->subirFotoPonente_Controller($data);
+            $msj_sys[] = $res["msj"];
+            
+            $data->operacion = $res["eval"];
+            $data->informe_sys = $msj_sys;
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "subir_doc_ponente") {
+            # code...
+            //recibiendo imagen
+            $data->documento = $_FILES["file_doc_updv"];
+            // $data->nombreDoc = $data->documento["name"];
+            //guardar archivo
+            $res = $objPonente->subirDocPonente_Controller($data);
+            $msj_sys[] = $res["msj"];
+            
+            // Obteniendo lista de documentos del ponente
+            $res_doc = $objPonente->obtener_estructura_directorios("../public/curso_files/evento-{$data->id_eventoActivo}/{$data->txt_dni_updv}/");
+            $data->data_res_doc = $res_doc["data"];
+            $msj_sys[] = $res_doc["msj"];
+            
+            $data->operacion = $res["eval"];
             $data->informe_sys = $msj_sys;
 
             echo json_encode($data);
