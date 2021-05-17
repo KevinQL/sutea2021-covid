@@ -43,22 +43,52 @@
             $data->data_temas = $res_tc["data"];
             $msj_sys[] = $res_tc["msj"];
 
-            // data x defecto
-            // $res_dcxdefecto = $objCerti->dataCertificadoXDefecto_Controllers($data);
-            // $data->data_certificado_defecto = $res_dcxdefecto["data"];
-
             $data->operacion = $res_dc["eval"];
             $data->informe_sys = $msj_sys;
 
             echo json_encode($data);
         }
 
+
+        elseif ($data->id === "editar-tema") {
+            # code...
+            // Actualizar tema por id
+            $res = $objCerti->editarTema_Controller($data);
+            $msj_sys[] = $res["msj"];
+
+            $data->operacion = $res["eval"];
+            $data->informe_sys = $msj_sys;
+
+            echo json_encode($data);
+        }
+
+
+        elseif ($data->id === "guardar-tema") {
+            # code...
+            // Obteniendo ID del certificado actual
+            $res_certi = $objCerti->getCertificado_Controller($data);
+            $data->idcertificado = $res_certi["data"]["idcertificado"]; // id del certificado
+            $msj_sys[] = $res_certi["msj"];
+            
+            // guardando tema
+            $res = $objCerti->guardarTema_Controller($data);
+            $msj_sys[] = $res["msj"];
+
+            $data->informe_sys = $msj_sys;
+            $data->operacion = $res["eval"];;
+
+            echo json_encode($data);
+        }
+
+
         elseif ($data->id === "eliminar-temas") {
             # code...
+            
             // eliminando temas seleccionados
             $res = $objCerti->eliminarTemas_Controller($data);
             $msj_sys[] = $res["msj"];
 
+            $data->operacion = $res["eval"];
             $data->informe_sys = $msj_sys;
 
             echo json_encode($data);

@@ -46,9 +46,86 @@ function data_certificado(){
 
 }
 
+
 /**
  * 
- * @returns 
+ */
+function editarTema(){
+    let data = data_certificado();
+    let {txt_temav} = data.values;
+    let {txt_tema} = data.elements;
+
+    let temas_arr = obtenerTemasSeleccionados();
+
+    // volviendo a colocar el tema que se elimina missterrriosaamente...
+    txt_tema.value = txt_temav;
+
+    if(temas_arr.length == 1 && temas_arr[0].id != "vacio" && txt_temav.length != 0){
+
+        let id_temav = temas_arr[0].id;
+
+        fetchKev("POST",{
+                id : "editar-tema",
+                txt_temav,
+                id_temav
+            },
+            res => {
+                console.log(res);
+
+                if(res.operacion){
+                    sweetModal("Editado!","center","success",1200);
+                    //actualizar la lista de temas.
+
+                    setTimeout(() => {
+                        actualizarListaTemas();
+                    }, 1200);
+                }
+            },
+            URL_AJAX_CERTIFICADO
+        );
+    }else{
+        sweetModal("No se selecciono tema!","center","warning",1200);
+    }
+
+}
+
+
+/**
+ * 
+ */
+function guardarTema(){
+    let data = data_certificado();
+    let { txt_temav,
+        s_tp_personav,
+        lista_x_defectov } = data.values;
+
+    s_tp_personav = lista_x_defectov? 1 : s_tp_personav;
+        
+    if(txt_temav != ""){
+        fetchKev("POST",{
+                id : "guardar-tema",
+                s_tp_personav,
+                txt_temav
+            },
+            res => {
+                console.log(res);
+                //actualizar la lista de temas.
+                sweetModal("guardando!","center","success",1200);
+                setTimeout(() => {
+                    actualizarListaTemas();
+                }, 1200);
+    
+            },
+            URL_AJAX_CERTIFICADO
+        );
+    }else{
+        sweetModal("Tiene que ingresar contenido!","center","warning",1200);
+    }
+}
+
+
+/**
+ * 
  */
 function eliminarTema(){
     let data = data_certificado();
@@ -136,7 +213,8 @@ function actualizarListaTemas(){
                 temas.forEach(elem_tema => {
                     temas_html += `
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" aria-label="..." contenido="${elem_tema.tema}"
+                            <input class="form-check-input me-1" type="checkbox" aria-label="..." 
+                                contenido="${elem_tema.tema}"
                                 value="${elem_tema.idtemario_certificado}"
                                 id="lc_tema"
                                 onchange="obtenerTemasSeleccionados()"
@@ -152,6 +230,7 @@ function actualizarListaTemas(){
                 temas_html += `
                         <li class="list-group-item">
                             <input class="form-check-input me-1" type="checkbox" aria-label="..."
+                                contenido=""
                                 value="vacio"
                                 id="lc_tema"
                             >

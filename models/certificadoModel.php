@@ -9,6 +9,46 @@
 
     class certificadoModel extends mainModel{     
 
+        protected function editarTema_Model($data){
+            $msj_sys = "No se actaulizó tema";
+            $eval = false;
+
+            $query = "UPDATE temario_certificado tc SET 
+                            tc.tema = '{$data->tema}'
+                            WHERE tc.idtemario_certificado = '{$data->idtemario_certificado}'
+                ";
+            $result = mainModel::ejecutar_una_consulta($query);
+            if($result->rowCount() >= 1){
+                $eval = true; 
+                $msj_sys = "Se actualizó tema!";
+            }
+            
+            return ["eval"=>$eval, "msj"=>$msj_sys];
+        }
+
+
+        /**
+         * 
+         */
+        public function guardarTema_Model($data){
+            $msj_sys = "No se guardo tema";
+            $eval = false;
+
+            $query = "INSERT INTO temario_certificado SET 
+                            tema = '{$data->tema}',
+                            estado = '1',
+                            certificado_idcertificado = '{$data->certificado_idcertificado}'
+                ";
+            $result = mainModel::ejecutar_una_consulta($query);
+            if($result->rowCount() >= 1){
+                $eval = true; 
+                $msj_sys = "Se guardo tema!";
+            }
+            
+            return ["eval"=>$eval, "msj"=>$msj_sys];
+        }
+
+
         /**
          * 
          */

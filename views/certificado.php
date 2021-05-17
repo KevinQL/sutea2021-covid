@@ -178,10 +178,14 @@
                             >ELIMINAR</button>
                         </div>
                         <div class="p-2 bd-highlight">
-                            <button class="btn btn-sm btn-outline-warning">EDITAR</button>
+                            <button class="btn btn-sm btn-outline-warning"
+                                onclick="editarTema()"
+                            >EDITAR</button>
                         </div>
                         <div class="p-2 bd-highlight">
-                            <button class="btn btn-sm btn-outline-success">GUARDAR</button>
+                            <button class="btn btn-sm btn-outline-success"
+                                onclick="guardarTema()"
+                            >GUARDAR</button>
                         </div>
                     </div>
 

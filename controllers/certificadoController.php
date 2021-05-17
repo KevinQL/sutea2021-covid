@@ -10,7 +10,28 @@
 
     class certificadoController extends certificadoModel{
 
-        
+        /**
+         * 
+         */
+        public function editarTema_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->idtemario_certificado = $data->id_temav;
+            $dataModel->tema = $data->txt_temav;
+            $res = self::editarTema_Model($dataModel);
+            return $res;
+        }
+
+        /**
+         * 
+         */
+        public function guardarTema_Controller($data){
+            $dataModel = new StdClass;            
+            $dataModel->tema = $data->txt_temav;
+            $dataModel->certificado_idcertificado = $data->idcertificado;
+            $res = self::guardarTema_Model($dataModel);
+            
+            return $res;
+        }
 
         /**
          * 
