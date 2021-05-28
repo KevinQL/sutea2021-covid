@@ -65,30 +65,30 @@ if($eval_certi){
     $pdf->AddPage();
 
     // IMAGEN FONDO DEL CERTIFICADO
-    $pdf->Image("./public/images_certi/{$fondo_certi}", 0, 0, 300, 211);
+    $pdf->Image("./{$fondo_certi}", 0, 0, 300, 211);
 
     // CODE QR DEL DNI EN ELCERTIFICADO
     // $pdf->Image("test.png", 28, 17, 35, 35,"png");
     // $pdf->Image("http://localhost/sutea2021-covid/?pg=certificado/test-qr&code=$dni", 28, 17, 35, 35,"png");
-    $pdf->Image("https://cersutea.com/cersutea/?pg=certificado/test-qr&code=$dni", 28, 17, 35, 35, "png");
+    $pdf->Image("https://cersutea.com/cersutea/?pg=certificado/test-qr&code=$dni", 11, 32, 35, 35, "png");
 
     //NOMBRE DEL USUARIO CERTIFICADO
     $pdf->SetFont('Arial','B',16);
-    $pdf->SetY(80);
+    $pdf->SetY(93);
     $pdf->Cell(63);
-    $pdf->Cell(160, 9, $nombre, 0, 1, 'C');
+    $pdf->Cell(210, 9, $nombre, 0, 1, 'C');
 
     //NIVEL DEL USUARIO CERTIFICADO
     $pdf->SetFont('Arial','B',14);
-    $pdf->SetY(94);
-    $pdf->Cell(84);
+    $pdf->SetY(103);
+    $pdf->Cell(82);
     $pdf->Cell(51, 7, $nivel, 0, 1, 'C');
 
     //TIPO DEL USUARIO CERTIFICADO
     $pdf->SetFont('Arial','B',14);
-    $pdf->SetY(94);
-    $pdf->Cell(220);
-    $pdf->Cell(51, 7, $tipo_persona, 0, 1, 'C');
+    $pdf->SetY(103);
+    $pdf->Cell(236);
+    $pdf->Cell(44, 7, $tipo_persona, 0, 1, 'C');
 
     // LINK DE REFERENCIA DEL CERTIFICADO
     $pdf->SetFont('Times','B',8);
@@ -117,7 +117,7 @@ if($eval_certi){
  * FUNCION PARA CORREGIR TILDE Y PONER EN MAYUSCULA EL TEXTO QUE SE ENVIÉ POR PARAMETRO.
  */
 function txt_certi($txt){
-    return utf8_decode(strtoupper($txt));
+    return strtoupper(utf8_decode($txt));
 }
 
 
