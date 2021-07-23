@@ -24,19 +24,26 @@
           <div class="col-12 mb-2">
             <label for="year">Año del evento</label>
             <select class="form-select" aria-label="Default select example" id="year">
-              <option selected>Inicial</option>
-              <option value="2017">2019</option>
-              <option value="2018">2020</option>
-              <option value="2019">2021</option>
-              <option value="2022">2022</option>
+              <option selected>Seleccionar</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <!-- <option value="2022">2022</option> -->
             </select>
           </div>
           <div class="col-12 mb-4">
             <!-- Definir estandar de tipos de documentos  -->
             <label for="email">Documento de identidad</label>
-            <input type="text" class="form-control" id="document" name="certification_document" placeholder="DNI" autocomplete="off" required pattern="^[0-9\\s]+$" minLength="8" maxlength="8">
+            <input type="text" class="form-control" id="document" name="certification_document" placeholder="DNI" autocomplete="off" required pattern="^[0-9\\s]+$" minLength="6" maxlength="14">
           </div>
-          <input type="submit" id="certificationSave" class="next btn btn-primary-own mx-2" value="Obtener" />
+          <input type="submit" id="certificationSave" class="next btn btn-primary-own mx-2" value="Obtener" onclick="verificarAsistente(event);"/>
+          
+          <!-- Resultado de consulta de emisión de certificado. -->
+          <div class="mt-2 res_cert">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong>Esperando...</strong>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
@@ -45,6 +52,9 @@
   include_once('views/modules/footer.html');
   include_once('views/modules/cdnsfooter.html');
   ?>
+
+  <script src="views/js/js_certificado_dig.js"></script>
+
 </body>
 
 </html>

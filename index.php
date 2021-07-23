@@ -3,7 +3,7 @@
     session_start();
     
     // Desactivar toda las notificaciónes del PHP
-    error_reporting(0);
+    // error_reporting(0);
     
     // Configura la fecha de america lima 
     date_default_timezone_set("America/Lima");
@@ -12,6 +12,8 @@
     // clases con los metodos de conexion al servidor
     require_once("controllers/adminController.php");
     require_once("controllers/webSutepController.php");
+    require_once("controllers/eventoController.php");
+    require_once("controllers/organizadorController.php");
     
     $pag = new adminController();
 

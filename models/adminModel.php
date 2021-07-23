@@ -57,7 +57,6 @@
         }
 
 
-
         /**
          *
          */
@@ -420,14 +419,13 @@
             $reg_val = $this->registroValidado($data->registro_idregistro);
             
             if($reg_val || $sis_ctrl_reg){
-                $res_ctrl = false;
                 //obtener registro de control, y validar su registro de acuerdo a la fecha acual ingresada. 
                 // verifica si ya registró su asistencia en el intervalo de tiempo programado
                 $res_ctrl = $this->controlAsistenciaControl($data->registro_idregistro);
                 $sis_msj = $res_ctrl["sis_msj"];
                 if(!$res_ctrl["eval"]){
                     $query = "INSERT INTO control SET 
-                                anio = {$anio},
+                                anio = '{$anio}',
                                 fecha_registro = current_timestamp(),
                                 control_dia = '{$control_dia}',
                                 control_asistencia = '{$control_asistencia}',
@@ -449,7 +447,7 @@
 
         }
         //----
-        private function controlAsistenciaControl($idregistro){
+        public function controlAsistenciaControl($idregistro){
             // El idregistro, ya está validado que pertenece al evento actual.
             $res = false;
             $sis_msj = "";
@@ -476,9 +474,10 @@
             } else {
                 # code...
                 $sis_msj = "La asistencia aun no está habilitada";
+                $res = true;
             }
 
-            if($sis_msj === ""){
+            if($sis_msj === "" || true){
                 $query = "SELECT * FROM control c 
                             WHERE c.fecha_registro > '{$f_entrada}' 
                             AND c.fecha_registro < '{$f_salida}' 
@@ -490,6 +489,7 @@
                     $res = true;   
                     $sis_msj = "El docente ya registró su asistencia";
                 }else{
+                    $res = false; 
                     $sis_msj = "El docente aun no registro su asistencia";
                 }
             }
