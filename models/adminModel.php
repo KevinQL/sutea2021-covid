@@ -83,50 +83,59 @@
             $res_docente = $this->existeDocente($data->dni);
             $idevento = $this->obtenerEventoActivo();
             $res = false;
-            $cvoucher = false;
-            $res_ope = false;
+            $cvoucher = false; // Identifica si el voucher puede modificarse todavía
+            $res_ope = false; // Identifica si el num_operación existe en el proceso de registro al evento 
             //id evento actual
             $data->evento_idevento = $idevento;
+
+            //Si el docente existe en la db
             if($res_docente["eval"]){
                 //obteniendo id docente
                 $data->decente_iddecente = $res_docente["data"]["iddecente"];
-                // traemos registro si existe. Traemos ESTADO y idregistro
+                // Buscamos el registro de REGISTRO por su id y evento actual
                 $registro = $this->docenteRegistrado($data);
-                //Si no está registrado.
+                //Si no está registrado en REGISTRO.
                 if(!$registro["eval"]){
+                    // Si el num_operacion no existe, es unico, o está vacio.
                     if(!$this->existeNumOperacion($data)){
-                        $res = $this->insertarRegistro($data);
+                        $res = $this->insertarRegistro($data); // inserta el registro en REGISTRO
                     }else{
-                        $res_ope = true;
+                        $res_ope = true; // el num_operacion ya existe en los registros de la db. Tabla REGISTRO
                     }
+
+                //Si el registro está en REGISTRO, o ya se preinscribio en el evento.
                 }else{
                     $data->idregistro = $registro["data"]["idregistro"]; // id registro
                     $data->estado = $registro["data"]["estado"]; // estado registro
-                    // Si esta registrado: hacer
-                    //Si el registro esta VALIDADO aun
+                    //Si el registro ya esta validado para el evento
                     if($data->estado){
                         $cvoucher = false; // ya no admite cambiar el voucher por que ya esta validado
+
+                    // Si el registro aún no está validado en el evento
                     }else{
                         //actualizar numero de operacion mientras aun no se le valida al usuario (PENDIENTE)
+                        // Si no existe numero de operación, o está vacio
                         if(!$this->existeNumOperacion($data)){
                             $res = $this->cambiarNumOperacion($data);
                             $cvoucher = true; // admite cambiar el voucehr por que aun no se validad
                         }else{
-                            $res_ope = true;
+                            $res_ope = true; // el num_operacion ya existe en los registros de la db. Tabla REGISTRO
                         }
                     }
                 }
+            
+            // Si el docente no está registro en DECENTE
             }else{
-                //insertar en docente y luego en registro
+                 // Si no existe numero de operación, o se está enviando el num_operacion vacio
                 if(!$this->existeNumOperacion($data)){
-                    $res = $this->insertarDocente($data);
+                    $res = $this->insertarDocente($data); // Inserta en DECENTE
                     if($res){
                         $res_docente = $this->existeDocente($data->dni); // traer id docente creado
                         $data->decente_iddecente = $res_docente["data"]["iddecente"]; // id docente registrado
-                        $res = $this->insertarRegistro($data);
+                        $res = $this->insertarRegistro($data); // inserta en REGISTRO
                     }
                 }else{
-                    $res_ope = true;
+                    $res_ope = true; // el num_operacion ya existe en los registros de la db. Tabla REGISTRO
                 }
             }
             //return $res_docente["data"]["iddecente"];
@@ -181,6 +190,12 @@
             return $res;
         }
 
+        /**
+         * - Retorna el registro(id y estado) de la tabla REGISTRO. Cuando el id y evento del registro solicitado 
+         * coincidan.
+         * - En la tabla REGISTRO se almacenan las inscripciones de los docentes para cada nuevo evento.
+         * Los detalles del docente están en la tabla DECENTE
+         */
         private function docenteRegistrado($data){
             $res = false;
             $res_data = [];
@@ -230,6 +245,8 @@
                         num_operacion = '{$data->num_operacion}',
                         fecha_registro = current_timestamp(),
                         estado = '{$data->estado}',
+                        especialidadr = '{$data->especialidad}',
+                        ugelr = '{$data->ugel}',
                         decente_iddecente = '{$data->decente_iddecente}',
                         evento_idevento = '{$data->evento_idevento}'
             ";
@@ -241,9 +258,14 @@
             return $eval;
         }
 
-        //Suponiendo que el ultimo evento insertado es el evento activo
+        //Suponiendo que el ultimo evento insertado es el evento activo * Qurey comentado
+        /**
+         * last change: 20-02-2022
+         * La nueva consulta trae el evento activo, por el campo de estado = 1
+         */
         private function obtenerEventoActivo(){
-            $query = "SELECT idevento FROM evento ORDER BY anio, idevento DESC LIMIT 1";
+            // $query = "SELECT idevento FROM evento ORDER BY anio, idevento DESC LIMIT 1";
+            $query = "SELECT idevento FROM evento e WHERE e.estado = 1 LIMIT 1";
             $res_query = self::ejecutar_una_consulta($query);
             if ($res_query->rowCount()) {
                 # code...
@@ -256,6 +278,9 @@
             }
         }
 
+        /**
+         * Retorna el registro(iddecente, dni) de la tabla DECENTE. Cuando el dni coincida. 
+         */
         private function existeDocente($dni){
             $res = false;
             $data = [];
@@ -300,7 +325,7 @@
             $res = false;
             $data_res = [];
             $idevento = $this->obtenerEventoActivo();
-            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado 
+            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado, r.evento_idevento 
             FROM decente d INNER JOIN registro r 
             on d.iddecente = r.decente_iddecente 
             AND r.evento_idevento = {$idevento} 

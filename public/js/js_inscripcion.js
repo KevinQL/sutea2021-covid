@@ -38,6 +38,9 @@ function dataHTML_inscripcion(){
 
     let estado = 0; //false
 
+    /**
+     * Verifica que el elemento(Validar registro) Exista.
+     */
     if(check_estado){
         estado = check_estado.checked ? 1 : 0; // true : false
     }
@@ -175,7 +178,9 @@ function execute_traerinfo(elem){
  * envia los datos docente para su registro o actualizacion de la foto voucher
  */
 document.getElementById('formInscription').addEventListener('submit',(event) => {
+   
     event.preventDefault();
+   
     let data = dataHTML_inscripcion();
     let {txt_documentv,
         txt_namev,

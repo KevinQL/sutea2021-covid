@@ -41,7 +41,7 @@ function execute_traerDocentesEvento(){
         let table_HTML = ``;
         let e_num = 1;
         if (data.eval) {
-            console.log(data);
+            //console.log(data);
             data.data.forEach(element => {
                 let btn_validar = `
                         <button type="button" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="bottom" title="Validar"
