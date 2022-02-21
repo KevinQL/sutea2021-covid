@@ -45,14 +45,14 @@ function execute_traerDocentesEvento(){
             data.data.forEach(element => {
                 let btn_validar = `
                         <button type="button" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="bottom" title="Validar"
-                            onclick="validarRegistro('${element.iddecente}','${element.idregistro}','${element.estado}');">
+                            onclick="validarRegistro('${element.iddecente}','${element.idregistro}','${element.estado}','${element.nombre}','${element.dni}');">
                             <i class="fas fa-check"></i>
                         </button>
                     `;
                 if(element.estado === "1"){
                     btn_validar = `
                             <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="bottom" title="Validado"
-                                onclick="validarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}');">
+                                onclick="validarRegistro('${element.iddecente}','${element.idregistro}', '${element.estado}','${element.nombre}','${element.dni}');">
                                 <i class="fas fa-check-double"></i>
                             </button>
                             `;
@@ -111,33 +111,88 @@ function execute_traerDocentesEvento(){
     URL_AJAX_PROCESAR );
 }
 
-// cargar datos en la tabla
+
+/**
+ * Se cargan los datos en la tabla de la vista, después de un determinado tiempo
+ * El tiempo de retardo, es un estimado para esperar que los elementos html se carguen correctamente
+ */
 setTimeout(() => {
     execute_traerDocentesEvento();
 }, 500);
 
-function validarRegistro(iddecente, idregistro, estado){
-    console.log(iddecente, idregistro)
 
-    fetchKev("POST",{
-        id:"exe-validarRegistro",
-        iddecente,
-        idregistro,
-        estado
-    }, 
-    data => {
+/**
+ * Funcion para validar el registro de una inscripción
+ * 
+ */
+function validarRegistro(iddecente, idregistro, estado, nombre, dni){
 
-        console.log(data);
+    /**
+     * Test data accion validar inscripcion 
+     */
+    console.log({
+        info: "data para validar registro",
+        response: {iddecente, idregistro, estado}
+    })
 
-        if(data.eval){
-            sweetModalMin("Acción procesada",'center',1000,'success');
-            setTimeout(() => {
-                execute_traerDocentesEvento();
-            }, 1200);
+    /**
+     * Preguntar si quiere realizar la acción 
+     */
+     Swal.fire({
+        title: 'Está seguro?',        
+        html: `Validar acción para </br> <strong>${nombre} - ${dni}</strong>`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Ejecutar!'
+    }).then((result) => {
+        //en el caso de que desee borrar
+        if (result.isConfirmed) {
+            /**
+             * Enviando datos al servidor para procesar la validación del registro
+             */
+            fetchKev("POST",
+                {
+                    id:"exe-validarRegistro",
+                    iddecente,
+                    idregistro,
+                    estado
+                }, 
+                data => {
+                    /**
+                     * test data respuesta servidor
+                     */
+                    console.log({
+                        info: "response server data. Mod validar",
+                        response: data
+                    });
+        
+                    /**
+                     * Si los datos se procesaron satisfactoriamente
+                     */
+                    if(data.eval){
+        
+                        sweetModalMin("Acción procesada",'center',1000,'success');
+        
+                        /**
+                         * actualizar tabla de registros después de un tiempo determinado
+                         */
+                        setTimeout(() => {
+                            execute_traerDocentesEvento();
+                        }, 1200);
+                    }
+        
+                }, 
+                URL_AJAX_PROCESAR 
+            );
+        
         }
+        else{
+            sweetModalMin("Sin acciones.",'center',1000,'info');
+        }
+    });
 
-    }, 
-    URL_AJAX_PROCESAR );
 
 }
 
@@ -146,6 +201,9 @@ function validarRegistro(iddecente, idregistro, estado){
  * Empaquetando las variables para actualizar los registros DECENTE y REGISTRO
  */
 function data_updModValidar(){
+    /**
+     * data view para REGISTRO
+     */
     let txtupd_idregistro_registro = document.querySelector("#txtupd_idregistro_registro");
     let txtupd_anio_registro = document.querySelector("#txtupd_anio_registro");
     let txtupd_fecha_registro = document.querySelector("#txtupd_fecha_registro");
@@ -153,7 +211,9 @@ function data_updModValidar(){
     let txtupd_ugel_registro = document.querySelector("#txtupd_ugel_registro");
     let txtupd_especialidad_registro = document.querySelector("#txtupd_especialidad_registro");
     let txtupd_tipoPersona_registro = document.querySelector("#txtupd_tipoPersona_registro");
-
+    /**
+     * Data view para DECENTE
+     */
     let txtupd_iddecente_decente = document.querySelector("#txtupd_iddecente_decente");
     let txtupd_dni_decente = document.querySelector("#txtupd_dni_decente");
     let txtupd_nombre_decente = document.querySelector("#txtupd_nombre_decente");
@@ -164,6 +224,9 @@ function data_updModValidar(){
     let txtupd_especialidad_decente = document.querySelector("#txtupd_especialidad_decente");
     let txtupd_tipoPersona_decente = document.querySelector("#txtupd_tipoPersona_decente");
 
+    /**
+     * Empaquetamos la data de la vista, y devolvemos.
+     */
     return {
         elements: {
             txtupd_idregistro_registro,
@@ -215,6 +278,9 @@ function data_updModValidar(){
  */
 function actualizarRegistro_data(iddecente, idregistro){
     
+    /**
+     * Obtenemos los elementos de la vista - formulario actualizar registro
+     */
     let {
         txtupd_idregistro_registro,
         txtupd_anio_registro,
@@ -377,10 +443,6 @@ function eliminarRegistro(iddecente, idregistro, estado, $nombreEliminar ){
             sweetModalMin("Sin acciones.",'center',1000,'info');
         }
     });
-
-
-
-    
 
 }
 
