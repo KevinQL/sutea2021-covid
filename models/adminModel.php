@@ -409,7 +409,9 @@
         }
 
         /**
-         * validar registro. 
+         * - valida registro en REGISTRO. 
+         * - Cambia el estado del registro, de 0 a 1, o viceverza
+         * - Actualiza el registro, cuando coincidan el iddecente, idregistro y idevento actual
          */
         protected function exeValidarRegistro_Model($data){
             $res = false;
@@ -427,28 +429,72 @@
             }
             return ['eval'=>$res, 'data'=>$data];
         }
+        
 
         /**
          * Eliminar registro
          */
         protected function exeeliminarRegistro_Model($data){
+            
             $res = false;
             $msj = "";
-            //cuando el registro no está validado
+
+            /**
+             * Si el registro no está validado (inscripción validada) 
+             */
             if(!$data->estado){
+                /**
+                 * Eliminar los registros de CONTROL para el usuario especifico
+                 */
                 $res = $this->eliminarControl($data);
                 $msj .= $res? "Se Eliminó Control.":"No se eliminó Control.";
-                //eliminar registro del evento actual
+                
+                /**
+                 * Elimina el registro para el evento actual activo
+                 */
                 $res = $this->eliminarRegistro($data);
                 $msj .= $res? "\n Se Eliminó Registro.":"\n No se eliminó Registro.";
-                // eliminar docente
+
+                /**
+                 * Si se elimina satisfactoriamente el registro del evento actual
+                 */
                 if($res){
-                    $res = $this->eliminarDocente($data);
-                    $msj .= $res? "\n Se Eliminó docente.":"\n No se eliminó docente.";
+                    /**
+                     * Verificar si existen más registros en REGISTRO de eventos pasados
+                     * Verifica que el estado de los registros anteriores tengan el estado=1 (insripción validado)
+                     * Consulta la tabla REGISTRO
+                     */
+                    $res_oldreg = $this->getRegistrossAntiguos($data->iddecente);
+
+                    /**
+                     * Si no existen más registros de eventos anteriores                     
+                     */
+                    if(!$res_oldreg){
+                        /**
+                         * Elimina registro de DECENTE
+                         */
+                        $res = $this->eliminarDocente($data);
+                        $msj .= $res? "\n Se Eliminó docente.":"\n No se eliminó docente.";
+                    }
                 }
             }
 
             return ['eval'=>$res, 'data'=>$data, "msj" => $msj];
+        }
+
+        /**
+         * - Determina si hay registros en REGISTROS para un docente determinado.
+         * - Se utiliza el iddecente para verificar si exsten los registros.
+         * - consulta la tabla REGISTRO.
+         */
+        private function getRegistrossAntiguos($iddecente){
+            $response = false;
+            $query = "SELECT * FROM registro r WHERE r.decente_iddecente LIKE '{$iddecente}'";
+            $res_query = self::ejecutar_una_consulta($query);
+            if ($res_query->rowCount()) {
+                $response = true;
+            }
+            return $response;
         }
 
         private function eliminarControl($data){

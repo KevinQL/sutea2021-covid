@@ -354,6 +354,9 @@ function actualizarRegistro_modValidar(){
         }
     );
 
+    /**
+     * Modal de espera - cargando proceso
+     */
     sweetModalCargando();
 
     /**
@@ -400,12 +403,24 @@ function actualizarRegistro_modValidar(){
 
 
 
+/**
+ * Eliminar registro de la tabla
+ */
 function eliminarRegistro(iddecente, idregistro, estado, $nombreEliminar ){
-    console.log(iddecente, idregistro, estado, $nombreEliminar)
 
+    /**
+     * Test data eliminar registro 
+     */
+    console.log({
+        info: "Data función eliminar registro",
+        response: {iddecente, idregistro, estado, $nombreEliminar}
+    });
+
+    /**
+     * Mensaje de confirmación de acción 
+     */
     Swal.fire({
-        title: 'Está seguro?',
-        //text: `No podrá revertir esto para el docente ${$nombreEliminar}`,
+        title: 'Está seguro?',        
         html: `No podrá revertir esto para el/la docente </br> <strong>${$nombreEliminar}</strong>`,
         icon: 'warning',
         showCancelButton: true,
@@ -413,9 +428,19 @@ function eliminarRegistro(iddecente, idregistro, estado, $nombreEliminar ){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
-        //en el caso de que desee borrar
+        
+        /**
+         * Si se confirma la acción del mensje
+         */
         if (result.isConfirmed) {
+            /**
+             * Modal de cargando proceso
+             */
+            sweetModalCargando();
 
+            /**
+             * Enviar datos al servidor para eliminar registro
+             */
             fetchKev("POST",{
                 id:"exe-eliminarRegistro",
                 iddecente,
@@ -424,13 +449,31 @@ function eliminarRegistro(iddecente, idregistro, estado, $nombreEliminar ){
             }, 
             data => {
 
-                console.log(data);
-                console.log(data.msj)
+                /**
+                 * Data respuesta del servidor
+                 */
+                console.log({
+                    info: "respuesta data del servidor",
+                    response: data
+                });
+
+                /**
+                 * Si el datos se procesaron satisfactoriamente
+                 */
                 if(data.eval){
-                    sweetModalMin(data.msj,'center',1000,'success');
+                    /**
+                     * Mostrar msj al usuario - registro eliminado
+                     */
+                    sweetModalMin('Eliminado!!','center',1000,'success');
+
+                    /**
+                     * Refrescar la tabla de registros de la vista
+                     */
                     setTimeout(() => {
+                        //alert('hola mundo')
                         execute_traerDocentesEvento();
-                    }, 1200);
+                    }, 500);
+
                 }else{
                     sweetModalMin("Accion invalidado!",'center',1500,'warning');
                 }
