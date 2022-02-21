@@ -78,6 +78,69 @@
         /**
          * 
          */
+        protected function exeSetdataUpdate_MValid_Model($data){
+            $sys_msj = new stdClass;
+            $eval = false;
+
+            $query1 = "UPDATE registro 
+                        SET num_operacion='{$data->num_operacion}',
+                            especialidadr='{$data->especialidadr}',
+                            ugelr='{$data->ugelr}',
+                            tipo_personar='{$data->tipo_personar}'
+                        WHERE idregistro = '{$data->idregistro}'
+            ";
+
+            $query2 = "UPDATE decente 
+            SET nombre='{$data->nombre}',
+                apellido='{$data->apellido}',
+                celular='{$data->celular}',
+                correo='{$data->correo}',
+                especialidad='{$data->especialidad}',
+                ugel='{$data->ugel}',
+                tipo_persona_idtipo_persona='{$data->tipo_persona_idtipo_persona}'
+            WHERE iddecente = '{$data->iddecente}'
+            ";
+            $result_query1 = self::ejecutar_una_consulta($query1);
+            $result_query2 = self::ejecutar_una_consulta($query2);
+            if($result_query1->rowCount() >= 1){
+                $sys_msj->msj1 = "Registro actualizado";
+                $eval = true;
+            }
+            if($result_query2->rowCount() >= 1){
+                $sys_msj->msj2 = "Decente actualizado";
+                $eval = true;
+            }
+            return ['eval'=>$eval, 'data'=>$data, 'msjs'=>$sys_msj];
+        }
+
+        /**
+         * 
+         */
+        protected function exeGetDataUpdateMValid_Model($data){
+            $eval = false;
+            $docente = [];
+            
+            // $query = "SELECT * FROM decente d WHERE d.iddecente = '{$data->iddecente}'";
+            $query = "SELECT d.iddecente, d.dni, d.nombre, d.apellido, d.celular, d.correo, d.especialidad, d.ugel, d.tipo_persona_idtipo_persona AS tipo_persona, r.idregistro, r.anio, r.num_operacion, r.fecha_registro, r.estado, r.especialidadr, r.ugelr, r.tipo_personar, r.evento_idevento AS idevento 
+            FROM decente d 
+            INNER JOIN registro r 
+            ON d.iddecente = r.decente_iddecente 
+            WHERE r.idregistro = '{$data->idregistro}' AND d.iddecente = '{$data->iddecente}'
+            ";
+            
+            $res_query = self::ejecutar_una_consulta($query);
+            if($res_query->rowCount() >= 1){
+                while ($elem_doc = $res_query->fetch(PDO::FETCH_ASSOC)) {
+                    $docente[] = $elem_doc;
+                }
+                $eval = true;
+            }
+            return ['eval'=>$eval, 'data'=>$docente];
+        }
+
+        /**
+         * 
+         */
         protected function exeInscripcion_Model($data){
             // Traemos docente si existe
             $res_docente = $this->existeDocente($data->dni);
