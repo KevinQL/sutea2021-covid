@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="views/css/home.css">
     <link rel="stylesheet" href="views/css/table.css">
     <title>Validar</title>
+
+    <style>
+        .swal2-container{
+            z-index: 100000000000 !important;
+
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -50,6 +58,7 @@
             <th scope="col">Celular</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
+            <th scope="col">Actualizar</th>
             <th scope="col">Eliminar</th>
             </tr>
         </thead>
@@ -81,6 +90,167 @@
         </div>
     </div>
     <!-- fin Modal voucher-->
+
+
+    <!-- MODAL PARA LA EDITAR EL REGISTRO DEL DECENTE -->
+    <section>
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_upd_org">
+        Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_upd_docente" tabindex="-1" aria-labelledby="modal_upd_docenteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_upd_docenteLabel">
+                    MODULO VALIDAR - ACTUALIZAR REGISTRO 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <section class="container">
+
+                    <h4 class="lead mt-3">DATOS REGISTRO</h4>
+                    <article class="card p-3">
+                        <div class="input-group">
+
+                            <input type="text" class="form-control" 
+                                id="txtupd_idregistro_registro" 
+                                placeholder="Id ponente..." 
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Año</span>
+                            <input type="number" class="form-control" 
+                                id="txtupd_anio_registro" 
+                                placeholder="1996..." 
+                                readonly
+                            >
+                            <span class="input-group-text">Fecha Registro</span>
+                            <input type="text" aria-label="Fecha registro" class="form-control"
+                                id="txtupd_fecha_registro" 
+                                placeholder="..."
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">UGEL</span>
+                            <input type="text" aria-label="Ugel" class="form-control" 
+                                id="txtupd_ugel_registro" 
+                                placeholder="Andahuaylas..." 
+                            >
+                            <span class="input-group-text">ESPECIALIDAD</span>
+                            <input type="text" aria-label="Especialidad" class="form-control"
+                                id="txtupd_especialidad_registro" 
+                                placeholder="Secundaria..."
+                            >
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Numero Operación</span>
+                            <input type="text" aria-label="Número de operación del voucher" class="form-control"
+                                id="txtupd_numoperacion_registro" 
+                                placeholder="..."
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="txtupd_tipoPersona_registro">Tipo Persona</label>
+                            <select class="form-select" id="txtupd_tipoPersona_registro">
+                                <option selected>Cambiar...</option>
+                                <option value="1">Asistente</option>
+                                <option value="2">Organizador</option>
+                                <option value="3">Ponente</option>
+                            </select>
+                        </div>
+                    </article>
+
+                    <h5 class="lead">DATOS DOCENTE</h5>
+                    <article class="card p-3">
+                        <div class="input-group">
+
+                            <input type="text" class="form-control" 
+                                id="txtupd_iddecente_decente" 
+                                placeholder="Id ponente..." 
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Documento de identidad (DNI)</span>
+                            <input type="number" class="form-control" 
+                                id="txtupd_dni_decente" 
+                                placeholder="Documento de identidad..." 
+                            >
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Nombres y Apellidos</span>
+                            <input type="text" aria-label="First name" class="form-control"
+                                id="txtupd_nombre_decente" 
+                                placeholder="Nombres..."
+                            >
+                            <input type="text" aria-label="Last name" class="form-control" 
+                                id="txtupd_apellido_decente" 
+                                placeholder="Apellidos..."
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Celular</span>
+                            <input type="text" aria-label="Numero celular / telefono" class="form-control"
+                                id="txtupd_celular_decente" 
+                                placeholder="916331..."
+                            >
+                            <span class="input-group-text">Correo</span>
+                            <input type="text" aria-label="Correo electrónico" class="form-control" 
+                                id="txtupd_correo_decente" 
+                                placeholder="ejemplo@gmail.com..."
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">UGEL</span>
+                            <input type="text" aria-label="Ugel" class="form-control"
+                                id="txtupd_ugel_decente" 
+                                placeholder="Andahuylas..."
+                            >
+                            <span class="input-group-text">ESPECIALIDAD</span>
+                            <input type="text" aria-label="Especialidad del interesado" class="form-control" 
+                                id="txtupd_especialidad_decente" 
+                                placeholder="Secundaria..."
+                            >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="txt_tipoPersona">Tipo Persona</label>
+                            <select class="form-select" id="txtupd_tipoPersona_decente">
+                                <option selected>Cambiar...</option>
+                                <option value="1">Asistente</option>
+                                <option value="2">Organizador</option>
+                                <option value="3">Ponente</option>
+                            </select>
+                        </div>
+
+                    </article>
+
+                </section>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+                <button type="button" class="btn btn-primary" onclick="actualizarRegistro_modValidar()">Actualizar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- FIN MODAL ACTUALIZAR REGISTRO MOD VALIDAR -->
+
 
 
     <?php

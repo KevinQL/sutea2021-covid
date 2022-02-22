@@ -38,7 +38,11 @@
             # code...
             echo "La asistencia aun no está habilitada";
         }
-    
+        echo "<br>";
+        echo "<br>";
+        
+        $res = $pag->controlAsistenciaControl('259');
+        var_dump($res);
 
     ?>
 

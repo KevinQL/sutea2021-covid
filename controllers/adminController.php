@@ -37,10 +37,10 @@
                 //Validando niveles de seguridad. [1]:NIVEL ADMINISTRADOR
                 if($_SESSION['data']['tipo_usuario']==1){
                     $arrayPaginas = ["salir_sistema","inicio","page_sutep","info",    
-                    "inscripcion_evento", "assistance", "certification", "speakers", "inscripcion_evento_adm", "validar_adm", "transmision"];
+                    "inscripcion_evento", "assistance", "certification", "speakers", "inscripcion_evento_adm", "validar_adm", "transmision", "certificado_digital", "certificado/test-qr", "evento", "organizador", "ponente", "certificado" ];
                 }else{
                     //Nivel invitado pro defecto
-                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento",  "transmision"];
+                    $arrayPaginas = ["salir_sistema","inicio","page_sutep","info","inscripcion_evento",  "transmision", "certificado_digital", "certificado/test-qr", "evento", "organizador", "ponente" ];
                 }              
                 
                 /**
@@ -59,7 +59,7 @@
 
                 $pagina = isset($_GET['pg']) && !empty($_GET['pg']) ? $_GET['pg'] : "page_sutep";
                 $pagina = strtolower(trim($pagina));         
-                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers", "transmision"];
+                $arrayPaginas = ['login',"usuario_registro", "inscripcion_evento", "info", "assistance", "certification", "speakers", "transmision", "certificado_digital", "certificado/test-qr" ];
                 if(in_array($pagina, $arrayPaginas, true)){
                     $pagina .= ".php";
                 }else {
@@ -70,6 +70,50 @@
 
             return $pagina;
 
+        }
+        /**
+         * 
+         */
+        public function exeSetdataUpdate_MValid_Controller($data){
+            $dataModel = new StdClass;       
+            /**
+             * Data para REGISTRO 
+             */     
+            $dataModel->idregistro = $data->txtupd_idregistro_registrov;
+            $dataModel->anio = $data->txtupd_anio_registrov;
+            $dataModel->fecha_registro = $data->txtupd_fecha_registrov;
+            $dataModel->num_operacion = $data->txtupd_numoperacion_registrov;
+            $dataModel->ugelr = $data->txtupd_ugel_registrov;
+            $dataModel->especialidadr = $data->txtupd_especialidad_registrov;
+            $dataModel->tipo_personar = $data->txtupd_tipoPersona_registrov;
+            /**
+             * Data para DECENTE
+             */
+            $dataModel->iddecente = $data->txtupd_iddecente_decentev;
+            $dataModel->dni = $data->txtupd_dni_decentev;
+            $dataModel->nombre = $data->txtupd_nombre_decentev;
+            $dataModel->apellido = $data->txtupd_apellido_decentev;
+            $dataModel->celular = $data->txtupd_celular_decentev;
+            $dataModel->correo = $data->txtupd_correo_decentev;
+            $dataModel->ugel = $data->txtupd_ugel_decentev;
+            $dataModel->especialidad = $data->txtupd_especialidad_decentev;
+            $dataModel->tipo_persona_idtipo_persona = $data->txtupd_tipoPersona_decentev;
+            
+            $res = self::exeSetdataUpdate_MValid_Model($dataModel);
+
+            return $res;
+        }
+
+        /**
+         * Obtener datos de DECENTE y REGISTRO
+         */
+        public function exeGetDataUpdateMValid_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->iddecente = $this->txtres($data->iddecente);
+            $dataModel->idregistro = $this->txtres($data->idregistro);
+            unset($data);
+            $res = self::exeGetDataUpdateMValid_Model($dataModel);
+            return $res;
         }
 
         /**
@@ -266,6 +310,13 @@
             return mb_strtolower(trim($variable),'UTF-8');            
         }
 
+
+        /**
+         * 
+         */
+        public function test_Controller_msj(){
+            return "Test controller succesfull";
+        }
 
     }
 

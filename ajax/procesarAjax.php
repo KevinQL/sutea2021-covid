@@ -6,6 +6,7 @@
     $conAjax = true;
 
     require_once("../controllers/adminController.php");
+    require_once("../controllers/eventoController.php");
 
     if(!is_null($_POST['data'])){
         //convirtiendo los datos enviados desde la vista, ha un objeto stdClass
@@ -44,20 +45,17 @@
             }
 
             echo json_encode($res);
-        }
-        
+        }    
         elseif ($data->id === "exe-loginUser") {
             # code...
             $res = $obj->session_user_Controller($data);
             echo json_encode($res);
         }
-
         elseif ($data->id === "exe-traerDocenteAsis") {
             # code...
             $res = $obj->exeTraerDocenteAsis_Controller($data);
             echo json_encode($res);
         }
-
         elseif ($data->id === "exe-traerDocenteEvento") {
             # code...
             $res = $obj->exeTraerDocenteEvento_Controller($data);
@@ -69,19 +67,33 @@
             $res = $obj->exeValidarRegistro_Controller($data);
             echo json_encode($res);
         }
-
         elseif ($data->id === "exe-eliminarRegistro") {
             # code...
             $res = $obj->exeeliminarRegistro_Controller($data);
             echo json_encode($res);
         }
-
         elseif ($data->id === "exe-docenteAsistencia") {
             # code...
             $res = $obj->exedocenteAsistencia_Controller($data);
             echo json_encode($res);
         }
 
+        /**
+         * Modulo validar. Procedimientos para realizar la actualización de datos DOCENTE y REGISTRO
+         */
+        elseif ($data->id === "exe-getdataUpdate_ModValid"){
+            $res = $obj->exeGetDataUpdateMValid_Controller($data);
+            echo json_encode($res);
+        }
+
+        /**
+         * Modulo validar. Procedimientos actualizar data form en DECENTE y REGISTRO
+         */
+        elseif ($data->id === "exe-setdataUpdate_ModValid"){
+            $reciev_data = $data->env_dta;
+            $res = $obj->exeSetdataUpdate_MValid_Controller($reciev_data);
+            echo json_encode($res);
+        }
         else {
             echo json_encode("ERROR!!");
         }
