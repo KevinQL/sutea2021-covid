@@ -77,33 +77,45 @@ function dataHTML_inscripcion(){
 }
 
 
-
 /**
- * 
+ * - Retorna verdadero si el formulario está conforme se desea.
+ * - Caso contrario devuelve false, para que no se pueda proceder con el envío de los datos al servidor.
  */
 function eval_inscripcion(){
-    let res = false;
-    //return res;
+
+    let res = false; // indicador de respuesta de retorno. La evaluación es disconforme. 
+
+    /**
+     * Obtenemos la data del formulario. Valores de los elementos num_operacion y voucher
+     */
     let data = dataHTML_inscripcion();
     let { img_voucherv,
         txt_operationv } = data.values;
 
-    // si operacion está vacio, y no hay imagen
-    if(txt_operationv.trim() === "" && img_voucherv.length === 0){
-        res = true;
-    }
-    
-    // si operacion no está vacio, exige que incluya voucher imagen.
-    // si incluye voucher, exige que sea imagen.
-    if(txt_operationv.trim() !== "" || img_voucherv.length >= 1){
+    /**
+     * Si se cargo archivo al formulario
+     */
+    if(img_voucherv.length >= 1){
 
-        if(img_voucherv.length >= 1){
-            if(input_es_imagen(img_voucherv[0].type)){
-                res = true;
-            }
+        /**
+         * Si el archivo es una imagen
+         */
+        if(input_es_imagen(img_voucherv[0].type)){
+            res = true;
         }
+
+        // Caso contrario el retorno seguirá siendo falso... 
+
+    /**
+     * No se cargo ningún archivo al formulario
+     */
+    }else{ 
+        res = false;
     }
 
+    /**
+     * Retorna la respuesta de la operación de validación. (False or True)
+     */
     return res;
 }
 
@@ -175,12 +187,19 @@ function execute_traerinfo(elem){
 
 
 /**
- * envia los datos docente para su registro o actualizacion de la foto voucher
+ * - envia los datos docente para su registro.
+ * - Actualiza el voucher del docente ya inscrito en el evento, y que todavía no se valido en el admin
  */
 document.getElementById('formInscription').addEventListener('submit',(event) => {
    
+    /**
+     * Detenemos el evento submit
+     */
     event.preventDefault();
    
+    /**
+     * Empleamos la colección de datos del formulario a traves de la función que lo empaqueta
+     */
     let data = dataHTML_inscripcion();
     let {txt_documentv,
         txt_namev,
@@ -194,10 +213,19 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
         txt_operationv,
         txt_base64v } = data.values;
 
+    /**
+     * Si el formulario se corresponde satisfactoriamente
+     */
     if(eval_inscripcion()){
         
+        /**
+         * Empleamos el modal cargando para sugerir la espera del usuario 
+         */
         sweetModalCargando();
 
+        /**
+         * Enviamos los datos al servidor
+         */
         fetchFileKev("POST",
         {
             id:"exe-inscripcion",
@@ -210,41 +238,82 @@ document.getElementById('formInscription').addEventListener('submit',(event) => 
             txt_ugelNamev,
             estadov,
             txt_operationv,
-            txt_base64v
+            txt_base64v  // Enviamos la imagen como una cadena de string en base64
         }, {
-            img_voucher:null //img_voucherv[0]
+            img_voucher:null //img_voucherv[0] - // ya que la imagen se está enviando en otro formato
         }, data => {
-            console.log("respuesta local");
-            console.log(data);
 
-            //return null;
+            /**
+             * Test data response server
+             */
+            console.log({
+                info: "Respuesta server data",
+                response: data
+            });
+
+            /**
+             * - Si los datos se procesaron satisfactoriamente
+             * - Se insertó los datos del formulario
+             */
             if(data.eval){
+
+                /**
+                 * Mostramos msj de la acción procesada
+                 */
                 sweetModalMin("Registro exitoso!!","center",1500,"success");
-                setTimeout(() => {
-                    //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+
+                /**
+                 * - Recargamos la página para limpiar el formulario
+                 * - (older comment) carga la página con la misma URL. de modo que es:: index.php?pg=login
+                 */
+                setTimeout(() => {                              
                     location.reload(); 
                 },1600); 
+
+            /**
+             * - Si el registro ya existe en REGISTRO
+             * - Si falta actualizar voucher 
+             * - ? Se puede actualizar el voucher mientras el registr no esté validado por el administrador
+             */
             }else{
+
+                /**
+                 * Si el voucher foto se actualizó correctamente.
+                 */
                 if(data.cvoucher){
+
                     sweetModalMin("Voucher actualizado!!","center",1500,"success");
-                    setTimeout(() => {
-                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
-                        location.reload(); 
-                    },1600); 
                 }
-                else if (data.operacion) {
-                    sweetModalMin("El código de operacion ya existe!!","center",1500,"warning");
+                
+                /**
+                 * si el codigo de operación ya está en los registros del sistema
+                 */
+                if (data.operacion) {
+
+                    setTimeOut( ()=>{
+                        sweetModalMin("El código de operacion ya existe!!","center",1500,"warning");
+                    },700);
                 }
-                else{
+
+                /**
+                 * Si el voucher no se actualizó, entonces se asume que el regostro ya está validado
+                 * (checkar-) Resolver una manera más precisa de determinar el objetivo de la condición 
+                 */
+                if(!data.cvoucher){
                     sweetModalMin("Su registro ya está validado!!","center",1500,"info");
-                    setTimeout(() => {
-                        //carga la página con la misma URL. de modo que es:: index.php?pg=login                                   
+
+                    /**
+                     * Cargamos la vista del formulario
+                     * (older comment) carga la página con la misma URL. de modo que es:: index.php?pg=login
+                     */
+                     setTimeout(() => {                            
                         location.reload(); 
                     },1600); 
                 }
             }
             
         }, URL_AJAX_PROCESAR);
+
     }else{
         sweetModalMin("Los datos no son correctos!!","center",2000,"warning");
         console.log("Flata llenar el formulario")

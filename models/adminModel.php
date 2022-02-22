@@ -151,6 +151,13 @@
             //id evento actual
             $data->evento_idevento = $idevento;
 
+            /**
+             * (comment) Comprobar que el registro ya está validado
+             * - Si el registro aún no está validad...
+             * - (implement)
+             */
+
+
             //Si el docente existe en la db
             if($res_docente["eval"]){
                 //obteniendo id docente
