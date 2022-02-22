@@ -107,7 +107,7 @@
         </div>
 
 
-        <!-- MODAL PARA LA EDITAR EL REGISTRO DEL ORGANIZADOR -->
+        <!-- MODAL PARA LA EDITAR EL REGISTRO DEL PONENTE -->
         <section>
             <!-- Button trigger modal -->
             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_upd_org">
@@ -234,7 +234,7 @@
 
         
 
-        <!-- MODA PARA LA CREACIÓN DEL UN NUEVO EVENTO -->
+        <!-- MODA PARA LA CREACIÓN DEL UN NUEVO PONENTE -->
         <section>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

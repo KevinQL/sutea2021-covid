@@ -17,8 +17,12 @@ function dataHTML_regisUser(){
 }
 
 function eval_regisUser(){
-    //null
-    return false;
+    /**
+     * Esto condiciona la creación del registro del usario administrador.
+     * true: se puede crear usuario administrador
+     * false: No se puede crear usuario administrador
+     */
+    return true;
 }
 
 function execute_regisUser(elem){
