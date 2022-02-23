@@ -6,8 +6,22 @@
     <?php
     include_once("views/modules/cdnsheader.html");
     ?>
+    
+    <!-- custom css file link  (new 2022)-->
+    <link rel="stylesheet" href="./public/css/style.css">
+
     <link rel="stylesheet" href="views/css/home.css">
+
     <title>Registrarse</title>
+
+    <!-- (Estilos new 2022) -->
+    <style>
+        .form-control, .form-select{
+        padding: 1.1rem 1.4rem;
+        font-size: 1.7rem;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -35,8 +49,10 @@
 
 
     <?php
-    include_once("views/modules/cdnsfooter.html");
+    include_once('views/modules/footer.html');
+    include_once('views/modules/cdnsfooter.html');
     ?>
+    
     <script src="./public/js/js_registroUsuario.js"></script>
 </body>
 
