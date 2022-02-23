@@ -25,12 +25,12 @@ function verificarAsistente(event){
 
                 let $resgistro = res.data;
                 
-                window.open(`http://localhost/sutea2021-covid/index.php?pg=certificado_digital&code=${$resgistro.dni}&anio=${$resgistro.anio}` , "CERSUTEA CERTIFICADO" , "width=900,height=600,scrollbars=1");
+                window.open(`index.php?pg=certificado_digital&code=${$resgistro.dni}&anio=${$resgistro.anio}` , "CERSUTEA CERTIFICADO" , "width=900,height=600,scrollbars=1");
 
                 res_html =  ` 
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Certificado Válido!</strong> Descarga tu certificado ${$resgistro.nombre} ${$resgistro.apellido}. 
-                        <a href="http://localhost/sutea2021-covid/index.php?pg=certificado_digital&code=${$resgistro.dni}&anio=${$resgistro.anio}" target="_blank" rel="noopener noreferrer">CLICK AQUÍ</a>
+                        <a href="index.php?pg=certificado_digital&code=${$resgistro.dni}&anio=${$resgistro.anio}" target="_blank" rel="noopener noreferrer">CLICK AQUÍ</a>
                     </div>
                 `;
 
