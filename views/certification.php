@@ -5,8 +5,21 @@
   <?php
   include_once('views/modules/cdnsheader.html');
   ?>
+  
+  <!-- custom css file link  (new 2022)-->
+  <link rel="stylesheet" href="./public/css/style.css">
+
   <link rel="stylesheet" href="views/css/home.css">
   <title>Certificado</title>
+
+  <!-- (Estilos new 2022) -->
+  <style>
+    .form-control, .form-select{
+      padding: 1.1rem 1.4rem;
+      font-size: 1.7rem;
+    }
+  </style>
+  
 </head>
 
 <body>

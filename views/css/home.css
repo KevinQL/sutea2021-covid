@@ -54,9 +54,13 @@ header {
     padding-bottom: 3rem;
 }
 
+/*
+* Quitado para la nueva estructura de la página new 2022
+* 
+*/
+
 /* styles footer*/
-.footer {
-    /* position: absolute; */
+/* .footer {
     bottom: 0;
     padding: 56px;
     width: 100%;
@@ -72,7 +76,10 @@ header {
 .footer-copyright a{
     color: #d4731c;
     text-decoration: none;
-}
+} */
+
+
+
 .header-presentation-hide {
     display: none;
 }

@@ -6,7 +6,12 @@
     <?php
     include_once('views/modules/cdnsheader.html');
     ?>
+    
+    <!-- custom css file link  (new 2022)-->
+    <link rel="stylesheet" href="./public/css/style.css">
+            
     <link rel="stylesheet" href="views/css/home.css">
+    
     <title>Expositores</title>
 </head>
 
