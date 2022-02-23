@@ -2,8 +2,8 @@ export const slider = {
     "backgroundImage": "https://source.unsplash.com/faEfWCdOKIg/1500x900",
     "sliders": [
         {
-            "title": "Curso de actualización y fortalecimiento pedagógico de corte internacional",
-            "subtitle": "Del 22 de febrero al 06 de marzo",
+            "title": "CURSO DE ACTUALIZACIÓN Y FORTALECIMIENTO PEDAGÓGICO VIRTUAL 2022",
+            "subtitle": "28 de febrero al 22 de marzo",
             "buttons": [
                 {
                     "name": "Ir al evento",

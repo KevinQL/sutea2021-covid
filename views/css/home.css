@@ -1,5 +1,5 @@
 .header-presentation {
-    background: #dc392d;
+    background: #DC2F02;
     color: #fff;
 }
 header {
@@ -13,18 +13,22 @@ header {
 }
 .navbar-own {
     font-weight: 500;
-    background-color: #fff;
+    background-color: #FAA307;
 }
 .navbar-toggler-own{
     border: none;
     background-color: transparent;
     font-size: 1.25rem;
 }
+.navbar-nav .nav-item a:hover{
+background-color: #E85D04;
+
+}
 .slide-information>h2 {
     color: #dc392d;
 }
 .carousel-home {
-    background-image: url(https://source.unsplash.com/faEfWCdOKIg/1500x900);
+    background-image: url("img_su.jpg");
     position: relative;
 }
 .carousel-home::before {
