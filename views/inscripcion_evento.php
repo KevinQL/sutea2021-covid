@@ -110,7 +110,7 @@
     </div>
   </div>
 
-  <div class="container container-event">
+  <div class="container container-event d-none">
     <h5>Base de codificación de verificando de voucher</h5>
     <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
     <div id="img_otro">

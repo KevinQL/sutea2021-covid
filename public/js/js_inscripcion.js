@@ -366,60 +366,265 @@ function cambioSeleccionNivel($this){
 }
 
 
-
 /**
- * 
- * 
+ * - Función que lee la imagen y lo convierte a base64. 
+ * - Redimensiona la imagen a las longitudes especificadas programadas
+ * - * (coment old) PROGRAMACIÓN TEMPORAL 
  */
-// PROGRAMACION TEMPORAL 
-
 function readImage (input) {
+    /**
+     * Muestra modal de cargando operación de lectura de imagen
+     */
     sweetModalCargando();
-    document.querySelector("#base64").value = "";
-    if (input.files && input.files[0]) {
-      let k = "";
-      let reader = new FileReader();
-      reader.onload = function (e) {
-          $('#preview_new').attr('src', reader.result); // Renderizamos la imagen con su tamanio normla
-          k = reader.result;
-          //console.log("ok->", k);
-          setTimeout(() => {
-              let img = document.querySelector("#preview_new"); // capturamos la imagen renderiada en su tamanio normal
-              console.log("img principal: ",img.width, img.height);
-              if(img.height >= img.width){
-                if(img.width > 400 || img.height > 650);
-                  k = _resize(img, 400, 650); // me devuelve el base64 de la imagen renderizada, reescalado.
-                //console.log("ok2->",k);
-                document.querySelector("#base64").value = k; // imprimimos el base 64 de la imgen redimensionada
-                $('#blah').attr('src', k); // imprimimos la imagen en la imagen de previsualización
-                
-                setTimeout(() => {
-                  $('#preview_new').attr('src', k); // imprimimos la imagen en la imagen de previsualización
-                  console.log("img final: ",img.width, img.height);
-                }, 700);
 
-                sweetModalMin("Voucher Cargado con exito!!","center",2000,"success");
-              }else{                
+    /**
+     * Limpiamos el elemento input donde se almacenará el texto de la imagen en base64
+     */
+    document.querySelector("#base64").value = "";
+
+    /**
+     * Test value - input base64
+     */
+    console.log({
+        info: "valor de input base 64 cuando corre función readImage",
+        response: document.querySelector("#base64").value
+    })
+
+    /**
+     * Si se carga, o existe el archivo (img voucher)
+     */
+    if (input.files && input.files[0]) {
+
+        /**
+         * Inicializamos K, variable que guardará la representación de la imagen como una
+         * cadena de texto base64. El cual proporcionará una manera de poder modificarlo en sus dimensiones
+         */
+        let k = "";
+
+        /**
+         * Renderizamos la imagen para obtener la cadena de testo en base64 de la imagen
+         */
+        let reader = new FileReader();
+
+        /**
+         * Si la renderización de la imagen cargada está completado y listo
+         * Si el reader está cargado completamente
+         */
+        reader.onload = function (e) {
+
+            /**
+             * Renderizamos la imagen, en una cadena de text base64 IMG
+             * y lo almacenamos en la variable K
+             */
+            k = reader.result;
+
+            /**
+             * Muestra la imagen en la vista, esto lo hace en un elemento tipo IMG
+             * reader.result, justamente obtiene la imagen como una lectura de cadena de texto (base64)
+             */
+            $('#preview_new').attr('src', reader.result); // Renderizamos la imagen con su tamanio normla
+
+            //console.log("ok->", k);
+
+            /**
+             * - Ejecutamos bloque de codigo después de 1500 milisegundos
+             * - Esperamos el tiempo para que la cadena de texto de la imagen se complete en el elemento html
+             */
+            setTimeout(() => {
+                /**
+                 * Capturamos la img renderizada, en su tamano original
+                 */
+                let img = document.querySelector("#preview_new");
+
+                /**
+                 * Test data - dimensiones de la imagen de entrada (img voucher)
+                 */
+                console.log({
+                    info: "Dimensiones img entrada - principal.",
+                    response: {w: img.width, h: img.height}
+                });
+
+                /**
+                 * Si la imagen tiene más Alto que Ancho
+                 */
+                if(img.height >= img.width){
+                    
+                    /**
+                     * Si la img tiene de Ancho más de 400px, o Altura más de 650px
+                     */
+                    if(img.width > 400 || img.height > 650){
+
+                        /**
+                         * - Redimensionamos la imagen proporcionalmente. 
+                         * - Guardamos el resultado de la redimensión en K
+                         * - Devuleve el texto de codifcación base64 de la imagen redimensionado
+                         * - (comment older) me devuelve el base64 de la imagen renderizada, reescalado.
+                         */
+                        k = _resize(img, 400, 650);
+
+                    }
+
+                    /**
+                     * - Data test - Valor de K
+                     * - K guarda el texto de codificación base64 de la imagen.
+                     */
+                    console.log({
+                        info: "Valor K después de la condicional para la redimensión.",
+                        response: k
+                    });
+
+                    /**
+                     * - Imprimimos K en la vista-input
+                     * - Se imprime la cadena de texto en base64 de la img en un input con id #base64
+                     * - (comment older) imprimimos el base 64 de la imgen redimensionada
+                     */
+                    document.querySelector("#base64").value = k;
+
+                    /**
+                     * - Mostramos la imagen redimensionada en la vista.
+                     * - Se imprime la imagen redimensionada en un elemento IMG, con id #blah
+                     * - (comment older) imprimimos la imagen en la imagen de previsualización
+                     */
+                    $('#blah').attr('src', k);
+                    
+                    /**
+                     * Mostramos la imagen en su dimensión real, después de un tiempo determinado
+                     */
+                    setTimeout(() => {
+                        /**
+                         * imprimimos la imagen en la imagen de previsualización en su dimensión recortada real.
+                         * Imagen resultado después de hacer recorte
+                         */
+                        $('#preview_new').attr('src', k);
+
+                        /**
+                         * Test data imagen resultado
+                         */
+                        console.log({
+                            info: "img final después de recorte, solo si se cumplió las condiciones...",
+                            response: {w: img.width, h: img.height}
+                        });
+
+                        /**
+                         * Test value - input base64
+                         */
+                        console.log({
+                            info: "valor de input base 64 cuando TERMINA función readImage (H)",
+                            response: document.querySelector("#base64").value
+                        })
+
+                    }, 700 );
+
+                    /**
+                     * Mensaje vista del proceso de recorte.
+                     */
+                    sweetModalMin("Voucher Cargado con exito!!","center",2000,"success");
+
+                /**
+                 * Si la imagen tiene más Ancho que Alto 
+                 */
+                }else{                
+                    
+                    sweetModalMin("Voucher Cargado con exito!!","center",2500,"success");
+
+                    /**
+                     * Si la imagen que se carga tiene Un Ancho mayor que 650px, o una Altura mayor que 420px
+                     */
+                    if(img.width > 650 || img.height > 420){
+                        /**
+                         * - Recortamos la imagen a los valores máximos pasados por parametros. 
+                         * - (suposición) Comprueba primero la dimensión del ancho y luego el Alto. En el caso que sea más ancho que el
+                         * parametro establecido, entonces lo redimensiona al ancho especificado (650px) y soluciona una dimensión proporcional
+                         * para la altura. De la manera contraría también sucede lo mismo.
+                         */
+                        k = _resize(img, 650, 420);
+                    }
+
+                    /**
+                     * - Mostramos la imagen en su tamano original.
+                     * - Probablemente este elemento IMG se oculte, más no se elimine. Este elemento sirve para obtener los valores de la imagen.
+                     */
+                    $('#preview_new').attr('src', k);
+
+                    /**
+                     * - Ejecutamos después de un determinado tiempo.
+                     * - Esto se hace debido a que los valores de la img no se obtienen adecuadamente. Mustra los valores de la imagen principal
+                     * antes de hacer los recortes, en cambio después de esperar un tiempo, recién toma los valores correctos.
+                     */
+                    setTimeout(() => {
+
+                        /**
+                         * Test data - dimensiones de la imagen de entrada (img voucher)
+                         */
+                        console.log({
+                            info: "Dimensiones img resultado - principal.",
+                            response: {w: img.width, h: img.height}
+                        });
+
+                        /**
+                         * Test value - input base64
+                         */
+                        console.log({
+                            info: "valor de input base 64 cuando TERMINA función readImage (W)",
+                            response: document.querySelector("#base64").value
+                        })
+    
+                    }, 500);
+
+                    /**
+                     * Ponemos el valor del imput-file en vacio. 
+                     */
+                    //input.value = "";
+
+                    /**
+                     * Mostramos la IMG recortada en la vista. 
+                     * El recorte solo se hace si se cumple la condición de las dimensiones
+                     */
+                    $('#blah').attr('src', k);
+
+                    
+                    /**
+                     * - Imprimimos K en la vista-input
+                     * - Se imprime la cadena de texto en base64 de la img en un input con id #base64
+                     * - (comment older) imprimimos el base 64 de la imgen redimensionada
+                     */
+                     document.querySelector("#base64").value = k;
+
+                    /**
+                     * Esto muestra una imagen por defecto en el caso de que no se llegue a cargar la img recortada.
+                     * Img por defecto
+                     */
+                    // $('#blah').attr('src', "https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg");
                 
-                sweetModalMin("Por favor Subir otra foto del voucher!!","center",2500,"error");
-                input.value = "";
-                $('#preview_new').attr('src', "");
-                $('#blah').attr('src', "https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg");
-              }
-          }, 1500);
-        //imprime valor base64 
-          //renderiza la img en la img principal
-      }
-      reader.readAsDataURL(input.files[0]);
+                }
+            }, 1500);
+            //imprime valor base64 
+            //renderiza la img en la img principal
+        }
+
+        /**
+         * 
+         */
+        reader.readAsDataURL(input.files[0]);
       
     }
+
 }
 
-  $("#imageImport").change(function () {
-    // Codigo a ejecutar cuando se detecta un cambio de archivO
+
+/**
+ * - Ejecutar cuando se suba una imagen nueva - voucher de pago 
+ * - Intenta modificar la orientación de la imagen a traves de la función readImage
+ */
+$("#imageImport").change(function () {
+
+    /**
+     * Ejecutar la función, y pasar por parametro el input IMG
+     */
     readImage(this);
-  });
-  
+    
+});
+
   
   //----------------------------------------------------------
   //----------------- CODIGO DE IMAGEN -----------------------
