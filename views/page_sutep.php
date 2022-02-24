@@ -34,7 +34,7 @@
                 <span>Educación 2022</span>
                 <h3>CER SUTEA</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quisquam, magnam enim sed debitis perspiciatis.</p>
-                <a href="#" class="btn">Inscripciones AQUÍ</a>
+                <a href="?pg=inscripcion_evento" class="btn">Inscripciones AQUÍ</a>
             </div>
             <div class="image">
                 <img src="./public/img/home-img-1.jpg" alt="">
@@ -46,7 +46,7 @@
                 <span>Evento 2022</span>
                 <h3>CER SUTEA</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quisquam, magnam enim sed debitis perspiciatis.</p>
-                <a href="#" class="btn">Inscripciones AQUÍ</a>
+                <a href="?pg=inscripcion_evento" class="btn">Inscripciones AQUÍ</a>
             </div>
             <div class="image">
                 <img src="./public/img/home-img-2.jpg" alt="">
@@ -71,7 +71,7 @@
         <div class="content">
             <span>Evento 2022</span>
             <h3>Inscribite <br> Aquí</h3>
-            <a href="#" class="btn">Inscripción</a>
+            <a href="?pg=inscripcion_evento" target="_blank" class="btn">Inscripción</a>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
         <div class="content">
             <span>Evento 2022</span>
             <h3>Ponencias <br> virtuales</h3>
-            <a href="#" class="btn">Capacitación</a>
+            <a href="?pg=transmision" target="_blank" class="btn">Capacitación</a>
         </div>
     </div>
 
@@ -89,7 +89,7 @@
         <div class="content">
             <span>Evento 2022</span>
             <h3>Certificado <br> digital</h3>
-            <a href="#" class="btn">Certificado</a>
+            <a href="?pg=certification" target="_blank" class="btn">Certificado</a>
         </div>
     </div>
 

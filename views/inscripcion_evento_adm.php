@@ -21,7 +21,7 @@
   <div class="container container-event ">
     <div class="card card-own p-sm-4 p-md-4">
       <div class="card-body">
-        <h2 class="text-center">Ficha de inscripción docente</h2>
+        <h2 class="text-center">Ficha De Inscripción Docente</h2>
         <p class="text-muted pb-4 text-center"></p>
         <form action="" method="POST" class="row" id="formInscription">
           <div class="col-12 col-md-6 col-lg-4 mb-3">
