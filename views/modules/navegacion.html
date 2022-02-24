@@ -9,41 +9,51 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="?pg=evento">Evento</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="?pg=organizador">Organizador</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="?pg=ponente">Ponente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="?pg=certificado">Certificado</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?pg=validar_adm">Validar</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Inscripciones
+          <a class="nav-link active" aria-current="page" href="?pg=evento">
+            <i class="fas fa-calendar-alt"></i> evento
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="?pg=inscripcion_evento_adm">Inscripcion</a></li>
-            <li><a class="dropdown-item" href="#">Actualizar</a></li>
-          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="?pg=inicio" tabindex="-1" aria-disabled="true">Usuario</a>
+          <a class="nav-link active" aria-current="page" href="?pg=organizador">
+            <i class="fas fa-sitemap"></i> organizador
+          </a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" href="?pg=ponente">
+            <i class="fas fa-podcast"></i> ponente
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" href="?pg=certificado">
+            <i class="fas fa-certificate"></i> certificado
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="?pg=validar_adm">
+            <i class="fas fa-table"></i> inscripciones
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="?pg=inscripcion_evento_adm">
+            <i class="fab fa-wpforms"></i> registrar
+          </a>
+        </li>
+
+        <!-- MENU PRUEBA - options disabled -->
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="?pg=inicio" tabindex="-1" aria-disabled="true">Usuario</a>
+        </li> -->
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Mas
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">...</a></li>
-            <li><a class="dropdown-item" href="#">...</a></li>
+            <li><a class="dropdown-item disabled" aria-disabled="true" href="#">Usuario</a></li>
+            <li><a class="dropdown-item" href="#">Options cersutea</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -51,13 +61,19 @@
           </ul>
         </li>
       </ul>
+
       <form class="d-flex">
-        <a class="nav-link text-muted" target="_blank"
-          href="?pg=page_sutep&d=itecfolder/Zb5CzbRI#S3kKL9gKEY6TKNxdnERKYQ">Web CERSUTEA 2021</a>
-        <a class="btn btn-outline-danger" href="?pg=salir_sistema">
+
+        <a class="nav-link btn btn-sm btn-outline-danger mx-3" target="_blank"
+          href="?pg=page_sutep&d=itecfolder/Zb5CzbRI#S3kKL9gKEY6TKNxdnERKYQ">
+          <i class="fas fa-external-link-alt"></i> WEB-CERSUTEA 2022
+        </a>
+
+        <a class="btn btn-danger" href="?pg=salir_sistema">
           <i class="fas fa-power-off fa-1x"></i>
           <span class="px-2"> Salir</span>
         </a>
+
       </form>
     </div>
   </nav>
