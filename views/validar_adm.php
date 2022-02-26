@@ -29,21 +29,38 @@
 
     <div class="container">
         <div class="card-own px-4 py-4">
-            <h5>Filtrar por:</h5>
+            
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese DNI</label>
+                    <select name="sl-ugel" id="sl-ugel" class="form-select">
+                        <option value="">Todo</option>
+                        <option value="">Andahuaylas</option>
+                        <option value="">Grau</option>
+                        <option value="">Abancay</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <input type="checkbox" name="chk-docente" id="chk-docente" class="form-checkbox">
+                    <label for="chk-docente">Todos los docentes</label>
+                </div>
+            </div>
+
+            <h5>Filtrar : </h5>
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <!-- <label for="phone">Ingrese DNI</label> -->
                     <input type="number" id="txt_dni" name="txt_dni" class="form-control" placeholder=" DNI" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese el nombre</label>
+                    <!-- <label for="phone">Ingrese el nombre</label> -->
                     <input type="text" id="txt_nombre" name="txt_nombre" class="form-control" placeholder="Nombre" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese el apellido</label>
+                    <!-- <label for="phone">Ingrese el apellido</label> -->
                     <input type="text" id="txt_apellido" name="txt_apellido" class="form-control" placeholder="Apellido" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- Validar -->
