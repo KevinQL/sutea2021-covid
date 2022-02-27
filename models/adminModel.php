@@ -410,16 +410,34 @@
             $idevento = $this->obtenerEventoActivo();
 
             /**
-             * Consulta para obtener los registros de acuerdo a los parametros definidos desde la vista
+             * Si el checked de busqueda está marcado
              */
-            $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado, r.evento_idevento, r.ugelr 
-            FROM decente d INNER JOIN registro r 
-            on d.iddecente = r.decente_iddecente 
-            AND r.evento_idevento = {$idevento} 
-            AND r.ugelr LIKE '%{$ugelr}%'
-            AND d.dni LIKE '%{$data->dni}%' 
-            AND d.nombre LIKE '%{$data->nombre}%' 
-            AND d.apellido LIKE '%{$data->apellido}%' ORDER BY r.estado ASC";
+            if($data->chk_docentev){
+                /**
+                 * Consulta para obtener los registros de acuerdo a los parametros definidos desde la vista
+                 */
+                $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado, r.evento_idevento, r.ugelr, r.anio 
+                FROM decente d INNER JOIN registro r 
+                ON d.iddecente = r.decente_iddecente 
+                AND r.ugelr LIKE '%{$ugelr}%'
+                AND d.dni LIKE '%{$data->dni}%' 
+                AND d.nombre LIKE '%{$data->nombre}%' 
+                AND d.apellido LIKE '%{$data->apellido}%' ORDER BY r.estado ASC";
+                
+            }else{
+
+                /**
+                 * Consulta para obtener los registros de acuerdo a los parametros definidos desde la vista
+                 */
+                $query = "SELECT d.iddecente,d.dni,d.nombre,d.apellido, d.celular, r.idregistro, r.ruta_voucher, r.num_operacion, r.fecha_registro, r.estado, r.evento_idevento, r.ugelr, r.anio 
+                FROM decente d INNER JOIN registro r 
+                ON d.iddecente = r.decente_iddecente 
+                AND r.evento_idevento = {$idevento} 
+                AND r.ugelr LIKE '%{$ugelr}%'
+                AND d.dni LIKE '%{$data->dni}%' 
+                AND d.nombre LIKE '%{$data->nombre}%' 
+                AND d.apellido LIKE '%{$data->apellido}%' ORDER BY r.estado ASC";
+            }
 
             $res_q = self::ejecutar_una_consulta($query);
 

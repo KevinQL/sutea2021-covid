@@ -9,19 +9,22 @@ function dataHTML_validarAdm(){
     let txt_nombre = document.querySelector("#txt_nombre");
     let txt_apellido = document.querySelector("#txt_apellido");
     let sl_ugelr = document.querySelector("#sl_ugelr");
+    let chk_docente = document.querySelector("#chk_docente");
 
     return {
         elements : {
             txt_dni ,
             txt_nombre ,
             txt_apellido,
-            sl_ugelr
+            sl_ugelr,
+            chk_docente
         },
         values : {
             txt_dniv : txt_dni.value.trim().toLowerCase() ,
             txt_nombrev : txt_nombre.value.trim().toLowerCase() ,
             txt_apellidov : txt_apellido.value.trim().toLowerCase(),
-            sl_ugelrv: sl_ugelr.value.trim().toLowerCase()
+            sl_ugelrv: sl_ugelr.value.trim().toLowerCase(),
+            chk_docentev: chk_docente.checked
         }
     }
 }
@@ -88,7 +91,8 @@ function execute_traerDocentesEvento(){
     let {txt_dniv,
         txt_nombrev,
         txt_apellidov,
-        sl_ugelrv
+        sl_ugelrv,
+        chk_docentev
         } = data.values;
 
     /**
@@ -107,7 +111,8 @@ function execute_traerDocentesEvento(){
         txt_dniv,
         txt_nombrev,
         txt_apellidov,
-        sl_ugelrv
+        sl_ugelrv,
+        chk_docentev
     }, 
     data => {
         const in_table = document.querySelector("#tableListDocente");
@@ -138,6 +143,7 @@ function execute_traerDocentesEvento(){
                             <td>${element.apellido}</td>
                             <td>${element.celular}</td>
                             <td>${element.ugelr}</td>
+                            <td>${element.anio}</td>
 
                             <td>
                                 <!-- Button trigger modal -->

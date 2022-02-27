@@ -244,6 +244,7 @@
             $dataModel->nombre = $this->txtres($data->txt_nombrev);
             $dataModel->apellido = $this->txtres($data->txt_apellidov);
             $dataModel->ugelr = $this->txtres($data->sl_ugelrv);
+            $dataModel->chk_docentev = $this->txtres($data->chk_docentev)? true:false;
 
             $res = self::exeTraerDocenteEvento_Model($dataModel);
 

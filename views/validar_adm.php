@@ -32,8 +32,9 @@
             
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <input type="checkbox" name="chk-docente" id="chk-docente" class="form-checkbox">
-                    <label for="chk-docente">Todos los docentes</label>
+                    <input type="checkbox" name="chk_docente" id="chk_docente" class="form-checkbox">
+                    <label for="chk_docente">Todos los docentes</label> <br>
+                    <small class="text-danger text-small">(Buscar docente en toda la base de datos)</small>
                 </div>
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                     <select name="sl_ugelr" id="sl_ugelr" class="form-select" onchange="execute_traerDocentesEvento();setSelectUgel(this)">
@@ -80,6 +81,7 @@
             <th scope="col">Apellido</th>
             <th scope="col">Celular</th>
             <th scope="col">Ugel-R</th>
+            <th scope="col">Evento</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
             <th scope="col">Actualizar</th>
