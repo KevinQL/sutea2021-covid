@@ -32,17 +32,23 @@
             
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <select name="sl-ugel" id="sl-ugel" class="form-select">
-                        <option value="">Todo</option>
-                        <option value="">Andahuaylas</option>
-                        <option value="">Grau</option>
-                        <option value="">Abancay</option>
-                    </select>
-                </div>
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
                     <input type="checkbox" name="chk-docente" id="chk-docente" class="form-checkbox">
                     <label for="chk-docente">Todos los docentes</label>
                 </div>
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <select name="sl_ugelr" id="sl_ugelr" class="form-select" onchange="execute_traerDocentesEvento();setSelectUgel(this)">
+                        <option selected="">Todo</option>
+                        <option value="Abancay">Abancay</option>
+                        <option value="Andahuaylas">Andahuaylas</option>
+                        <option value="Antabamba">Antabamba</option>
+                        <option value="Aymaraes">Aymaraes</option>
+                        <option value="Cotabambas">Cotabambas</option>
+                        <option value="Chincheros">Chincheros</option>
+                        <option value="Grau">Grau</option>
+                        <option value="Huancarama">Huancarama</option>
+                    </select>
+                </div>
+                
             </div>
 
             <h5>Filtrar : </h5>
@@ -73,6 +79,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Celular</th>
+            <th scope="col">Ugel-R</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
             <th scope="col">Actualizar</th>

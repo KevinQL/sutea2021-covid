@@ -237,11 +237,16 @@
          * 
          */
         public function exeTraerDocenteEvento_Controller($data){
+            
             $dataModel = new StdClass;
+
             $dataModel->dni = $this->txtres($data->txt_dniv);
             $dataModel->nombre = $this->txtres($data->txt_nombrev);
             $dataModel->apellido = $this->txtres($data->txt_apellidov);
+            $dataModel->ugelr = $this->txtres($data->sl_ugelrv);
+
             $res = self::exeTraerDocenteEvento_Model($dataModel);
+
             return $res;
         }
 
