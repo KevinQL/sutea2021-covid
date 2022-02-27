@@ -20,9 +20,14 @@
     ?>
   <section class="container-slide my-4">
         <section class="container">
-            <iframe width="100%" height="550" src="https://www.youtube.com/embed/ytL_VJGoqk8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="550" src="https://www.youtube.com/embed/o9uaG-7ISfU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </section>
+        
+        <section clas="container">
+        <iframe allowfullscreen="" frameborder="0" height="370" src="https://www.youtube.com/live_chat?v=o9uaG-7ISfU&embed_domain=cersutea.com" width="100%"></iframe><br />
         </section>
   </section>
+  
 
 <!-- Pie de página -->
     <?php

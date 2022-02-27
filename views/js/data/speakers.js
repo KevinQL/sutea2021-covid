@@ -1,23 +1,37 @@
 export const speakers = {
     "title": "Conferencistas",
-    "subtitle": "2021",
+    "subtitle": "2022",
     "events": [
         {
             "day": "Lunes",
-            "date": "22 de febreroro del 2021",
+            "date": "28 de febreroro del 2022",
             "speakers": [
                 {
-                    "name": "Prof. Moisés Chipana Valencia",
-                    "proffesion": "Dirigente Nacional de FENATEPERU",
-                    "description": "Sindicalismo Clasista (principios del sindicalismo) luchas y perspectivas",
-                    "date": "10:00 - 12:00",
+                    "name": ".",
+                    "proffesion": "Inauguración",
+                    "description": "Directora de la DREA, Secretario General de la FENATEPERU, Sec. General del CER- SURTEA",
+                    "date": "08:00 - 09:00",
                     "photo": "views/assets/animation/employee.svg"
                 },                
                 {
-                    "name": "Dr. Alex Alberto Chaman Portugal",
-                    "proffesion": "Docente UMSA UPEA Bolivia Docente de Post Grado",
-                    "description": "Alcances de la Filosofía de la Educación en tiempos del Neoliberalismo.",
+                    "name": "Prof. Moisés Chapana Chipana",
+                    "proffesion": "Dirigente Nacional de FENATEPERU ",
+                    "description": "Sindicalismo Clasista (Principios  del Sindicalismo Clasista) luchas y perspectivas.",
+                    "date": "09:00 - 12:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },
+                {
+                    "name": "Dr. Julio Miguel Reza Huaroc",
+                    "proffesion": "Laboralista Internacional",
+                    "description": "Legislación Educativa y derechos laborales",
                     "date": "15:00 - 18:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },                
+                {
+                    "name": "Mag. Iván Camacho Blas",
+                    "proffesion": "Investigador itinerante",
+                    "description": "Enfoque de investigación en la educación pública.",
+                    "date": "18:00 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -25,55 +39,35 @@ export const speakers = {
         },
         {
             "day": "Martes",
-            "date": "23 de febrero del 2021",
+            "date": "01 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Geraldine Coloti",
-                    "proffesion": "Periodista y escritora italiana",
-                    "description": "La manipulación mediática y la desinformación",
-                    "date": "09:00 - 11:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },                
-                {
-                    "name": "Maestro Carlos Gallardo",
+                    "name": "César Díaz   Dávila",
                     "proffesion": "Uno de los fundadores del SUTEP 1972",
-                    "description": "Historia de las luchas magisteriales y sus repercusiones.",
-                    "date": "11:00 - 13:00",
+                    "description": "Historia de las luchas magisteriales y sus repercusiones ",
+                    "date": "15:00 - 16:00",
                     "photo": "views/assets/animation/employee.svg"
                 },                
                 {
-                    "name": "MSc María Carmen Romano",
-                    "proffesion": "Docente e investigadora de la Universidad de Buenos Aires. (Argentina)",
-                    "description": "La Educación en Época de COVID 19.",
-                    "date": "15:00 - 18:00",
+                    "name": "Dr. Manuel Loli",
+                    "proffesion": "Docente  en Maestría en Marketing Político, Director de la agencia de Comunicación IPNews Estados Unidos",
+                    "description": "Control y manipulación mediática por los medios masivos de información.",
+                    "date": "16:30 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
-                }
+                }             
+                
             ]
 
         },
         {
             "day": "Miercoles",
-            "date": "24 de febrero del 2021",
+            "date": "02 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "MSc. Doris Alexandra",
-                    "proffesion": "Colegio de Profesores de Chile",
-                    "description": "Análisis de la realidad educativa de América latina en el marco de la lucha por una Nueva Constitución Política",
-                    "date": "08:00 - 10:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },                
-                {
-                    "name": "Dr. Juan Melchor Román",
-                    "proffesion": "México Representante Sindical de México",
-                    "description": "Educación Mexicana y la lucha contra el sistema neoliberal",
-                    "date": "10:00 - 13:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },                
-                {
-                    "name": "Dr. Julio Miguel Reza Huaroc",
-                    "proffesion": "Laboralista Internacional",
-                    "description": "Procesos administrativos en el magisterio.",
-                    "date": "15:00 - 17:00",
+                    "name": "Dr.   José Manuel Ponce Vaga",
+                    "proffesion": "Docente en investigación UNACH-C, UNJCMM, UNAL P-UNMS",
+                    "description": "Análisis del Proyecto Educativo Nacional y la Nueva Propuesta de un nuevo PEN",
+                    "date": "15:00 - 19:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
                 
@@ -82,34 +76,20 @@ export const speakers = {
         },
         {
             "day": "Jueves",
-            "date": "25 de febrero del 2021",
+            "date": "03 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Hernán Rodríguez Antón",
-                    "proffesion": "Consultor del MINEDU",
-                    "description": "Estrategia para el Pensamiento Crítico Y Creativo",
-                    "date": "08:00 - 10:00",
+                    "name": "Dr. Marco Ventura Rodríguez",
+                    "proffesion": "Conferencista, Docente UNSM",
+                    "description": "Construcción de un Nuevo Curriculum Nacional. (Educación científica, popular, democrática, nacional, humanista, emancipadora, productiva)",
+                    "date": "15:00 - 18:00",
                     "photo": "views/assets/animation/employee.svg"
                 },                
                 {
-                    "name": "Dr. Hugo Valencia Almonte",
-                    "proffesion": "Docente de la Universidad Nacional del Altiplano",
-                    "description": "Los mitos de las Evaluaciones durante el proceso de aprendizaje",
-                    "date": "10:00 - 13:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },
-                {
-                    "name": "Dr. Sigfredo Chiroque Torres",
-                    "proffesion": "---",
-                    "description": "Desarrollo de conciencia crítica e investigación en los estudiantes",
-                    "date": "15:00 - 17:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },
-                {
-                    "name": "Evo Morales Ayma",
-                    "proffesion": "Ex presidente de Bolivia",
-                    "description": "Experiencia política en Bolivia Sobre la lucha Neoliberal",
-                    "date": "17:00 - 18:00",
+                    "name": "Hernán Rodríguez Antón",
+                    "proffesion": "Consultor del MINEDU (Equipo de trabajadores)",
+                    "description": "Estrategia para el Pensamiento Crítico Y Creativo (taller)",
+                    "date": "18:00 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -117,26 +97,12 @@ export const speakers = {
         },
         {
             "day": "Viernes",
-            "date": "26 de febrero del 2021",
+            "date": "04 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Dr. Julio Miguel Reza Huaroc",
-                    "proffesion": "Laboralista Internacional",
-                    "description": "Legislación Educativa y derechos laborales.",
-                    "date": "08:00 - 10:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },                
-                {
-                    "name": "Equipo de la DREA por niveles",
-                    "proffesion": "Dirección Regional de Educación Apurímac",
-                    "description": "Programación Curricular con relación a la educación remota",
-                    "date": "10:00 - 13:00",
-                    "photo": "views/assets/animation/employee.svg"
-                },
-                {
-                    "name": "Equipo de la DREA por niveles",
-                    "proffesion": "Dirección Regional de Educación Apurímac",
-                    "description": "Programación Curricular",
+                    "name": "Dr. Hugo Valencia Almonte",
+                    "proffesion": "Docente de la Universidad Nacional del Altiplano",
+                    "description": "Los  mitos de las Evaluaciones durante el proceso de aprendizaje  (Taller equipo de trabajadores)",
                     "date": "15:00 - 19:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
@@ -145,20 +111,20 @@ export const speakers = {
         },
         {
             "day": "Sábado",
-            "date": "27 de febrero del 2021",
+            "date": "05 de Marzo del 2022",
             "speakers": [
                 {
-                    "name": "Equipo de la DREA por niveles",
-                    "proffesion": "Dirección Regional de Educación Apurímac",
-                    "description": "Programación Curricular con relación a la educación remota",
-                    "date": "08:00 - 13:00",
+                    "name": "Dr.  Sigfredo Choreque Torres",
+                    "proffesion": "CONSULTOR Y DOCENTE DE POST GRADO",
+                    "description": "Desarrollo de conciencia crítica e investigación  en los estudiantes (Taller)",
+                    "date": "09:00 - 12:00",
                     "photo": "views/assets/animation/employee.svg"
                 },                
                 {
-                    "name": "Equipo de la DREA por niveles",
-                    "proffesion": "Dirección Regional de Educación Apurímac",
-                    "description": "Programación Curricular",
-                    "date": "15:00 - 19:00",
+                    "name": "MINEDU",
+                    "proffesion": "Equipos de Psicólogos",
+                    "description": "Trabajo socio -emocional de los docentes y estudiantes en tiempos de pandemia",
+                    "date": "15:00 - 18:00",
                     "photo": "views/assets/animation/employee.svg"
                 },
             ]
@@ -166,13 +132,13 @@ export const speakers = {
         },
         {
             "day": "Lunes",
-            "date": "01 de marzo del 2021",
+            "date": "07 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Mg. Daniel Molina Solís",
-                    "proffesion": "---",
-                    "description": "Razonamiento Matemático Taller para resolver problemas para el examen de nombramiento y ascenso de escala",
-                    "date": "14:00 - 18:00",
+                    "name": "Dr. William Javier Díaz Ramírez",
+                    "proffesion": "El desarrollo Crítico, creativo y productivo en los estudiantes en Latinoamérica.",
+                    "description": "Activista Sindical, Líder Social y defensor de los Derechos Humanos, Coordinador de la Cátedra de Pensamiento Social Crítico Orlando Fals Borda",
+                    "date": "15:00 - 19:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -180,13 +146,20 @@ export const speakers = {
         },
         {
             "day": "Martes",
-            "date": "02 de marzo del 2021",
+            "date": "08 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "DREA",
-                    "proffesion": "Dirección Regional de Educación Apurímac",
-                    "description": "Razonamiento Verbal Taller para resolver problemas para el examen de nombramiento y ascenso de escala",
-                    "date": "14:00 - 18:00",
+                    "name": "Mg. Roberto Iván Aguilar Gómez",
+                    "proffesion": "Ex Ministro de Educación de Bolivia 2008-2019. Ex Vicepresidente de la Asamblea Constituyente 2006-2007. Embajador del Estado Plurinacional ante la UNESCO- Francia",
+                    "description": "Experiencia  y lucha contra el sistema neoliberal y la aplicación de una educación plurinacional en Bolivia",
+                    "date": "15:00 - 17:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },
+                {
+                    "name": "Prof. Edgardo Tritini Lillo",
+                    "proffesion": "Miembro  del Movimiento por refundación Gremial y Pedagógica de Chile",
+                    "description": "La Crisis de la Educación Chilena y las luchas sistemáticas",
+                    "date": "17:00 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -194,13 +167,13 @@ export const speakers = {
         },
         {
             "day": "Miércoles",
-            "date": "03 de marzo del 2021",
+            "date": "09 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Docentes formadores en EIB Apurímac",
-                    "proffesion": "---",
-                    "description": "EIB Taller: Gramática Quechua",
-                    "date": "14:00 - 18:00",
+                    "name": "Mg. Marco Ventura Rodríguez",
+                    "proffesion": "Docente de Post grado Universidad de Ciencias y Humanidades",
+                    "description": "Nuevo Proyecto Educativo Nacional- Nuevo Currículo",
+                    "date": "15:00 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -209,13 +182,13 @@ export const speakers = {
         
         {
             "day": "Jueves",
-            "date": "04 de marzo del 2021",
+            "date": "10 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Docentes formadores en EIB Apurímac",
-                    "proffesion": "---",
-                    "description": "EIB Taller: Gramática Quechua",
-                    "date": "14:00 - 18:00",
+                    "name": ".Dr  Alex Alberto Chaman Portugal",
+                    "proffesion": "Docente Universitario en Bolivia. Director   Revista Atreverse e IPNews Bolivia",
+                    "description": "Desafíos Psicopedagógicas y resilientes para   la educación y Filosofía de la Educación",
+                    "date": "15:00 - 20:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -223,13 +196,13 @@ export const speakers = {
         },
         {
             "day": "Viernes",
-            "date": "05 de marzo del 2021",
+            "date": "11 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Ing. Lenyn Elí Flores Balandra",
-                    "proffesion": "Especialista en Tecnología de la Información y Comunicación",
-                    "description": "Herramientas digitales y la aplicación en la educación remota (uso adecuado)",
-                    "date": "14:00 - 18:00",
+                    "name": "Mg. Vladimir   Enver Esquivel  Carhuaz",
+                    "proffesion": "conferencista,  docente en maestría Universidad Enrique  Guzmán y Valle y UNMSM",
+                    "description": "Estrategias de lectura, Razonamiento verbal y producción de Textos (Taller)",
+                    "date": "15:00 - 19:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
@@ -237,17 +210,151 @@ export const speakers = {
         },
         {
             "day": "Sábado",
-            "date": "06 de marzo del 2021",
+            "date": "12 de marzo del 2022",
             "speakers": [
                 {
                     "name": "---",
-                    "proffesion": "Especialista en Tecnología de la Información y Comunicación",
-                    "description": "Herramientas digitales y la aplicación en la educación remota (uso adecuado)",
+                    "proffesion": "Equipo de formadores en el Idioma quechua",
+                    "description": "Gramática quechua Taller",
+                    "date": "09:00 - 13:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },
+                {
+                    "name": "Mg, Adriano Gutiérrez Ramírez",
+                    "proffesion": "docente en la  UN la Cantuta, PUCP, UMSM, Capacitador externo",
+                    "description": "Evaluación Formativa y el diseño  en sus instrumentos",
+                    "date": "15:00 - 19:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Lunes",
+            "date": "14 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Dr. Jaime  Asunción Tejeda",
+                    "proffesion": "Navarrete, Docente  en Maestría en diferentes Universidades",
+                    "description": "Cómo Elaborar el Proyecto Curriculares Institucional y la aplicación en el proceso de aprendizaje ( taller)",
+                    "date": "15:00 - 20:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Martes",
+            "date": "15 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Ing. Lenyn Elí Flores Balandra",
+                    "proffesion": "Ingeniero de Sistemas, Especialista en TIC Educativo, Desarrollador de Software, Consultor TIC",
+                    "description": "Herramientas digitales y su aplicación en el proceso de aprendizaje Taller",
+                    "date": "15:00 - 19:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Miércoles",
+            "date": "16 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Lic.  Víctor Chaccara Huachaca",
+                    "proffesion": "MINEDU  (equipo de trabajadores)",
+                    "description": "Uso de herramientas tecnológicos para utilizar proyectos, carpeta pedagógica y  evaluaciones y otras plataformas",
+                    "date": "15:00 - 20:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Jueves",
+            "date": "17 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Minedu  Equipo de trabajadores",
+                    "proffesion": "---",
+                    "description": "Uso del Tic y plataformas virtuales para desarrollar sesiones de Clase (Educación Híbrida)",
+                    "date": "15:00 - 20:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Viernes",
+            "date": "18 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Equipo  de Trabajo del Gobierno Regional",
+                    "proffesion": "---",
+                    "description": "PER- PEL- PEI., y experiencias de aprendizaje",
                     "date": "14:00 - 17:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
 
+        },
+        {
+            "day": "Sábado",
+            "date": "19 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "Lic.  Víctor Chaccara Huachaca",
+                    "proffesion": "MINEDU  (equipo de trabajadores)",
+                    "description": "Uso de herramientas tecnológicos para utilizar proyectos, carpeta pedagógica y  evaluaciones y otras plataformas",
+                    "date": "09:00 - 13:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },
+                {
+                    "name": "Mg. Lourdes Erazo Espinoza",
+                    "proffesion": "Docente de la Universidad de Ciencias Y Humanidades",
+                    "description": "Planificación Curricular para el retorno a la presencialidad y la semi presencialidad.",
+                    "date": "09:00 - 13:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "lunes",
+            "date": "21 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "MINEDU DREA",
+                    "proffesion": "---",
+                    "description": "TALLER Elaboración  de la Carpeta Pedagógica  con un enfoque de la Escuela Nueva después de la pandemia",
+                    "date": "15:00 - 22:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
+        },
+        {
+            "day": "Martes",
+            "date": "22 de marzo del 2022",
+            "speakers": [
+                {
+                    "name": "MINEDU- DREA",
+                    "profesion": "---",
+                    "description": "TALLER Elaboración de la Carpeta Pedagógica con un enfoque de la Escuela Nueva después de la pandemia",
+                    "date": "15:00 - 20:00",
+                    "photo": "views/assets/animation/employee.svg"
+                },
+                {
+                    "name": "CLAUSURA",
+                    "profesion": "--",
+                    "description": "COMITÉ EJECUTIVO REGIONAL CER-SURTEA",
+                    "date": "20:00 - 21:00",
+                    "photo": "views/assets/animation/employee.svg"
+                }
+            ]
+
         }
+
     ]
 }

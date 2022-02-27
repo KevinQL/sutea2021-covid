@@ -33,7 +33,7 @@
             <div class="content">
                 <span>Educación 2022</span>
                 <h3>CER SUTEA</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quisquam, magnam enim sed debitis perspiciatis.</p>
+                <p>CURSO DE ACTUALIZACIÓN Y FORTALECIMIENTO PEDAGÓGICO  VIRTUAL 2022</p>
                 <a href="?pg=inscripcion_evento" class="btn">Inscripciones AQUÍ</a>
             </div>
             <div class="image">
@@ -45,7 +45,7 @@
             <div class="content">
                 <span>Evento 2022</span>
                 <h3>CER SUTEA</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quisquam, magnam enim sed debitis perspiciatis.</p>
+                <p>POR UNA EDUCACIÓN CIENTÍFICA Y NACIONALISTA, REAL PARA EL DESARROLLO DE LOS PUEBLOS ANDINOS DE APURIMAC</p>
                 <a href="?pg=inscripcion_evento" class="btn">Inscripciones AQUÍ</a>
             </div>
             <div class="image">
