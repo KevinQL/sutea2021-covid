@@ -290,9 +290,9 @@ export const speakers = {
             "date": "18 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Equipo  de Trabajo del Gobierno Regional",
+                    "name": "César Enrique Díaz Dávila y Manuel Montañés Rodríguez, responsables de estudio de Germán Caro Ríos",
                     "proffesion": "---",
-                    "description": "PER- PEL- PEI., y experiencias de aprendizaje",
+                    "description": "Desarrollar la propuesta de Germán Caro Ríos para una  Nueva Educación en el Perú",
                     "date": "14:00 - 17:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
@@ -304,7 +304,7 @@ export const speakers = {
             "date": "19 de marzo del 2022",
             "speakers": [
                 {
-                    "name": "Lic.  Víctor Chaccara Huachaca",
+                    "name": "",
                     "proffesion": "MINEDU  (equipo de trabajadores)",
                     "description": "Uso de herramientas tecnológicos para utilizar proyectos, carpeta pedagógica y  evaluaciones y otras plataformas",
                     "date": "09:00 - 13:00",
@@ -314,7 +314,7 @@ export const speakers = {
                     "name": "Mg. Lourdes Erazo Espinoza",
                     "proffesion": "Docente de la Universidad de Ciencias Y Humanidades",
                     "description": "Planificación Curricular para el retorno a la presencialidad y la semi presencialidad.",
-                    "date": "09:00 - 13:00",
+                    "date": "15:00 - 18:00",
                     "photo": "views/assets/animation/employee.svg"
                 }
             ]
