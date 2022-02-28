@@ -2,39 +2,117 @@ console.log("load js_validarAdm.js");
 
 
 /**
- * 
+ * Data element an value, of the form Module Validar
  */
 function dataHTML_validarAdm(){
     let txt_dni = document.querySelector("#txt_dni");
     let txt_nombre = document.querySelector("#txt_nombre");
     let txt_apellido = document.querySelector("#txt_apellido");
+    let sl_ugelr = document.querySelector("#sl_ugelr");
+    let chk_docente = document.querySelector("#chk_docente");
 
     return {
         elements : {
             txt_dni ,
             txt_nombre ,
-            txt_apellido
+            txt_apellido,
+            sl_ugelr,
+            chk_docente
         },
         values : {
-            txt_dniv : txt_dni.value ,
-            txt_nombrev : txt_nombre.value ,
-            txt_apellidov : txt_apellido.value 
+            txt_dniv : txt_dni.value.trim().toLowerCase() ,
+            txt_nombrev : txt_nombre.value.trim().toLowerCase() ,
+            txt_apellidov : txt_apellido.value.trim().toLowerCase(),
+            sl_ugelrv: sl_ugelr.value.trim().toLowerCase(),
+            chk_docentev: chk_docente.checked
         }
     }
 }
 
+/**
+ * 
+ */
+function setSelectUgel($this){
+
+    /**
+     * - Almacenamos el valor de ugel en el localStorage del cliente.
+     * - Crea un clave-valor para el elemento select-ugel
+     */
+    localStorage.setItem('ugel', $this.value.trim().toLowerCase());
+    
+    /**
+     * Obtenemos el valor de ugel desde el localstorage, para mostrarlo en el testdata
+     */
+    let value = localStorage.getItem('ugel');
+
+    /**
+     * Data test - localStorage
+     */
+    console.log({
+        info: "data value ugel selecting saved",
+        response: value
+    });
+}
+
+
+
+/**
+ * Esta función se ejecuta cuando se completa la carga de la página, y antes que se cargue la tabla de
+ * registros de los docentes inscritos
+ */
+ function getSelectUgel(){
+
+    /**
+     * Obtiene el valor de la ugel desde el localStorage. 
+     * En el caso de que no exista el localStorage devuelve null, entoces develve 'todo'
+     */
+    let value = localStorage.getItem('ugel') ? localStorage.getItem('ugel').toLocaleLowerCase():'todo';
+
+    /**
+     * Data test - localStorage
+     */
+    console.log({
+        info: "Obteniendo datavalue ugel con localStorage",
+        response: {v: value}
+    });
+
+    return value;
+}
+
+
+
+/**
+ * - Obtiene todos los registros de la tabla de los docente inscritos en el evento activo.
+ * - Carga los datos con los filtros configurados previamente en la vista
+ */
 function execute_traerDocentesEvento(){
 
     let data = dataHTML_validarAdm();
     let {txt_dniv,
         txt_nombrev,
-        txt_apellidov} = data.values;
+        txt_apellidov,
+        sl_ugelrv,
+        chk_docentev
+        } = data.values;
 
+    /**
+     * Test Data - form validar admin
+     */
+    console.log({
+        info: "Data value - form validar",
+        response: data
+    })
+
+    /**
+     * Enviamos los datos al servidor con los filtros de la vista
+     */
     fetchKev("POST",{
         id:"exe-traerDocenteEvento",
         txt_dniv,
         txt_nombrev,
-        txt_apellidov
+        txt_apellidov,
+        sl_ugelrv,
+        chk_docentev
     }, 
     data => {
         const in_table = document.querySelector("#tableListDocente");
@@ -64,6 +142,8 @@ function execute_traerDocentesEvento(){
                             <td>${element.nombre}</td>
                             <td>${element.apellido}</td>
                             <td>${element.celular}</td>
+                            <td>${element.ugelr}</td>
+                            <td>${element.anio}</td>
 
                             <td>
                                 <!-- Button trigger modal -->
@@ -114,11 +194,48 @@ function execute_traerDocentesEvento(){
 
 /**
  * Se cargan los datos en la tabla de la vista, después de un determinado tiempo
- * El tiempo de retardo, es un estimado para esperar que los elementos html se carguen correctamente
+ * Después de que la ventana se carga completamente ejecutar el bloque de codigo con las funciones
  */
-setTimeout(() => {
-    execute_traerDocentesEvento();
-}, 500);
+window.onload = (event) => {
+
+    /**
+     * - Definimos los indices para el elemento select - ugel
+     * - Los indices vienen dados por el orden que se encuentran en la estructura html
+     * - Es preciso utilizar indices numericos, por que los literales no se aceptan con js
+     */
+    let data_sl_ugel = {
+        todo : 0,
+        abancay : 1,
+        andahuaylas : 2,
+        antabamba : 3,
+        aymaraes : 4,
+        cotabambas : 5,
+        chincheros : 6,
+        grau : 7,
+        huancarama : 8
+    };
+
+    /**
+     * - Obtenemos la ugel que se guardo en el localStorage
+     * - Previamente el usuario habrá, o no escogido una ugel
+     */
+    let value = getSelectUgel();    
+
+    /**
+     * Se cambia la ugel en el elemento html Select
+     */
+    document.querySelector("#sl_ugelr").selectedIndex = data_sl_ugel[value];
+
+    /**
+     * - Se obtiene la tabla de registros de a cuerdo a los filtros establecidos
+     * - Establecemos que el codigo se ejecutará después de 100mls para no tener problemas con la
+     * obtenesión de los valores de los filtros. * Se ha probado sin el settime, y funciona igual
+     */
+    setTimeout(() => {
+        execute_traerDocentesEvento();
+    }, 100);
+
+}
 
 
 /**

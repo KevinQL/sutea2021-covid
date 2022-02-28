@@ -29,21 +29,45 @@
 
     <div class="container">
         <div class="card-own px-4 py-4">
-            <h5>Filtrar por:</h5>
+            
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese DNI</label>
+                    <input type="checkbox" name="chk_docente" id="chk_docente" class="form-checkbox">
+                    <label for="chk_docente">Todos los docentes</label> <br>
+                    <small class="text-danger text-small">(Buscar docente en toda la base de datos)</small>
+                </div>
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <select name="sl_ugelr" id="sl_ugelr" class="form-select" onchange="execute_traerDocentesEvento();setSelectUgel(this)">
+                        <option selected="">Todo</option>
+                        <option value="Abancay">Abancay</option>
+                        <option value="Andahuaylas">Andahuaylas</option>
+                        <option value="Antabamba">Antabamba</option>
+                        <option value="Aymaraes">Aymaraes</option>
+                        <option value="Cotabambas">Cotabambas</option>
+                        <option value="Chincheros">Chincheros</option>
+                        <option value="Grau">Grau</option>
+                        <option value="Huancarama">Huancarama</option>
+                    </select>
+                </div>
+                
+            </div>
+
+            <h5>Filtrar : </h5>
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <!-- <label for="phone">Ingrese DNI</label> -->
                     <input type="number" id="txt_dni" name="txt_dni" class="form-control" placeholder=" DNI" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese el nombre</label>
+                    <!-- <label for="phone">Ingrese el nombre</label> -->
                     <input type="text" id="txt_nombre" name="txt_nombre" class="form-control" placeholder="Nombre" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <label for="phone">Ingrese el apellido</label>
+                    <!-- <label for="phone">Ingrese el apellido</label> -->
                     <input type="text" id="txt_apellido" name="txt_apellido" class="form-control" placeholder="Apellido" autocomplete="off" onkeyup="execute_traerDocentesEvento();">
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- Validar -->
@@ -56,6 +80,8 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Celular</th>
+            <th scope="col">Ugel-R</th>
+            <th scope="col">Evento</th>
             <th scope="col">Detalles</th>
             <th scope="col">Validar</th>
             <th scope="col">Actualizar</th>
