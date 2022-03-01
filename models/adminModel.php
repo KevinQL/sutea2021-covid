@@ -602,7 +602,8 @@
                 // verifica si ya registró su asistencia en el intervalo de tiempo programado
                 $res_ctrl = $this->controlAsistenciaControl($data->registro_idregistro);
                 $sis_msj = $res_ctrl["sis_msj"];
-                if(!$res_ctrl["eval"]){
+                $control_dia = $res_ctrl["control_dia"];
+                if(!$res_ctrl["eval"] && $res_ctrl['eval_schudele']){
                     $query = "INSERT INTO control SET 
                                 anio = '{$anio}',
                                 fecha_registro = current_timestamp(),
@@ -612,7 +613,10 @@
                     ";
                     $result_query = self::ejecutar_una_consulta($query);
                     if($result_query->rowCount() >= 1){
-                        $sis_msj = "Asistencia Registrada!";
+                        $sis_msj = "Asistencia Registrada (Mañana: 9 - 13 pm)!";
+                        if($control_dia){
+                            $sis_msj = "Asistencia Registrada (Tarde: 15 - 17 pm)!";
+                        }
                         $res = true;
                     }else{
                         $sis_msj = "No se inserto ningún dato.";
@@ -629,11 +633,20 @@
         public function controlAsistenciaControl($idregistro){
             // El idregistro, ya está validado que pertenece al evento actual.
             $res = false;
+            $res_schudele = true;
+            $control_dia = 0;
             $sis_msj = "";
             $anio = date("Y");
             $fecha_actual = date("Y-m-d H:i:s");
+
             $fecha_temprano = [date("Y-m-d")." 09:00:00", date("Y-m-d")." 13:00:00"];
             $fecha_tarde = [date("Y-m-d")." 13:59:00", date("Y-m-d")." 17:00:00"];
+            
+            /**
+             * Prueba de code 
+             */
+            // $fecha_temprano = [date("Y-m-d")." 09:00:00", date("Y-m-d")." 13:00:00"];
+            // $fecha_tarde = [date("Y-m-d")." 13:59:00", date("Y-m-d")." 23:00:00"];
 
             $f_entrada="";
             $f_salida="";
@@ -650,30 +663,35 @@
                 // echo "entro tared";
                 $f_entrada = $fecha_tarde[0];
                 $f_salida = $fecha_tarde[1];
+                $control_dia = 1;
             } else {
                 # code...
                 $sis_msj = "La asistencia aun no está habilitada";
-                $res = true;
+                $res_schudele = false;
             }
 
-            if($sis_msj === "" || true){
+            if($sis_msj === ""){
                 $query = "SELECT * FROM control c 
                             WHERE c.fecha_registro > '{$f_entrada}' 
                             AND c.fecha_registro < '{$f_salida}' 
-                            AND C.registro_idregistro = '{$idregistro}'
+                            AND c.registro_idregistro = '{$idregistro}'
+                            AND c.control_dia = {$control_dia}
                             AND c.anio = '{$anio}'
                         ";
                 $res_q = self::ejecutar_una_consulta($query);
                 if($res_q->rowCount() >= 1){
                     $res = true;   
-                    $sis_msj = "El docente ya registró su asistencia";
+                    $sis_msj = "El docente ya registró su asistencia (Mañana: 9 - 13 pm)";
+                    if($control_dia){
+                        $sis_msj = "El docente ya registró su asistencia (Tarde: 15 - 17 pm)";
+                    }
                 }else{
                     $res = false; 
                     $sis_msj = "El docente aun no registro su asistencia";
                 }
             }
 
-            return ["eval"=>$res, "sis_msj"=>$sis_msj];
+            return ["eval"=>$res, "eval_schudele"=> $res_schudele, "control_dia"=>$control_dia, "sis_msj"=>$sis_msj];
 
         }
         //---

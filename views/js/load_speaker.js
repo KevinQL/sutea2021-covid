@@ -10,6 +10,13 @@ function load_speakers() {
     dataSpeakers.events.forEach((event, index) => {
         let speakerContent = '';
         event.speakers.forEach(spk => {
+
+            /**
+             * Definimos el tipo de boton de acuerdo al estado del stream. 
+             * Si existe ponencia entonces pintar boton mirar-ponenencia, sino sin-ponencia
+             */
+            let buttonStream = spk.streaming.state ?  `<a small class="next btn btn-primary-own mx-2" target="_blank" href="${spk.streaming.link}">mirar ponencia</a>`:`<a small class="next btn btn-danger-own mx-2" target="_blank" href="${spk.streaming.link}">sin ponencia</a>`;
+
             speakerContent += `
                     <div class="col-lg-4 mb-3">
                         <div class="card-speakers">
@@ -20,6 +27,8 @@ function load_speakers() {
                             <span small class="font-color-vprimary font-weight-bold">${spk.proffesion}</span>
                             <p class="mt-2">${spk.description}</p>
                             <span small class="font-color-vprimary font-weight-bold">${spk.date}</span>
+            
+                            ${buttonStream}
                             
                         </div>
                     </div>
