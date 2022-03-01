@@ -660,7 +660,7 @@
                 $query = "SELECT * FROM control c 
                             WHERE c.fecha_registro > '{$f_entrada}' 
                             AND c.fecha_registro < '{$f_salida}' 
-                            AND C.registro_idregistro = '{$idregistro}'
+                            AND c.registro_idregistro = '{$idregistro}'
                             AND c.anio = '{$anio}'
                         ";
                 $res_q = self::ejecutar_una_consulta($query);
