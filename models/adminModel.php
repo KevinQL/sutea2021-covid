@@ -613,9 +613,9 @@
                     ";
                     $result_query = self::ejecutar_una_consulta($query);
                     if($result_query->rowCount() >= 1){
-                        $sis_msj = "Asistencia Registrada (Mañana)!";
+                        $sis_msj = "Asistencia Registrada (Mañana: 9 - 13 pm)!";
                         if($control_dia){
-                            $sis_msj = "Asistencia Registrada (Tarde)!"; 
+                            $sis_msj = "Asistencia Registrada (Tarde: 15 - 17 pm)!";
                         }
                         $res = true;
                     }else{
@@ -681,9 +681,9 @@
                 $res_q = self::ejecutar_una_consulta($query);
                 if($res_q->rowCount() >= 1){
                     $res = true;   
-                    $sis_msj = "El docente ya registró su asistencia (Mañana)";
+                    $sis_msj = "El docente ya registró su asistencia (Mañana: 9 - 13 pm)";
                     if($control_dia){
-                        $sis_msj = "El docente ya registró su asistencia (Tarde)";
+                        $sis_msj = "El docente ya registró su asistencia (Tarde: 15 - 17 pm)";
                     }
                 }else{
                     $res = false; 
