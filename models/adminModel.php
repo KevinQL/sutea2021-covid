@@ -592,7 +592,7 @@
             
             $anio = date("Y");
             $control_dia=0;
-            $control_asistencia=0;
+            $control_asistencia=1;
 
             // El registro del docente está validado?
             $reg_val = $this->registroValidado($data->registro_idregistro);
