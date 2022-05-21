@@ -54,11 +54,6 @@ if($res_ponente['eval'] && $control_asistente){
 }
 
 if($eval_certi){
-    
-    // var_dump($res_ponente);
-    // echo "<br>";
-    // echo "<br>";
-    // var_dump($res_usuario);
 
     //INICIANDO CON LA HOJA EN BLANCO
     $pdf = new FPDF('L','mm','A4');

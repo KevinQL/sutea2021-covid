@@ -42,10 +42,6 @@
             // Obteniedo datos del evento actual activo
             $res_eventoActual = $objEvento->eventoActivo_Controller();
             $eventoActual = $res_eventoActual['data'][0];
-
-
-
-            // var_dump($eventoActual);
             
 
         ?>

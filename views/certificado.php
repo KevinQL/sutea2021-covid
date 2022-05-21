@@ -40,10 +40,6 @@
             // Obteniedo datos del evento actual activo
             $res_eventoActual = $objEvento->eventoActivo_Controller();
             $eventoActual = $res_eventoActual['data'][0];
-
-
-
-            // var_dump($eventoActual);
             
 
         ?>
@@ -202,14 +198,6 @@
                         <li class="list-group-item">
                             Lista Vacia!!
                         </li>
-                        <!-- <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis vero perferendis odit alias laborum similique quaerat eos eligendi saepe doloremque.
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            Third checkbox
-                        </li> -->
                     </ul>
 
                 </div>

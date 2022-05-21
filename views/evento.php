@@ -27,10 +27,7 @@
 
             $objEvento = new eventoController();
 
-
-            // var_dump($objEvento->obtenerEventos_Controller(""));
             $eventos_arr = $objEvento->obtenerEventos_Controller(""); 
-
 
             /**
              * Variables para crear el evento

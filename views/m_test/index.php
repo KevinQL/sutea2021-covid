@@ -8,7 +8,7 @@
 	const SERVER="localhost";
 	const DB="cersutea_2021";
     const USER="cersutea_2021"; //root
-	const PASS="rXesT[DTXgSJ"; //
+	const PASS="rcxa[DTsdXgSJa"; // o cualquier otra cosa :v 
 
 
 	// Solo modificar la siguiente línea en caso el gestor de base de datos no sea MySQL
