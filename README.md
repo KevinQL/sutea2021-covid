@@ -4,13 +4,13 @@
 - [x] Módulo de logueo. Registro de Administrador :+1:.
 - [x] Módulo de registro de Evento :+1:.
 - [x] Módulo Organizador :+1:. 
-- [x] Módulo Certificado.
-- [x] Módulo Registro de Ponentes. El módulo permite gestionar los registros del Ponente virtual, además de administrar los archivos que puede subir al sistema para los asistentes.
-- [x] Módulo Registro de Usuarios-Asistentes.
-- [x] Módulo de registro de asistentes. El registro de asistencia permite respaldar la asistencia virtual de los asistetes ante las entidades publicas correspondientes, para la emisión de las firmas correspondientes y la validación de los certificados generados por el sistema. 
-- [x] El sistema permite gestionar las rutas para mantener activo el usuario administrador, y una página pública que cualquier usuario puede visitar. Se permite el control de niveles de usuarios.
+- [x] Módulo Certificado :+1:.
+- [x] Módulo Registro de Ponentes :+1:. El módulo permite gestionar los registros del Ponente virtual, además de administrar los archivos que puede subir al sistema para los asistentes.
+- [x] Módulo Registro de Usuarios-Asistentes :+1:.
+- [x] Módulo de registro de asistentes :+1:. El registro de asistencia permite respaldar la asistencia virtual de los asistetes ante las entidades publicas correspondientes, para la emisión de las firmas correspondientes y la validación de los certificados generados por el sistema. 
+- [x] El sistema permite gestionar las rutas para mantener activo el usuario administrador, y una página pública que cualquier usuario puede visitar. Se permite el control de niveles de usuarios 👯:shipit:.
 
-# Skills:
+# Skills Project:
 <p>
 <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" width="36" height="36" alt="MySQL" /></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="Javascript" /></a>
@@ -23,27 +23,29 @@
 <a href="https://www.adobe.com/uk/products/photoshop.html" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/photoshop-colored.svg" width="36" height="36" alt="Photoshop" /></a>
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg" width="36" height="36" alt="Figma" /></a>
 </p>
-Puedes visitar el proyecto si aún está disponible [Cersutea p](https://cersutea.com/)
+
+* 🚀  Puedes visitar el proyecto si aún está disponible [CerSutea pagina web](https://cersutea.com/)
+* ✉️  You can contact me at [unajmakev@gmail.com](mailto:unajmakev@gmail.com)
 
 ### Dependencias Project:
 - Mysql v5.7
 - PHP v7.4
 
-### Team project
-- @En el repositorio.
-
-# ScreamShot System:
-
+# Screenshot System 🌱:
+* 🚀  login admin
 ![imagen login sistema](https://raw.githubusercontent.com/KevinQL/sutea2021-covid/main/public/__fileproject/login.PNG)
+* 🚀  Emisión de certificado virtual
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_emisionCertificacion.PNG)
+* 🚀  vista principal del sistema admin
 ![imagen login sistema](https://raw.githubusercontent.com/KevinQL/sutea2021-covid/main/public/__fileproject/menu_principal.PNG)
-
+* 🚀  modulo certificado
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_certificado1.PNG)
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_certificado2.PNG)
-
+* 🚀  gestionar regisrto usuario asistente
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_inscripciones.png)
+* 🚀  gestion Ponente
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/actualizar_ponente.PNG)
-
+* 🚀  Evento
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_eventoCrear.PNG)
 ![imagen login sistema](https://github.com/KevinQL/sutea2021-covid/blob/main/public/__fileproject/mod_evento.PNG)
 
